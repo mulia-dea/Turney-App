@@ -21,4 +21,8 @@ class MainActivity : AppCompatActivity() {
         viewList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         viewList.adapter = adapter
     }
+
+    private fun showEvent(){
+
+    }
 }

@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorld">
         <activity
+            android:name=".DaftarScrimActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ScrimActivity"
+            android:exported="true" />
+        <activity
+            android:name=".EventActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
