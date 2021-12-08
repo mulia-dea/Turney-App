@@ -3,4 +3,7 @@
     <string name="scrim">SCRIM</string>
     <string name="register">PENDAFTARAN</string>
     <string name="nama_penyelenggara">Nama Penyelenggara</string>
+    <string name="jenis_gim">Jenis Gim</string>
+    <string name="date">Tanggal Pelaksanaan</string>
+    <string name="deskripsi">Deskripsi</string>
 </resources>
