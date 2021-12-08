@@ -1,65 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="40dp">
+    android:layout_height="110dp"
+    android:layout_margin="20dp"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp">
 
-    <androidx.cardview.widget.CardView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_height="match_parent"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingStart="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp">
+        <ImageView
+            android:id="@+id/img_scrim"
+            android:layout_width="150dp"
+            android:layout_height="90dp"
+            android:layout_alignParentStart="true"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/valorant" />
 
-            <ImageView
-                android:id="@+id/img_scrim"
-                android:layout_width="150dp"
-                android:layout_height="90dp"
-                android:layout_alignParentStart="true"
-                android:scaleType="centerCrop"
-                tools:src="@drawable/valorant" />
+        <TextView
+            android:id="@+id/tv_name_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/img_scrim"
+            android:textStyle="bold"
+            tools:text="Valorant" />
 
-            <TextView
-                android:id="@+id/tv_name_game"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="Valorant"
-                android:textStyle="bold"
-                android:layout_toEndOf="@id/img_scrim"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="15dp"/>
+        <TextView
+            android:id="@+id/tv_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name_game"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/img_scrim"
+            android:text="scrim detail..." />
 
-            <TextView
-                android:id="@+id/tv_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_name_game"
-                android:layout_marginStart="15dp"
-                android:layout_marginBottom="10dp"
-                android:layout_toEndOf="@id/img_scrim"
-                tools:text="Scrim detail..." />
+        <TextView
+            android:id="@+id/tv_player_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_detail"
+            android:layout_marginStart="15dp"
+            android:layout_toRightOf="@id/img_scrim"
+            android:fontFamily="sans-serif-light"
+            tools:text="0/10" />
 
-            <TextView
-                android:id="@+id/link_join"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_detail"
-                android:layout_toEndOf="@id/img_scrim"
-                tools:text="Join"
-                android:layout_marginStart="15dp"/>
-        </RelativeLayout>
+        <Button
+            android:id="@+id/link_join"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_detail"
+            android:layout_marginStart="90dp"
+            android:layout_toEndOf="@id/img_scrim"
+            android:textSize="10sp"
+            android:text="Join" />
+    </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
+</androidx.cardview.widget.CardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,10 @@
 package com.codemul.pabmul.helloworld
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.ArrayList
@@ -29,5 +31,15 @@ class MainActivity : AppCompatActivity() {
 
         })
 
+        onClickComponentListener()
+
+    }
+
+    private fun onClickComponentListener(){
+        val scrimComponent: CardView = findViewById(R.id.cv_list_scrim)
+        scrimComponent.setOnClickListener {
+            val scrimIntent = Intent(this, ScrimActivity::class.java)
+            startActivity(scrimIntent)
+        }
     }
 }

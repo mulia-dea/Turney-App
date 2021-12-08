@@ -14,6 +14,7 @@
             android:exported="true" />
         <activity
             android:name=".ScrimActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="true" />
         <activity
             android:name=".EventActivity"

@@ -4,9 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ImageView
-import android.widget.TextView
 import java.util.ArrayList
 import androidx.recyclerview.widget.RecyclerView
 
@@ -45,7 +43,7 @@ class CustomAdapter(private val context: Context, private val list: ArrayList<Es
         listener: OnItemListClickListener
     ) : RecyclerView.ViewHolder(itemView) {
 
-        internal var poster: ImageView
+        var poster: ImageView
 
         init {
             itemView.setOnClickListener {
