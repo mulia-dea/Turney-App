@@ -56,7 +56,7 @@
             tools:text="0/10" />
 
         <Button
-            android:id="@+id/link_join"
+            android:id="@+id/button_join"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_detail"
