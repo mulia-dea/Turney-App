@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorld">
         <activity
+            android:name=".DaftarEventActivity"
+            android:exported="true" />
+        <activity
             android:name=".DaftarScrimActivity"
             android:exported="true" />
         <activity
