@@ -3,11 +3,26 @@ package com.codemul.pabmul.helloworld
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
+import com.codemul.pabmul.helloworld.data.DataEvent
 
 class EventAdapter : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
-    inner class EventViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
+    var listEvents = ArrayList<DataEvent>()
+    set(listEvents) {
+        if (listEvents.size >0){
+            this.listEvents.clear()
+        }
+        this.listEvents.addAll(listEvents)
+    }
+
+    fun addItem(event: DataEvent){
+        this.listEvents.add(event)
+        notifyItemInserted(this.listEvents.size - 1)
+    }
+    inner class EventViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+        var tvName : EditText = itemView.findViewById(R.id.name_event)
     }
 
     override fun onCreateViewHolder(
@@ -18,7 +33,7 @@ class EventAdapter : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: EventAdapter.EventViewHolder, position: Int) {
-        TODO("Not yet implemented")
+
     }
 
     override fun getItemCount(): Int {

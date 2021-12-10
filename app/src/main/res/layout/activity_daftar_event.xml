@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+<LinearLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Masukkan Nama..."
+            android:inputType="text"
             android:background="#cbd1cc"
             android:padding="10dp"
             android:layout_marginBottom="20dp"/>
@@ -38,6 +43,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="tgl event"
+            android:inputType="date"
+            android:drawableEnd="@drawable/ic_date_24"
             android:background="#cbd1cc"
             android:padding="10dp"
             android:layout_marginBottom="20dp"/>
@@ -55,6 +62,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="tgl berakhir"
+            android:inputType="date"
+            android:drawableEnd="@drawable/ic_date_24"
             android:background="#cbd1cc"
             android:padding="10dp"
             android:layout_marginBottom="20dp"/>
@@ -72,6 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="fee"
+            android:inputType="number"
             android:background="#cbd1cc"
             android:padding="10dp"
             android:layout_marginBottom="20dp"/>
@@ -89,6 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="venue"
+            android:inputType="text"
             android:background="#cbd1cc"
             android:padding="10dp"
             android:layout_marginBottom="20dp"/>
@@ -106,13 +117,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="CP"
+            android:inputType="text"
             android:background="#cbd1cc"
             android:padding="10dp"
             android:layout_marginBottom="20dp"/>
 
         <Button
-            android:id="@+id/add_event"
+            android:id="@+id/btn_add_event"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="DAFTAR"/>
 </LinearLayout>
+</ScrollView>
