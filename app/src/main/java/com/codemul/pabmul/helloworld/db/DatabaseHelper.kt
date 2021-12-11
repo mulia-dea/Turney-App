@@ -38,6 +38,14 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
         return db.insert(EventColumns.TABLE_EVENT, null, values)
     }
 
+//    fun close() {
+//        val db = this.writableDatabase
+//        db.close()
+//
+//        if (db.isOpen)
+//            db.close()
+//    }
+
 //    var listEvents = ArrayList<DataEvent>()
 //        set(listEvents) {
 //            if (listEvents.size >0){
@@ -82,10 +90,11 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
         companion object {
             const val TABLE_EVENT = "events"
             const val KEY_ID = "id"
+            const val KEY_IMAGE = "images"
             const val KEY_NAME = "name_event"
             const val KEY_TGL_EVENT = "tgl_event"
             const val KEY_TGL_AKHIR = "tgl_akhir"
-//            const val KEY_FEE = "_fee"
+            const val KEY_FEE = "fee"
             const val KEY_VENUE = "venue"
             const val KEY_CP = "contact_person"
         }
@@ -129,11 +138,12 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
         // Todo table create statement
         private val CREATE_TABLE_EVENT = "CREATE TABLE ${EventColumns.TABLE_EVENT}" +
                 "(${EventColumns.KEY_ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "${EventColumns.KEY_NAME} VARCHAR(50) NOT NULL," +
+                "${EventColumns.KEY_NAME} TEXT NOT NULL,"+
+                "${EventColumns.KEY_IMAGE} TEXT NULL"+
                 "${EventColumns.KEY_TGL_EVENT} TEXT NOT NULL," +
                 "${EventColumns.KEY_TGL_AKHIR} TEXT NOT NULL," +
                 "${EventColumns.KEY_VENUE} TEXT NOT NULL," +
-//                "${EventColumns.KEY_FEE} INTEGER," +
+                "${EventColumns.KEY_FEE} INTEGER NULL," +
                 "${EventColumns.KEY_CP} TEXT NOT NULL)"
 
 //BUAT TABEL BARU

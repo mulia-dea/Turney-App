@@ -12,6 +12,20 @@
     android:orientation="vertical"
     android:layout_margin="20dp">
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/choose_img"
+            android:text="Choose Image"
+            android:layout_margin="10dp"/>
+
+        <ImageView
+            android:id="@+id/img_event"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_margin="10dp"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,7 +57,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="tgl event"
-            android:inputType="date"
             android:drawableEnd="@drawable/ic_date_24"
             android:background="#cbd1cc"
             android:padding="10dp"
@@ -62,7 +75,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="tgl berakhir"
-            android:inputType="date"
             android:drawableEnd="@drawable/ic_date_24"
             android:background="#cbd1cc"
             android:padding="10dp"
