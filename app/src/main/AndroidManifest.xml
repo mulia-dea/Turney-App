@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorld">
         <activity
-            android:name=".DaftarEventActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,9 +28,11 @@
             android:exported="true" />
         <activity
             android:name=".EventActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".DaftarEventActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="true"/>
     </application>
 

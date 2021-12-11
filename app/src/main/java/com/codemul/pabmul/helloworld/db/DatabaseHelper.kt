@@ -85,7 +85,7 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
             const val KEY_NAME = "name_event"
             const val KEY_TGL_EVENT = "tgl_event"
             const val KEY_TGL_AKHIR = "tgl_akhir"
-//            const val KEY_FEE = "_fee"
+            const val KEY_FEE = "_fee"
             const val KEY_VENUE = "venue"
             const val KEY_CP = "contact_person"
         }
@@ -133,7 +133,7 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
                 "${EventColumns.KEY_TGL_EVENT} TEXT NOT NULL," +
                 "${EventColumns.KEY_TGL_AKHIR} TEXT NOT NULL," +
                 "${EventColumns.KEY_VENUE} TEXT NOT NULL," +
-//                "${EventColumns.KEY_FEE} INTEGER," +
+                "${EventColumns.KEY_FEE} INTEGER," +
                 "${EventColumns.KEY_CP} TEXT NOT NULL)"
 
 //BUAT TABEL BARU

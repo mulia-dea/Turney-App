@@ -125,7 +125,7 @@ class DaftarEventActivity : AppCompatActivity(), View.OnClickListener{
     override fun onClick(view: View?) {
         if (view?.id == R.id.btn_add_event) {
             val name = edtName.text.toString()
-//        val fee = edtFee.text.toString()
+        val fee = edtFee.text.toString()
         val venue = edtVenue.text.toString()
         val cp = edtCp.text.toString()
         val tgl_event = edtTglEvent.text.toString()
@@ -167,7 +167,7 @@ class DaftarEventActivity : AppCompatActivity(), View.OnClickListener{
 
 
             event?.name = name
-//        event?.fee = Integer.valueOf(fee)
+        event?.fee = Integer.valueOf(fee)
         event?.venue = venue
         event?.contact = cp
         event?.tgl_event = tgl_event
@@ -175,7 +175,7 @@ class DaftarEventActivity : AppCompatActivity(), View.OnClickListener{
 
             val values = ContentValues()
             values.put(DatabaseHelper.EventColumns.KEY_NAME, name)
-//        values.put(DatabaseHelper.EventColumns.KEY_FEE, fee)
+            values.put(DatabaseHelper.EventColumns.KEY_FEE, fee)
             values.put(DatabaseHelper.EventColumns.KEY_TGL_EVENT, tgl_event)
             values.put(DatabaseHelper.EventColumns.KEY_TGL_AKHIR, tgl_akhir)
             values.put(DatabaseHelper.EventColumns.KEY_VENUE, venue)
