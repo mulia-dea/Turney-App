@@ -11,10 +11,14 @@
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/featured_event_list.xml" value="0.259375" />
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/list_event.xml" value="0.21264367816091953" />
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/list_scrim.xml" value="0.6" />
-        <entry key="app/src/main/res/layout/activity_daftar_event.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_daftar_event.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_daftar_scrim.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_event.xml" value="0.18659420289855072" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.296195652173913" />
+        <entry key="app/src/main/res/layout/activity_event.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_scrim.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/featured_event_list.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/list_event.xml" value="0.18342391304347827" />
+        <entry key="app/src/main/res/layout/list_scrim.xml" value="0.18342391304347827" />
       </map>
     </option>
   </component>

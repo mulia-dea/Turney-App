@@ -23,6 +23,7 @@
 
         <activity
             android:name=".DaftarScrimActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="true" />
         <activity
             android:name=".ScrimActivity"
