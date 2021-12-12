@@ -8,9 +8,11 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.provider.BaseColumns
 import com.codemul.pabmul.helloworld.data.DataEvent
 
-internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
-    null, DATABASE_VERSION) {
-//    private lateinit var database: SQLiteDatabase
+internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(
+    context, DATABASE_NAME,
+    null, DATABASE_VERSION
+) {
+    //    private lateinit var database: SQLiteDatabase
 //    lateinit var db : SQLiteDatabase
     override fun onCreate(db: SQLiteDatabase) {
 
@@ -31,12 +33,21 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
     }
 
     fun open() {
-         this.writableDatabase
+        this.writableDatabase
     }
-    fun insertEvent(values: ContentValues?): Long{
+
+    fun insertEvent(values: ContentValues?): Long {
         val db = this.writableDatabase
         return db.insert(EventColumns.TABLE_EVENT, null, values)
     }
+
+//    fun close() {
+//        val db = this.writableDatabase
+//        db.close()
+//
+//        if (db.isOpen)
+//            db.close()
+//    }
 
 //    var listEvents = ArrayList<DataEvent>()
 //        set(listEvents) {
@@ -78,18 +89,20 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
 //            null)
 //    }
 
-    internal class EventColumns : BaseColumns{
+    internal class EventColumns : BaseColumns {
         companion object {
             const val TABLE_EVENT = "events"
             const val KEY_ID = "id"
             const val KEY_NAME = "name_event"
+            const val KEY_IMAGE = "images"
+            const val KEY_FEE = "fee"
             const val KEY_TGL_EVENT = "tgl_event"
             const val KEY_TGL_AKHIR = "tgl_akhir"
-            const val KEY_FEE = "_fee"
             const val KEY_VENUE = "venue"
             const val KEY_CP = "contact_person"
         }
     }
+
     companion object {
         // Logcat tag
 //        private const val LOG = "DatabaseHelper"
@@ -129,12 +142,14 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
         // Todo table create statement
         private val CREATE_TABLE_EVENT = "CREATE TABLE ${EventColumns.TABLE_EVENT}" +
                 "(${EventColumns.KEY_ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "${EventColumns.KEY_NAME} VARCHAR(50) NOT NULL," +
+                "${EventColumns.KEY_NAME} TEXT NOT NULL," +
+                "${EventColumns.KEY_FEE} INTEGER," +
                 "${EventColumns.KEY_TGL_EVENT} TEXT NOT NULL," +
                 "${EventColumns.KEY_TGL_AKHIR} TEXT NOT NULL," +
                 "${EventColumns.KEY_VENUE} TEXT NOT NULL," +
-                "${EventColumns.KEY_FEE} INTEGER," +
+                "${EventColumns.KEY_IMAGE} TEXT NULL," +
                 "${EventColumns.KEY_CP} TEXT NOT NULL)"
+
 
 //BUAT TABEL BARU
 //        // Tag table create statement
