@@ -140,7 +140,7 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
                 "(${EventColumns.KEY_ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "${EventColumns.KEY_NAME} TEXT NOT NULL,"+
                 "${EventColumns.KEY_IMAGE} TEXT NULL"+
-                "${EventColumns.KEY_TGL_EVENT} TEXT NOT NULL," +
+//                "${EventColumns.KEY_TGL_EVENT} TEXT NOT NULL," +
                 "${EventColumns.KEY_TGL_AKHIR} TEXT NOT NULL," +
                 "${EventColumns.KEY_VENUE} TEXT NOT NULL," +
                 "${EventColumns.KEY_FEE} INTEGER NULL," +

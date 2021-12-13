@@ -129,14 +129,14 @@ class DaftarEventActivity : AppCompatActivity(), View.OnClickListener{
             event.fee = Integer.valueOf(edtFee.text.toString())
             event.venue = edtVenue.text.toString()
             event.contact = edtCp.text.toString()
-            event.tgl_event = edtTglEvent.text.toString()
+//            event.tgl_event = edtTglEvent.text.toString()
             event.tgl_akhir = edtTglAkhir.text.toString()
 
             val values = ContentValues()
             values.put(DatabaseHelper.EventColumns.KEY_IMAGE, event.image)
             values.put(DatabaseHelper.EventColumns.KEY_NAME, event.name)
             values.put(DatabaseHelper.EventColumns.KEY_FEE, event.fee)
-            values.put(DatabaseHelper.EventColumns.KEY_TGL_EVENT, event.tgl_event)
+//            values.put(DatabaseHelper.EventColumns.KEY_TGL_EVENT, event.tgl_event)
             values.put(DatabaseHelper.EventColumns.KEY_TGL_AKHIR, event.tgl_akhir)
             values.put(DatabaseHelper.EventColumns.KEY_VENUE, event.venue)
             values.put(DatabaseHelper.EventColumns.KEY_CP, event.contact)
@@ -310,5 +310,7 @@ class DaftarEventActivity : AppCompatActivity(), View.OnClickListener{
     companion object {
         private const val REQUEST_PERMISSION = 1
         private const val REQUEST_SELECT = 2
+        const val EXTRA_NOTE = "extra_note"
+        const val EXTRA_POSITION = "extra_position"
     }
 }
