@@ -5,15 +5,15 @@ import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.codemul.pabmul.helloworld.data.DataEvent
+import com.codemul.pabmul.helloworld.data.Event
 
-class EventAdapter() : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
+class EventAdapter(private val listEvent: List<Event>) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
-    private val eventList=  ArrayList<DataEvent>()
+//    private val eventList=  ArrayList<DataEvent>()
 //    var listEvents = ArrayList<DataEvent>()
 //    set(listEvents) {
 //        if (listEvents.size >0){
@@ -35,11 +35,11 @@ class EventAdapter() : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: EventAdapter.EventViewHolder, position: Int) {
-        holder.bind(eventList[position])
+        holder.bind(listEvent[position])
     }
 
     override fun getItemCount(): Int {
-        return eventList.size
+        return listEvent.size
     }
 
     inner class EventViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
@@ -47,20 +47,23 @@ class EventAdapter() : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
         var tvTglEvent : TextView = itemView.findViewById(R.id.tv_tgl_event)
         var image : ImageView = itemView.findViewById(R.id.img_list_event)
 
-        fun bind(event: DataEvent) {
+        fun bind(event: Event) {
             tvName.text = event.name
-            tvTglEvent.text = event.tgl_akhir
+            tvTglEvent.text = event.tgl_event
 
-            if (event.image != null) {
-                image.setImageBitmap(BitmapFactory.decodeFile(event.image))
-//                holder.roundedImageView.visibility = View.VISIBLE
-//            }
+            image.setImageBitmap(BitmapFactory.decodeFile(event.image))
+        }
+
+//            if (event.image != null) {
+//                image.setImageBitmap(BitmapFactory.decodeFile(event.image))
+////                holder.roundedImageView.visibility = View.VISIBLE
+////            }
                 //            else {
 //                holder.roundedImageView.visibility = View.GONE
 //            }
 
-            }
-        }
+//            }
+//        }
 
 //        init {
 //            var tvName : EditText = itemView.findViewById(R.id.name_event)
@@ -73,10 +76,10 @@ class EventAdapter() : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun setAddEvent(event: List<DataEvent>){
-        eventList.clear()
-        eventList.addAll(event)
-        notifyDataSetChanged()
-    }
+//    @SuppressLint("NotifyDataSetChanged")
+//    fun setAddEvent(event: List<DataEvent>){
+//        eventList.clear()
+//        eventList.addAll(event)
+//        notifyDataSetChanged()
+//    }
 }

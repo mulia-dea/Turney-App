@@ -26,7 +26,7 @@ import com.codemul.pabmul.helloworld.data.Utility
 import com.google.android.gms.cast.framework.media.ImagePicker
 
 
-class DaftarEventActivity : AppCompatActivity(), View.OnClickListener{
+class DaftarEventActivity : AppCompatActivity(){
 
     private lateinit var btnAddEvent : Button
     private lateinit var edtTglEvent : EditText
@@ -174,17 +174,6 @@ class DaftarEventActivity : AppCompatActivity(), View.OnClickListener{
 //        }
 //    }
 
-    override fun onClick(view: View?) {
-
-
-//        if(view?.id == R.id.choose_img){
-//            ActivityCompat.requestPermissions(
-//                this,
-//                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-//                REQUEST_CODE_GALLERY
-//            )
-//        }
-    }
 
     private fun selectImage() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
