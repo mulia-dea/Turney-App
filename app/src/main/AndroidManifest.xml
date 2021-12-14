@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.codemul.pabmul.helloworld">
+  
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -12,7 +14,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorld">
         <activity
-            android:name=".MainActivity"
+            android:name=".CreateEventActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".DaftarEventActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".DaftarScrimActivity"
+            android:parentActivityName=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ScrimActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".EventActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,23 +36,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".DaftarScrimActivity"
-            android:parentActivityName=".MainActivity"
+            android:name=".MainActivity"
             android:exported="true" />
-        <activity
-            android:name=".ScrimActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="true" />
-        <activity
-            android:name=".EventActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="true" />
-        <activity
-            android:name=".DaftarEventActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="true"/>
     </application>
 
 </manifest>

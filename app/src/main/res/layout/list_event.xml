@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="40dp">
 
     <androidx.cardview.widget.CardView
@@ -19,7 +19,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/img_event"
+                android:id="@+id/img_list_event"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginBottom="10dp"
@@ -31,14 +31,14 @@
                 android:id="@+id/tv_name_game"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/img_event"
+                android:layout_below="@id/img_list_event"
                 tools:text="Valorant"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:layout_marginStart="15dp"/>
 
             <TextView
-                android:id="@+id/tv_detai"
+                android:id="@+id/tv_tgl_event"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_name_game"
@@ -50,7 +50,7 @@
                 android:id="@+id/link_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_detai"
+                android:layout_below="@id/tv_tgl_event"
                 tools:text="Detail"
                 android:layout_marginStart="15dp"/>
         </RelativeLayout>

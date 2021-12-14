@@ -27,7 +27,8 @@ import com.codemul.pabmul.helloworld.data.DataEvent
 //import com.google.android.gms.cast.framework.media.ImagePicker
 
 
-class DaftarEventActivity : AppCompatActivity(), View.OnClickListener{
+
+class DaftarEventActivity : AppCompatActivity(){
 
     private lateinit var btnAddEvent : Button
     private lateinit var edtTglEvent : EditText
@@ -89,7 +90,6 @@ class DaftarEventActivity : AppCompatActivity(), View.OnClickListener{
             }
         }
 
-
         edtTglEvent.setOnClickListener{
             val cal = Calendar.getInstance()
 
@@ -127,6 +127,7 @@ class DaftarEventActivity : AppCompatActivity(), View.OnClickListener{
         }
 
         btnAddEvent.setOnClickListener {
+
             // debug
             Log.d("Value Path: ", selectImagePath.toString())
 
@@ -151,6 +152,7 @@ class DaftarEventActivity : AppCompatActivity(), View.OnClickListener{
             values.put(DatabaseHelper.EventColumns.KEY_CP, event.contact)
 
             DatabaseHelper(this).insertEvent(values)
+
         }
 
 //
@@ -319,5 +321,8 @@ class DaftarEventActivity : AppCompatActivity(), View.OnClickListener{
     companion object {
         private const val REQUEST_PERMISSION = 1
         private const val REQUEST_SELECT = 2
+
+        const val EXTRA_NOTE = "extra_note"
+        const val EXTRA_POSITION = "extra_position"
     }
 }

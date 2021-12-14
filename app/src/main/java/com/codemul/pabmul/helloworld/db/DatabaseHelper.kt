@@ -93,6 +93,7 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(
         companion object {
             const val TABLE_EVENT = "events"
             const val KEY_ID = "id"
+            const val KEY_IMAGE = "images"
             const val KEY_NAME = "name_event"
             const val KEY_IMAGE = "images"
             const val KEY_FEE = "fee"
