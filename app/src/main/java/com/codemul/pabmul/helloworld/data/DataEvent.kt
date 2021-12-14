@@ -10,7 +10,7 @@ data class DataEvent(
     var image : String? =null,
 //    var image : Bitmap? = null,
     var name: String? =null,
-//    var tgl_event: String? =null,
+    var tgl_event: String? =null,
     var tgl_akhir: String? =null,
     var fee: Int = 0,
     var contact: String? =null,

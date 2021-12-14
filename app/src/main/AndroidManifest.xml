@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.codemul.pabmul.helloworld">
-  
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,21 +13,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorld">
         <activity
+            android:name=".SignUpActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
             android:name=".CreateEventActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".DaftarEventActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".DaftarScrimActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ScrimActivity"
             android:exported="true"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".EventActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +42,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".EventActivity"
             android:exported="true" />
     </application>
 
