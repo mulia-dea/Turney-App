@@ -39,11 +39,11 @@
 
                 <TextView
                     android:id="@+id/tv_id_akun"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_id_nama"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
                     android:text="ID: 0000214356"
                     android:textSize="10sp" />
 
@@ -95,23 +95,30 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_marginTop="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             app:cardCornerRadius="30dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Featured Event" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_featured_events"
                     android:layout_width="match_parent"
                     android:layout_height="170dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:scrollbars="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/featured_event_list" />
@@ -119,38 +126,17 @@
 
                 <LinearLayout
                     android:id="@+id/ll_list_event"
-                    android:layout_marginTop="40dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
                     android:orientation="horizontal">
 
-                        <LinearLayout
-                            android:layout_marginStart="35dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:gravity="center">
-
-                            <ImageView
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:background="#99516BEB" />
-
-                            <TextView
-                                android:fontFamily="sans-serif-black"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Event"/>
-
-                        </LinearLayout>
-
                     <LinearLayout
-                        android:id="@+id/ll_list_scrim"
-                        android:layout_marginStart="30dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:layout_marginStart="17dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <ImageView
                             android:layout_width="80dp"
@@ -158,20 +144,41 @@
                             android:background="#99516BEB" />
 
                         <TextView
-                            android:fontFamily="sans-serif-black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Scrim"/>
+                            android:fontFamily="sans-serif-black"
+                            android:text="Event" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_list_scrim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:background="#99516BEB" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-black"
+                            android:text="Scrim" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/ll_daftar_scrim"
-                        android:layout_marginStart="30dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:layout_marginStart="30dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <ImageView
                             android:layout_width="80dp"
@@ -179,10 +186,10 @@
                             android:background="#99516BEB" />
 
                         <TextView
-                            android:fontFamily="sans-serif-black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Daftar Scrim"/>
+                            android:fontFamily="sans-serif-black"
+                            android:text="Daftar Scrim" />
 
                     </LinearLayout>
 

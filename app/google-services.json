@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "296897377076",
+    "firebase_url": "https://turneyapp-4cffe-default-rtdb.firebaseio.com",
+    "project_id": "turneyapp-4cffe",
+    "storage_bucket": "turneyapp-4cffe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296897377076:android:55950555586ddeb4f86b61",
+        "android_client_info": {
+          "package_name": "com.codemul.pabmul.helloworld"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "296897377076-e922bda0dsh4c960arpqju6f5t5bgu5e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC61lInZsoB6UnYaCrdUGJfJZkzn9RdBvU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "296897377076-e922bda0dsh4c960arpqju6f5t5bgu5e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
