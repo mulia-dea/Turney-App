@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#516BEB"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="20dp">
 
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_profile_card"
-            android:layout_width="300dp"
-            android:layout_height="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
             android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
             app:cardCornerRadius="15dp"
             app:cardElevation="10dp">
 
@@ -25,138 +28,174 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/tv_member_info"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_toStartOf="@id/cv_profile_pic"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="SILVER MEMBER"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/tv_username"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_member_info"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_toStartOf="@id/cv_profile_pic"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Mr.Xroy" />
-
-                <TextView
-                    android:id="@+id/tv_id_user"
+                    android:id="@+id/tv_id_nama"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_username"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="3dp"
-                    android:text="ID:000214356"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Mr. Xroy"
                     android:textColor="#5C5861"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_id_akun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_id_nama"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:text="ID: 0000214356"
                     android:textSize="10sp" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_profile_pic"
-                    android:layout_width="80dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/tv_member_info"
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="15dp"
                     app:cardCornerRadius="50dp">
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/default_pic" />
 
                 </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:id="@+id/tv_achievement"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/cv_profile_pic"
-                    android:layout_marginStart="235dp"
-                    android:layout_marginTop="10dp"
-                    android:text="20/100"
-                    android:textSize="10sp" />
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/cv_profile_pic"
-                    android:layout_alignTop="@id/tv_achievement"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="-2dp"
-                    android:layout_toRightOf="@id/tv_achievement"
-                    android:src="@drawable/ic_baseline_stars_24" />
+                    <TextView
+                        android:id="@+id/tv_achievement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="20/100"
+                        android:textSize="10sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="2dp"
+                        android:src="@drawable/ic_baseline_stars_24" />
+
+                </LinearLayout>
 
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_featured_events"
-            android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:layout_marginTop="15dp"
-            android:scrollbars="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/featured_event_list"/>
-
-
         <androidx.cardview.widget.CardView
-            android:id="@+id/cv_list_event"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="15dp"
-            app:cardCornerRadius="10dp">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:cardCornerRadius="30dp">
 
-            <ImageView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/event_img" />
-
-            <TextView
-                android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="50dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="E V E N T"
-                android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="10dp">
 
-        </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Featured Event" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_list_scrim"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="15dp"
-            app:cardCornerRadius="10dp">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_featured_events"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:layout_marginTop="5dp"
+                    android:scrollbars="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/featured_event_list" />
 
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/gaming_tournaments" />
+                <LinearLayout
+                    android:id="@+id/ll_list_event"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:layout_marginTop="50dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="sans-serif-medium"
-                android:text="S C R I M"
-                android:textColor="@color/white"
-                android:textSize="40sp" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="17dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:background="#99516BEB" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-black"
+                            android:text="Event" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_list_scrim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:background="#99516BEB" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-black"
+                            android:text="Scrim" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_daftar_scrim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:background="#99516BEB" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-black"
+                            android:text="Daftar Scrim" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 

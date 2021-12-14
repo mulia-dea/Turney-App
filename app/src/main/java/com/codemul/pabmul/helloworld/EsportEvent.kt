@@ -12,7 +12,7 @@ class EsportEvent(type: String) {
         when(gameType){
             "valorant" -> posterImg = R.drawable.valorant
             "porsematik" -> posterImg = R.drawable.porsematik
-            else -> posterImg = 0
+            else -> posterImg = R.drawable.dota
         }
     }
 

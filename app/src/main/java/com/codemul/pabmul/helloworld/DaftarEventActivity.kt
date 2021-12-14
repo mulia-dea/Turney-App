@@ -17,13 +17,15 @@ import android.media.Image
 import android.net.Uri
 import android.provider.MediaStore
 import android.text.InputType
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.codemul.pabmul.helloworld.data.DataEvent
-import com.codemul.pabmul.helloworld.data.Utility
-import com.google.android.gms.cast.framework.media.ImagePicker
+//import com.codemul.pabmul.helloworld.data.Utility
+//import com.google.android.gms.cast.framework.media.ImagePicker
+
 
 
 class DaftarEventActivity : AppCompatActivity(){
@@ -90,6 +92,7 @@ class DaftarEventActivity : AppCompatActivity(){
 
         edtTglEvent.setOnClickListener{
             val cal = Calendar.getInstance()
+
             val date = DatePickerDialog(this,
                 { _, year, monthOfYear, dayOfMonth ->
                     val newDate = Calendar.getInstance()
@@ -107,6 +110,7 @@ class DaftarEventActivity : AppCompatActivity(){
 
         edtTglAkhir.setOnClickListener{
             val cal = Calendar.getInstance()
+
             val date = DatePickerDialog(this,
                 { _, year, monthOfYear, dayOfMonth ->
                     val newDate = Calendar.getInstance()
@@ -123,25 +127,32 @@ class DaftarEventActivity : AppCompatActivity(){
         }
 
         btnAddEvent.setOnClickListener {
+
+            // debug
+            Log.d("Value Path: ", selectImagePath.toString())
+
+            // masukan data ke class DataEvent
             val event = DataEvent()
             event.image = selectImagePath
             event.name = edtName.text.toString()
             event.fee = Integer.valueOf(edtFee.text.toString())
             event.venue = edtVenue.text.toString()
             event.contact = edtCp.text.toString()
-//            event.tgl_event = edtTglEvent.text.toString()
+            event.tgl_event = edtTglEvent.text.toString()
             event.tgl_akhir = edtTglAkhir.text.toString()
 
+            // masukan data dari class DataEvent ke Database
             val values = ContentValues()
             values.put(DatabaseHelper.EventColumns.KEY_IMAGE, event.image)
             values.put(DatabaseHelper.EventColumns.KEY_NAME, event.name)
             values.put(DatabaseHelper.EventColumns.KEY_FEE, event.fee)
-//            values.put(DatabaseHelper.EventColumns.KEY_TGL_EVENT, event.tgl_event)
+            values.put(DatabaseHelper.EventColumns.KEY_TGL_EVENT, event.tgl_event)
             values.put(DatabaseHelper.EventColumns.KEY_TGL_AKHIR, event.tgl_akhir)
             values.put(DatabaseHelper.EventColumns.KEY_VENUE, event.venue)
             values.put(DatabaseHelper.EventColumns.KEY_CP, event.contact)
 
-            val result =  DatabaseHelper(this).insertEvent(values)
+            DatabaseHelper(this).insertEvent(values)
+
         }
 
 //
@@ -174,6 +185,17 @@ class DaftarEventActivity : AppCompatActivity(){
 //        }
 //    }
 
+    override fun onClick(view: View?) {
+
+
+//        if(view?.id == R.id.choose_img){
+//            ActivityCompat.requestPermissions(
+//                this,
+//                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+//                REQUEST_CODE_GALLERY
+//            )
+//        }
+    }
 
     private fun selectImage() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
@@ -299,6 +321,7 @@ class DaftarEventActivity : AppCompatActivity(){
     companion object {
         private const val REQUEST_PERMISSION = 1
         private const val REQUEST_SELECT = 2
+
         const val EXTRA_NOTE = "extra_note"
         const val EXTRA_POSITION = "extra_position"
     }

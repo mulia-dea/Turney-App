@@ -1,143 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
-<LinearLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".DaftarEventActivity"
-    android:orientation="vertical"
-    android:layout_margin="20dp">
+    android:layout_height="match_parent">
 
-        <Button
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="30dp"
+        tools:context=".DaftarEventActivity">
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/choose_img"
-            android:text="Choose Image"
-            android:layout_margin="10dp"/>
+            android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/img_event"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:src="@mipmap/ic_launcher"
-            android:layout_margin="10dp"/>
+            <ImageView
+                android:id="@+id/img_event"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                android:src="@mipmap/ic_launcher" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/nama_penyelenggara"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="10dp"/>
+            <Button
+                android:layout_gravity="bottom"
+                android:textSize="10sp"
+                android:id="@+id/choose_img"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:layout_margin="10dp"
+                android:text="UPLOAD" />
 
-        <EditText
-            android:id="@+id/name_event"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Masukkan Nama..."
-            android:inputType="text"
-            android:background="#cbd1cc"
-            android:padding="10dp"
-            android:layout_marginBottom="20dp"/>
+        </LinearLayout>
 
-        <TextView
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="tgl_event"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:hint="Nama Event">
 
-        <EditText
-            android:id="@+id/tgl_event"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="tgl event"
-            android:drawableEnd="@drawable/ic_date_24"
-            android:background="#cbd1cc"
-            android:padding="10dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:hint="Tanggal Pelaksanaan">
 
-        <TextView
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tgl_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:drawableEnd="@drawable/ic_date_24" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="tgl berakhir"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="20dp"
+            android:hint="Tanggal Akhir Pendaftaran">
 
-        <EditText
-            android:id="@+id/tgl_akhir"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tgl_akhir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:drawableEnd="@drawable/ic_date_24" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="tgl berakhir"
-            android:drawableEnd="@drawable/ic_date_24"
-            android:background="#cbd1cc"
-            android:padding="10dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:hint="Fee">
 
-        <TextView
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="fee"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="20dp"
+            android:hint="Venue">
 
-        <EditText
-            android:id="@+id/fee"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/venue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="fee"
-            android:inputType="number"
-            android:background="#cbd1cc"
-            android:padding="10dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:hint="Contact Person">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="venue"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="10dp"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/cp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:inputType="text" />
 
-        <EditText
-            android:id="@+id/venue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="venue"
-            android:inputType="text"
-            android:background="#cbd1cc"
-            android:padding="10dp"
-            android:layout_marginBottom="20dp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Contact person"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="10dp"/>
-
-        <EditText
-            android:id="@+id/cp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="CP"
-            android:inputType="text"
-            android:background="#cbd1cc"
-            android:padding="10dp"
-            android:layout_marginBottom="20dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btn_add_event"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="DAFTAR"/>
-</LinearLayout>
+            android:text="DAFTAR" />
+
+    </LinearLayout>
+
 </ScrollView>
