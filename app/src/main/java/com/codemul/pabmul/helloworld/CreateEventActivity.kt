@@ -18,12 +18,23 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
+import com.codemul.pabmul.helloworld.data.DataEvent
 import com.codemul.pabmul.helloworld.data.Event
 import com.codemul.pabmul.helloworld.db.RealtimeDatabase
+import com.google.android.gms.auth.api.signin.internal.Storage
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -39,19 +50,31 @@ class CreateEventActivity : AppCompatActivity() {
     private lateinit var img_event : ImageView
 
     var selectImagePath: String? = null
-    lateinit var image : Uri
+    private var imageUrl : Uri? = null
     private lateinit var AwalTanggal : String
     private lateinit var AkhirTanggal : String
+    private var storage : FirebaseStorage? = null
+    private var databaseRef: DatabaseReference? = null
+    private var database : FirebaseDatabase? = null
 
-    lateinit var event : Event
 
-    private val storage = RealtimeDatabase.instances().getReference()
+//    lateinit var event : Event
+//
+//    private val storage = RealtimeDatabase.instances()
+    private var storageReference : StorageReference? =null
+    private var uploadTask: StorageTask<*>? = null
+//    private var databaseRef: DatabaseReference? = null
+
     private val db = RealtimeDatabase.instance()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_event)
+
+        database = FirebaseDatabase.getInstance()
+        databaseRef = Firebase.database.reference.child("event")
+        storage = FirebaseStorage.getInstance()
 
         findViewId()
 
@@ -102,18 +125,19 @@ class CreateEventActivity : AppCompatActivity() {
 
 
         btnAddEvent.setOnClickListener {
-            setDataEvent(
-                Event(
-                    id = UUID.randomUUID().toString(),
-                    name = edtName.text.toString().trim(),
-                    image = insertImage().toString(),
-                    tgl_akhir = edtTglEvent.text.toString().trim(),
-                    tgl_event = edtTglAkhir.text.toString().trim(),
-                    fee = Integer.valueOf(edtFee.text.toString()),
-                    contact = edtCp.text.toString().trim(),
-                    venue = edtVenue.text.toString().trim()
-                )
-            )
+            setDataToFirebase()
+//            setDataEvent(
+//                Event(
+//                    id = UUID.randomUUID().toString(),
+//                    name = edtName.text.toString().trim(),
+//                    image = uploadImage().toString(),
+//                    tgl_akhir = edtTglEvent.text.toString().trim(),
+//                    tgl_event = edtTglAkhir.text.toString().trim(),
+//                    fee = Integer.valueOf(edtFee.text.toString()),
+//                    contact = edtCp.text.toString().trim(),
+//                    venue = edtVenue.text.toString().trim()
+//                )
+//            )
         }
 
 
@@ -132,73 +156,80 @@ class CreateEventActivity : AppCompatActivity() {
         btnAddEvent = findViewById(R.id.btn_add_event)
     }
 
-    private fun insertImage(){
-        setImageToFirebase(image)
-    }
-
-    private fun setDataEvent(event: Event){
-        db.getReference("event").child(event.id).setValue(event).addOnSuccessListener {
-            img_event.isInvisible
-            edtName.setText("")
-            edtTglEvent.setText("")
-            edtTglAkhir.setText("")
-            edtFee.setText("")
-            edtVenue.setText("")
-            edtCp.setText("")
-
-            Toast.makeText(this, "Data berhasil disimpan", Toast.LENGTH_SHORT).show()
-        }.addOnFailureListener {
-            btnAddEvent.isEnabled = true
-
-            Toast.makeText(this, "Data gagal disimpan", Toast.LENGTH_SHORT).show()
-        }
-    }
-    private fun setImageToFirebase(uri: Uri){
-        val fileRef: StorageReference =
-            storage.child(System.currentTimeMillis().toString() + "." + getFileExtension(uri))
-
-        fileRef.putFile(uri)
-            .addOnSuccessListener(
-                object : OnSuccessListener<UploadTask.TaskSnapshot?> {
-                    override fun onSuccess(
-                        taskSnapshot: UploadTask.TaskSnapshot?,
-                    ) {
-                        val model = event.image
-
-//                        val modelId: String = root.push().getKey()
-//                        root.child(modelId).setValue(model)
-//                        var modelId: String = db.getReference().push().key
-                        // Image uploaded successfully
-                        // Dismiss dialog
-                        Toast.makeText(this@CreateEventActivity, "Image Uploaded!!", Toast.LENGTH_SHORT).show()
-                    }
-                })
-            .addOnFailureListener(object : OnFailureListener {
-                override fun onFailure(@NonNull e: Exception) {
-
-                    // Error, Image not uploaded
-                    Toast.makeText(this@CreateEventActivity,
-                            "Failed " + e.message,
-                            Toast.LENGTH_SHORT)
-                        .show()
-                }
-            })
-
-    }
-
-    private fun getFileExtension(uri: Uri): String{
-        val cr : ContentResolver = contentResolver
-        val mime : MimeTypeMap = MimeTypeMap.getSingleton()
-
-        return mime.getExtensionFromMimeType(cr.getType(uri)).toString()
-    }
-
-//    private fun selectImage() {
-//        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-//        if (intent.resolveActivity(packageManager) != null) {
-//            startActivityForResult(intent, REQUEST_SELECTS)
+//    private fun setDataEvent(event: Event){
+////        val uploadId = databaseRef!!.push().key
+//        db.getReference("event").child(event.id.toString()).setValue(event).addOnSuccessListener {
+//            img_event.isInvisible
+//            edtName.setText("")
+//            edtTglEvent.setText("")
+//            edtTglAkhir.setText("")
+//            edtFee.setText("")
+//            edtVenue.setText("")
+//            edtCp.setText("")
+//
+//            Toast.makeText(this, "Data berhasil disimpan", Toast.LENGTH_SHORT).show()
+//        }.addOnFailureListener {
+//            btnAddEvent.isEnabled = true
+//
+//            Toast.makeText(this, "Data gagal disimpan", Toast.LENGTH_SHORT).show()
 //        }
 //    }
+
+    override fun onActivityResult(
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?,
+    ) {
+        super.onActivityResult(requestCode,
+            resultCode,
+            data)
+
+        // checking request code and result code
+        // if request code is PICK_IMAGE_REQUEST and
+        // resultCode is RESULT_OK
+        // then set image in the image view
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.data != null) {
+
+            // Get the Uri of data
+            imageUrl = data.data
+            img_event.setImageURI(imageUrl)
+        }
+    }
+
+    private fun setDataToFirebase()
+    {
+        val event = Event()
+        event.id = UUID.randomUUID().toString()
+        event.name = edtName.text.toString().trim()
+//        event.image = uploadImage().toString()
+        event.tgl_event = edtTglEvent.text.toString().trim()
+        event.tgl_akhir = edtTglAkhir.text.toString().trim()
+        event.fee = Integer.valueOf(edtFee.text.toString())
+        event.contact = edtCp.text.toString().trim()
+        event.venue = edtVenue.text.toString().trim()
+
+        val filePath = storage!!.reference.child("event").child(imageUrl!!.lastPathSegment!!)
+        filePath.putFile(imageUrl!!).addOnSuccessListener { taskSnapshot ->
+            val downloadUrl = taskSnapshot.storage.downloadUrl.addOnCompleteListener { task ->
+                val t = task.result.toString()
+                val newPost = databaseRef!!.push()
+                newPost.child("name").setValue(event.name)
+                newPost.child("image").setValue(task.getResult().toString())
+                newPost.child("id").setValue(event.id)
+                newPost.child("tgl_event").setValue(event.tgl_event)
+                newPost.child("tgl_akhir").setValue(event.tgl_akhir)
+                newPost.child("fee").setValue(event.fee)
+                newPost.child("contact").setValue(event.contact)
+            }
+        }
+    }
+
+    private fun getFileExtension(uri: Uri): String?{
+        val cr = contentResolver
+        val mime = MimeTypeMap.getSingleton()
+
+        return mime.getExtensionFromMimeType(cr.getType(uri))
+    }
 
 
     private fun selectImage() {
@@ -225,76 +256,6 @@ class CreateEventActivity : AppCompatActivity() {
         }
     }
 
-//    @SuppressLint("RestrictedApi")
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (requestCode == REQUEST_SELECTS && resultCode == RESULT_OK) {
-//            if (data != null) {
-//                val selectImgUri = data.data
-//                if (selectImgUri != null) {
-//                    try {
-//                        val inputStream = contentResolver.openInputStream(selectImgUri)
-//                        val bitmap = BitmapFactory.decodeStream(inputStream)
-//                        img_event.setImageBitmap(bitmap)
-////                        imageNote.visibility = View.VISIBLE
-////                        fabDeleteImage.visibility = View.VISIBLE
-//                        selectImagePath = getPathFromUri(selectImgUri)
-//                    } catch (e: Exception) {
-//                        e.printStackTrace()
-//                        Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-//            }
-//        }
-//    }
-
-    override fun onActivityResult(
-        requestCode: Int,
-        resultCode: Int,
-        data: Intent?,
-    ) {
-        super.onActivityResult(requestCode,
-            resultCode,
-            data)
-
-        // checking request code and result code
-        // if request code is PICK_IMAGE_REQUEST and
-        // resultCode is RESULT_OK
-        // then set image in the image view
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.data != null) {
-
-            // Get the Uri of data
-            image = data.data!!
-            img_event.setImageURI(image)
-
-//            try {
-//
-//                // Setting image on image view using Bitmap
-//                val bitmap = MediaStore.Images.Media
-//                    .getBitmap(
-//                        contentResolver,
-//                        event.image)
-//                img_event.setImageBitmap(bitmap)
-//            } catch (e: IOException) {
-//                // Log the exception
-//                e.printStackTrace()
-//            }
-        }
-    }
-
-//    private fun getPathFromUri(contentUri: Uri): String? {
-//        val filePath: String?
-//        val cursor = contentResolver.query(contentUri, null, null, null, null)
-//        if (cursor == null) {
-//            filePath = contentUri.path
-//        } else {
-//            cursor.moveToFirst()
-//            val index = cursor.getColumnIndex("_data")
-//            filePath = cursor.getString(index)
-//            cursor.close()
-//        }
-//        return filePath
-//    }
 
     companion object {
         private const val REQUEST_PERMISSIONS = 3

@@ -1,13 +1,13 @@
 package com.codemul.pabmul.helloworld.data
 
 import android.os.Parcelable
+import com.google.firebase.database.Exclude
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Event(
-    var id: String,
-//    var image : String? =null,
-    var image: String,
+    var id: String? = null,
+    var image: String? = null,
     var name: String? =null,
     var tgl_event: String? =null,
     var tgl_akhir: String? =null,
