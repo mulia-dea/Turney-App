@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorld">
         <activity
+            android:name=".ProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DetailEventActivity"
+            android:exported="true" />
+        <activity
             android:name=".SignUpActivity"
             android:exported="true" />
         <activity
@@ -31,6 +37,9 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".EventActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,9 +47,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".EventActivity"
-            android:exported="true" />
     </application>
 
 </manifest>

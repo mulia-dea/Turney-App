@@ -6,4 +6,6 @@
     <string name="jenis_gim">Jenis Gim</string>
     <string name="date">Tanggal Pelaksanaan</string>
     <string name="deskripsi">Deskripsi</string>
+    <string name="silver_member">SILVER MEMBER</string>
+    <string name="personal_detail">Personal Details</string>
 </resources>
