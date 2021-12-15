@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 
 @Parcelize
-data class DataScrim(
+data class Scrim(
     var id: Int = 0,
     var nama_penyelenggara: String? = null,
     var tgl_pelaksanaan_scrim: String? = null,

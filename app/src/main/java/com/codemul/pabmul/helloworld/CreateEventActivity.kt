@@ -2,10 +2,8 @@ package com.codemul.pabmul.helloworld
 
 import android.Manifest
 import android.app.DatePickerDialog
-import android.content.ContentResolver
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.ColorSpace.Model
 import android.net.Uri
 import android.os.Bundle
 import android.webkit.MimeTypeMap
@@ -13,19 +11,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.view.isInvisible
-import com.codemul.pabmul.helloworld.data.DataEvent
 import com.codemul.pabmul.helloworld.data.Event
 import com.codemul.pabmul.helloworld.db.RealtimeDatabase
-import com.google.android.gms.auth.api.signin.internal.Storage
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
-import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -33,8 +23,6 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
-import com.google.firebase.storage.UploadTask
-import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -126,22 +114,7 @@ class CreateEventActivity : AppCompatActivity() {
 
         btnAddEvent.setOnClickListener {
             setDataToFirebase()
-//            setDataEvent(
-//                Event(
-//                    id = UUID.randomUUID().toString(),
-//                    name = edtName.text.toString().trim(),
-//                    image = uploadImage().toString(),
-//                    tgl_akhir = edtTglEvent.text.toString().trim(),
-//                    tgl_event = edtTglAkhir.text.toString().trim(),
-//                    fee = Integer.valueOf(edtFee.text.toString()),
-//                    contact = edtCp.text.toString().trim(),
-//                    venue = edtVenue.text.toString().trim()
-//                )
-//            )
         }
-
-
-
     }
 
     private fun findViewId(){
@@ -156,24 +129,6 @@ class CreateEventActivity : AppCompatActivity() {
         btnAddEvent = findViewById(R.id.btn_add_event)
     }
 
-//    private fun setDataEvent(event: Event){
-////        val uploadId = databaseRef!!.push().key
-//        db.getReference("event").child(event.id.toString()).setValue(event).addOnSuccessListener {
-//            img_event.isInvisible
-//            edtName.setText("")
-//            edtTglEvent.setText("")
-//            edtTglAkhir.setText("")
-//            edtFee.setText("")
-//            edtVenue.setText("")
-//            edtCp.setText("")
-//
-//            Toast.makeText(this, "Data berhasil disimpan", Toast.LENGTH_SHORT).show()
-//        }.addOnFailureListener {
-//            btnAddEvent.isEnabled = true
-//
-//            Toast.makeText(this, "Data gagal disimpan", Toast.LENGTH_SHORT).show()
-//        }
-//    }
 
     override fun onActivityResult(
         requestCode: Int,

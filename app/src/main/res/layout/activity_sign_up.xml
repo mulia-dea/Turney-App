@@ -4,17 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="40dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Up"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-black"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="60dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -30,10 +35,11 @@
         android:hint="Username">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_username_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
-            android:text="" />
+            tools:text="" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -42,13 +48,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="Email">
+        android:hint="Email Address">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_email_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
-            android:text="" />
+            tools:text="" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,10 +66,11 @@
         android:hint="Password">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_password_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
-            android:text="" />
+            tools:text=""/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,15 +78,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="Email">
+        android:hint="Password Confirmation">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_password_confirm_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
-            android:text="" />
+            tools:text="" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Button
+        android:id="@+id/btn_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_punya_akun_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#2B8ADE"
+        android:text="Sudah Punya Akun?"
+        android:layout_marginTop="20dp"/>
 
 </LinearLayout>

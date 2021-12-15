@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:inputType="textCapWords"
-                tools:text="Ilham R" />
+                tools:text="" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,13 +52,13 @@
             android:id="@+id/spinner_jenis_game_scrim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             tools:listitem="@android:layout/simple_list_item_1" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:hint="Jemlah Pemain">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -67,14 +67,14 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:inputType="number"
-                tools:text="10" />
+                tools:text="" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="20dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/input_layout_datetime"
@@ -89,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:inputType="datetime"
-                    tools:text="10" />
+                    tools:text="" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,7 +108,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:hint="More Information">
 
             <com.google.android.material.textfield.TextInputEditText
