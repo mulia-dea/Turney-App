@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     android:padding="40dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
         android:text="Sign Up"
-        android:textSize="20sp"
-        android:fontFamily="sans-serif-black"/>
+        android:textSize="20sp" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
@@ -70,7 +70,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
-            tools:text=""/>
+            android:inputType="textPassword"
+            tools:text="" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,23 +86,61 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
+            android:inputType="textPassword"
             tools:text="" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:fontFamily="sans-serif-medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tipe User"
+            android:layout_gravity="center"/>
+
+        <RadioGroup
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_button_penyelenggara"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bisnis"
+                />
+
+            <RadioButton
+                android:layout_marginStart="5dp"
+                android:id="@+id/radio_button_umum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Umum" />
+
+        </RadioGroup>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:text="Sign Up" />
 
     <TextView
         android:id="@+id/tv_punya_akun_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#2B8ADE"
+        android:layout_marginTop="10dp"
         android:text="Sudah Punya Akun?"
-        android:layout_marginTop="20dp"/>
+        android:textColor="#2B8ADE" />
 
 </LinearLayout>
