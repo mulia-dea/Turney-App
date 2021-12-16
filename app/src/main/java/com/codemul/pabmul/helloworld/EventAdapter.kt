@@ -16,6 +16,7 @@ class EventAdapter(private val context: Context, private val listEvent: List<Eve
         this.onItemClickCallback = onItemClickCallback
     }
 
+
     interface OnItemClickCallback {
         fun onItemClicked(event: Event)
     }
@@ -63,7 +64,6 @@ class EventAdapter(private val context: Context, private val listEvent: List<Eve
         var tvName : TextView = itemView.findViewById(R.id.tv_name_game)
         var tvTglEvent : TextView = itemView.findViewById(R.id.tv_tgl_event)
         var image : ImageView = itemView.findViewById(R.id.img_list_event)
-
         var imageUri : String?= null
         fun bind(event: Event) {
             tvName.text = event.name
@@ -102,11 +102,4 @@ class EventAdapter(private val context: Context, private val listEvent: List<Eve
 //        }
 
     }
-
-//    @SuppressLint("NotifyDataSetChanged")
-//    fun setAddEvent(event: List<DataEvent>){
-//        eventList.clear()
-//        eventList.addAll(event)
-//        notifyDataSetChanged()
-//    }
 }
