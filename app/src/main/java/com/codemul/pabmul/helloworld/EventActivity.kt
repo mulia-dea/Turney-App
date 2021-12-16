@@ -34,16 +34,8 @@ class EventActivity : AppCompatActivity() {
         rvEvent = findViewById(R.id.rv_event)
 
         getData()
-//        getDataEvent()
     }
 
-//    private fun showRecycleEvent(){
-//        rvEvent.setHasFixedSize(true)
-//        adapter = EventAdapter()
-//
-//        rvEvent.layoutManager = LinearLayoutManager(this)
-//        rvEvent.adapter = adapter
-//    }
 
 
     private fun getData(){
@@ -79,40 +71,6 @@ class EventActivity : AppCompatActivity() {
 
     }
 
-//    private fun getDataEvent(){
-//        db.getReference("event").addValueEventListener(object : ValueEventListener{
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                listKey.clear()
-//                listEvent.clear()
-//
-//                //get key(user id) from user
-//                snapshot.children.map {
-//                    it.key?.let { eventId ->
-//                        listKey.add(eventId)
-//                    }
-//                }
-//
-//                listKey.map {
-//                    listEvent.add(
-//                        Event(
-//                            id = snapshot.child(it).child("id").value.toString(),
-//                            name = snapshot.child(it).child("name").value.toString(),
-//                            tgl_event = snapshot.child(it).child("tgl_event").value.toString(),
-//                            image = snapshot.child(it).child("image").value.toString()
-//                        )
-//                    )
-//                }
-//
-//                adapterEvent = EventAdapter(listEvent.sortedBy { it.name })
-//                initRecylerView()
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                Log.e("DB ERROR", error.message)
-//            }
-//
-//        })
-//    }
 
     private fun initRecylerView() {
         rvEvent.apply {

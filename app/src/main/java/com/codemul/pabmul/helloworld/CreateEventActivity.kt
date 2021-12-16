@@ -41,7 +41,7 @@ class CreateEventActivity : AppCompatActivity() {
     private var imageUrl : Uri? = null
     private lateinit var AwalTanggal : String
     private lateinit var AkhirTanggal : String
-    private var storage : FirebaseStorage? = null
+    private var storage : FirebaseStorage? = null // image
     private var databaseRef: DatabaseReference? = null
     private var database : FirebaseDatabase? = null
 
