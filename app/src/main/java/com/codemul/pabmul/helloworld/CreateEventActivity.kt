@@ -46,14 +46,15 @@ class CreateEventActivity : AppCompatActivity() {
     private var database : FirebaseDatabase? = null
 
 
+
 //    lateinit var event : Event
 //
 //    private val storage = RealtimeDatabase.instances()
-    private var storageReference : StorageReference? =null
-    private var uploadTask: StorageTask<*>? = null
+//    private var storageReference : StorageReference? =null
+//    private var uploadTask: StorageTask<*>? = null
 //    private var databaseRef: DatabaseReference? = null
 
-    private val db = RealtimeDatabase.instance()
+//    private val db = RealtimeDatabase.instance()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

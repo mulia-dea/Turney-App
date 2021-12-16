@@ -1,6 +1,7 @@
 package com.codemul.pabmul.helloworld
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -69,13 +70,27 @@ class EventActivity : AppCompatActivity() {
 
         })
 
+        adapterEvent.setOnItemClickCallback(object : EventAdapter.OnItemClickCallback {
+            override fun onItemClicked(event: Event) {
+                showDetailEvent(event)
+            }
+
+        })
+
+    }
+
+    private fun showDetailEvent(event : Event){
+//        var intent = Intent(this, DetailEventActivity::class.java)
+        startActivity(Intent(this, DetailEventActivity::class.java).putExtra(DetailEventActivity.INTENT_DETAIL, event))
+
     }
 
 
-    private fun initRecylerView() {
-        rvEvent.apply {
-            layoutManager = LinearLayoutManager(this@EventActivity, LinearLayoutManager.VERTICAL, false)
-            adapter = adapterEvent
-        }
-    }
+
+//    private fun initRecylerView() {
+//        rvEvent.apply {
+//            layoutManager = LinearLayoutManager(this@EventActivity, LinearLayoutManager.VERTICAL, false)
+//            adapter = adapterEvent
+//        }
+//    }
 }
