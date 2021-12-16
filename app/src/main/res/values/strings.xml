@@ -8,4 +8,10 @@
     <string name="deskripsi">Deskripsi</string>
     <string name="silver_member">SILVER MEMBER</string>
     <string name="personal_detail">Personal Details</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="date_of_birth">Date of Birth </string>
+    <string name="phone_number">Phone Number </string>
+    <string name="account_details">Account Details</string>
+    <string name="password">Password</string>
 </resources>
