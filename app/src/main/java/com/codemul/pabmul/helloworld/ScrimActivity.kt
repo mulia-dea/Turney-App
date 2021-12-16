@@ -22,7 +22,6 @@ class ScrimActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scrim)
 
-        getDataFromDataBase()
 
         val viewList: RecyclerView = findViewById(R.id.rv_scrim_list)
         scrimList = ArrayList()
@@ -35,6 +34,8 @@ class ScrimActivity : AppCompatActivity() {
             }
 
         })
+
+        getDataFromDataBase()
 
     }
 
@@ -51,7 +52,7 @@ class ScrimActivity : AppCompatActivity() {
                     upload!!.id = eventSnap.key
                     scrimList.add(upload)
                 }
-                adapter.notifyDataSetChanged()
+//                adapter.notifyDataSetChanged()
             }
 
 
