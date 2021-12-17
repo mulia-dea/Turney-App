@@ -118,6 +118,7 @@
                 android:text="Tipe User" />
 
             <RadioGroup
+                android:id="@+id/radio_grup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

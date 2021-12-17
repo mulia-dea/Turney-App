@@ -60,14 +60,12 @@ class EventAdapter(private val context: Context, private val listEvent: List<Eve
     }
 
     inner class EventViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        var tvName : TextView = itemView.findViewById(R.id.tv_name_game)
-        var tvTglEvent : TextView = itemView.findViewById(R.id.tv_tgl_event)
+        var tvName : TextView = itemView.findViewById(R.id.tv_name_event)
         var image : ImageView = itemView.findViewById(R.id.img_list_event)
 
         var imageUri : String?= null
         fun bind(event: Event) {
             tvName.text = event.name
-            tvTglEvent.text = event.tgl_event
             imageUri = event.image
             Picasso.get().load(imageUri).into(image)
             itemView.setOnClickListener{ onItemClickCallback?.onItemClicked(event)}

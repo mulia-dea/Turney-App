@@ -61,6 +61,8 @@ class CreateEventActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_event)
 
+
+
         database = FirebaseDatabase.getInstance()
         databaseRef = Firebase.database.reference.child("event")
         storage = FirebaseStorage.getInstance()
@@ -180,12 +182,12 @@ class CreateEventActivity : AppCompatActivity() {
         }
     }
 
-    private fun getFileExtension(uri: Uri): String?{
-        val cr = contentResolver
-        val mime = MimeTypeMap.getSingleton()
-
-        return mime.getExtensionFromMimeType(cr.getType(uri))
-    }
+//    private fun getFileExtension(uri: Uri): String?{
+//        val cr = contentResolver
+//        val mime = MimeTypeMap.getSingleton()
+//
+//        return mime.getExtensionFromMimeType(cr.getType(uri))
+//    }
 
 
     private fun selectImage() {

@@ -56,8 +56,10 @@ class EventActivity : AppCompatActivity() {
         rvEvent.adapter = adapterEvent
 
 
+        val event = Event()
         storage = FirebaseStorage.getInstance()
         databaseRef = FirebaseDatabase.getInstance().getReference("event")
+//        Log.d("Data", FirebaseDatabase.getInstance().getReference("event/" + event.id).child("name").toString())
         dbListener = databaseRef?.addValueEventListener(object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {

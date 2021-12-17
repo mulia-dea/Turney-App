@@ -5,14 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="30dp"
         tools:context=".DaftarEventActivity">
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,10 +37,11 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
-            android:hint="Nama Event">
+            android:hint="@string/nama_event"
+            android:elevation="@dimen/cardview_default_elevation">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/name_event"
@@ -55,7 +54,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginBottom="20dp"
             android:hint="Tanggal Pelaksanaan">
 
@@ -70,7 +69,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginBottom="20dp"
             android:hint="Tanggal Akhir Pendaftaran">
 
@@ -85,7 +84,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginBottom="20dp"
             android:hint="Fee">
 
@@ -100,7 +99,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginBottom="20dp"
             android:hint="Venue">
 
@@ -115,9 +114,9 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginBottom="20dp"
-            android:hint="Contact Person">
+            android:hint="Contact Person 1">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/cp"
@@ -126,6 +125,20 @@
                 android:background="#FFFFFF"
                 android:inputType="text" />
 
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="20dp"
+            android:hint="Contact Person 2">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/cp_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
