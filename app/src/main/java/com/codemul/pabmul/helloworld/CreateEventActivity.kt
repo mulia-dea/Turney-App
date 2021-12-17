@@ -30,15 +30,6 @@ import java.util.*
 
 class CreateEventActivity : AppCompatActivity() {
     private lateinit var binding : ActivityCreateEventBinding
-//    private lateinit var btnAddEvent : Button
-//    private lateinit var edtTglEvent : EditText
-//    private lateinit var edtTglAkhir : EditText
-//    private lateinit var edtName : EditText
-//    private lateinit var edtFee : EditText
-//    private lateinit var edtVenue : EditText
-//    private lateinit var edtCp : EditText
-//    private lateinit var imageBtn : Button
-//    private lateinit var img_event : ImageView
 
     var selectImagePath: String? = null
     private var imageUrl : Uri? = null
@@ -99,7 +90,7 @@ class CreateEventActivity : AppCompatActivity() {
             date.show()
         }
 
-        binding.tglAkhir.setOnClickListener{
+        binding.tglAkhirEvent.setOnClickListener{
             val cal = Calendar.getInstance()
             val date = DatePickerDialog(this,
                 { _, year, monthOfYear, dayOfMonth ->
@@ -133,7 +124,7 @@ class CreateEventActivity : AppCompatActivity() {
             date.show()
         }
 
-        binding.tglAkhirEvent.setOnClickListener{
+        binding.tglAkhir.setOnClickListener{
             val cal = Calendar.getInstance()
             val date = DatePickerDialog(this,
                 { _, year, monthOfYear, dayOfMonth ->
@@ -152,21 +143,12 @@ class CreateEventActivity : AppCompatActivity() {
 
         binding.btnAddEvent.setOnClickListener {
             setDataToFirebase()
+            Toast.makeText(this, "Daftar berhasil", Toast.LENGTH_SHORT).show()
+
+            //masuk ke main penyelenggara
+//            startActivity(Intent(MainActivity))
         }
     }
-
-//    private fun findViewId(){
-//        edtName = findViewById(R.id.name_event)
-//        imageBtn = findViewById(R.id.choose_img)
-//        img_event = findViewById(R.id.img_event)
-//        edtTglEvent = findViewById(R.id.tgl_event)
-//        edtTglAkhir = findViewById(R.id.tgl_akhir)
-//        edtFee = findViewById(R.id.fee)
-//        edtVenue = findViewById(R.id.venue)
-//        edtCp = findViewById(R.id.cp)
-//        btnAddEvent = findViewById(R.id.btn_add_event)
-//    }
-
 
     override fun onActivityResult(
         requestCode: Int,
@@ -198,7 +180,7 @@ class CreateEventActivity : AppCompatActivity() {
         event.tgl_event = binding.tglEvent.text.toString().trim()
         event.tgl_akhir = binding.tglAkhirEvent.text.toString().trim()
         event.tgl_daftar = binding.tglAwalDaftar.text.toString().trim()
-        event.tgl_akhir = binding.tglAkhir.text.toString().trim()
+        event.tgl_akhir_daftar = binding.tglAkhir.text.toString().trim()
         event.fee = Integer.valueOf(binding.fee.text.toString())
         event.contact = binding.cp.text.toString().trim()
         event.contact2 = binding.cp2.text.toString().trim()
@@ -214,8 +196,11 @@ class CreateEventActivity : AppCompatActivity() {
                 newPost.child("id").setValue(event.id)
                 newPost.child("tgl_event").setValue(event.tgl_event)
                 newPost.child("tgl_akhir").setValue(event.tgl_akhir)
+                newPost.child("tgl_daftar").setValue(event.tgl_daftar)
+                newPost.child("tgl_akhir_daftar").setValue(event.tgl_akhir_daftar)
                 newPost.child("fee").setValue(event.fee)
                 newPost.child("contact").setValue(event.contact)
+                newPost.child("contact2").setValue(event.contact2)
             }
         }
     }

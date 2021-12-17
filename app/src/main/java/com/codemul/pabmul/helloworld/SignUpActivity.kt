@@ -35,7 +35,7 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        setViewListener()
+        setViewListener()
         submitActionCreateAccount()
     }
 
@@ -43,13 +43,12 @@ class SignUpActivity : AppCompatActivity() {
     private fun setViewListener() {
         val tvPunyaAkun: TextView = findViewById(R.id.tv_punya_akun_signup)
 
-
         tvPunyaAkun.setOnClickListener {
             val punyaAkunIntent = Intent(this@SignUpActivity, LoginActivity::class.java)
             startActivity(punyaAkunIntent)
         }
 
-        submitActionCreateAccount()
+//        submitActionCreateAccount()
     }
 
     private fun submitActionCreateAccount() {
@@ -65,24 +64,16 @@ class SignUpActivity : AppCompatActivity() {
                 } else {
                     signUp(email, password, username)
                 }
+            } else {
                 Toast.makeText(this@SignUpActivity, "Please fill the values", Toast.LENGTH_SHORT).show()
             }
-//            if (binding.etPasswordSignup.text.toString() == binding.etPasswordConfirmSignup.text.toString()) {
-//                // bagian masukkan data ke firebase di sini
-//
-//                val signUpIntent = Intent(this@SignUpActivity, LoginActivity::class.java)
-//                startActivity(signUpIntent)
-//            } else {
-//                Toast.makeText(this@SignUpActivity, "Password do not match", Toast.LENGTH_SHORT)
-//                    .show()
-//            }
         }
     }
 
     private fun signUp(email: String, password: String, name: String) {
-        var selectId: Int = binding.radioGrup.checkedRadioButtonId
+        val selectId: Int = binding.radioGrup.checkedRadioButtonId
 
-        var df = databaseRef.getReference("Users")
+        val df = databaseRef.getReference("Users")
 
         firebaeAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
 

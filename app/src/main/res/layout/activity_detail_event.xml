@@ -100,11 +100,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/dtl_name_event"
-                        android:layout_toEndOf="@id/tournament_day"
                         android:layout_marginTop="7dp"
-                        tools:text="3 - 7 Desember 2021"
+                        android:layout_toEndOf="@id/tournament_day"
                         android:textColor="@color/black"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp"
+                        tools:text="3 - 7 Desember 2021" />
 
                     <TextView
                         android:id="@+id/tgl_daftar"
@@ -176,6 +176,50 @@
                             android:layout_marginTop="7dp"
                             android:layout_toRightOf="@id/fee"
                             android:text=": Gratis"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/contact"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="7dp"
+                            android:text="Contact"
+                            android:layout_below="@id/fee"
+                            android:textColor="@color/black"
+                            android:layout_marginLeft="20dp"/>
+
+                        <TextView
+                            android:id="@+id/dtl_contact"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/fee"
+                            android:layout_marginLeft="95dp"
+                            android:layout_marginTop="7dp"
+                            android:layout_toRightOf="@id/fee"
+                            android:text=": 08xxxxxxxxxx"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/contact2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="7dp"
+                            android:text="Contact"
+                            android:layout_below="@id/contact"
+                            android:textColor="@color/black"
+                            android:layout_marginLeft="20dp"/>
+
+                        <TextView
+                            android:id="@+id/dtl_contact2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/contact"
+                            android:layout_marginLeft="95dp"
+                            android:layout_marginTop="7dp"
+                            android:layout_toRightOf="@id/fee"
+                            android:text=": 08xxxxxxxxxx"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 

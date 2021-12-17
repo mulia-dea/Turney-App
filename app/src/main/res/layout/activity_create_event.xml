@@ -29,10 +29,10 @@
 
             <Button
                 android:layout_gravity="bottom"
-                android:textSize="10sp"
+                android:textSize="14sp"
                 android:id="@+id/choose_img"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="45dp"
                 android:layout_margin="15dp"
                 android:textAllCaps="false"
                 android:text="Choose Image" />
@@ -47,7 +47,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="55dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="20dp"
             android:hint="@string/nama_event"
@@ -64,7 +64,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="55dp"
             android:layout_marginBottom="20dp"
             android:hint="@string/tanggal_pelaksanaan"
             android:elevation="@dimen/cardview_default_elevation">
@@ -79,7 +79,7 @@
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="55dp"
             android:layout_marginBottom="20dp"
             android:hint="@string/tanggal_akhir_pelaksanaan"
             android:elevation="@dimen/cardview_default_elevation">
@@ -95,7 +95,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="55dp"
             android:layout_marginBottom="20dp"
             android:hint="Tanggal Pendaftaran"
             android:elevation="@dimen/cardview_default_elevation">
@@ -111,7 +111,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="55dp"
             android:layout_marginBottom="20dp"
             android:hint="@string/tanggal_akhir_pendaftaran">
 
@@ -126,7 +126,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="55dp"
             android:layout_marginBottom="20dp"
             android:hint="Fee">
 
@@ -141,7 +141,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="55dp"
             android:layout_marginBottom="20dp"
             android:hint="Venue">
 
@@ -156,7 +156,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="55dp"
             android:layout_marginBottom="20dp"
             android:hint="Contact Person 1">
 
@@ -171,7 +171,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="55dp"
             android:layout_marginBottom="20dp"
             android:hint="Contact Person 2">
 

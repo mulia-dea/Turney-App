@@ -54,25 +54,32 @@ class LoginActivity : AppCompatActivity() {
         loginBinding.btnLogin.setOnClickListener {
             var email = loginBinding.etUsernameEmailLogin.text.toString()
             var password = loginBinding.etPasswordLogin.text.toString()
-            var username = loginBinding.etUsernameEmailLogin.text.toString()
+//            var username = loginBinding.etUsernameEmailLogin.text.toString()
 
             Log.d("name", email)
 
-            login(email, password, username)
+            login(email, password)
         }
     }
-        private fun login(email: String, password: String, username: String) {
+        private fun login(email: String, password: String) {
             firebaeAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
                 val df = databaseRef.getReference("Users")
                 df.child(currentUser!!.uid).get().addOnSuccessListener {
                     val admin = it.child("admin").value.toString()
-                    if (admin == "2131296731") {
-                        Log.d("ADMIN", it.child("admin").value.toString())
-                        Toast.makeText(this, "ADMIN", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(this, "NOT ADMIN", Toast.LENGTH_SHORT)
-                            .show()
+                    if (email.isNotEmpty() && password.isNotEmpty()){
+                        if (admin == "2131296730") {
+                            Log.d("ADMIN", it.child("admin").value.toString())
+                            Toast.makeText(this, "ADMIN", Toast.LENGTH_SHORT).show()
+
+                            startActivity(Intent(this, EventActivity::class.java))
+                        } else {
+                            Toast.makeText(this, "NOT ADMIN", Toast.LENGTH_SHORT)
+                                .show()
+
+                            startActivity(Intent(this, MainActivity::class.java))
+                        }
                     }
+
                 }
                 Toast.makeText(this, "SUCCES LOGIN", Toast.LENGTH_SHORT).show()
             }

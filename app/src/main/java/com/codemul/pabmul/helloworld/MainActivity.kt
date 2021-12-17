@@ -7,17 +7,25 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.codemul.pabmul.helloworld.databinding.ActivityCreateEventBinding
+import com.codemul.pabmul.helloworld.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
-    private var firebaseAuth : FirebaseAuth? = null
+    private val firebaseAuth by lazy {
+        FirebaseAuth.getInstance()
+    }
+
+    private lateinit var binding: ActivityMainBinding
+//    private var firebaseAuth : FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        firebaseAuth = FirebaseAuth.getInstance()
+//        firebaseAuth = FirebaseAuth.getInstance()
 
         val viewList = findViewById<RecyclerView>(R.id.rv_featured_events)
 
@@ -37,27 +45,30 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-
         onClickComponentListener()
 
     }
 
-    override fun onStart() {
-        var firebaseUser: FirebaseUser = firebaseAuth?.currentUser!!
-        if (firebaseUser!=null){
-            //there is some user log in
-        } else{
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
-        super.onStart()
-    }
+    //masih bingung
+//    override fun onStart() {
+//        val firebaseUser: FirebaseUser = firebaseAuth.currentUser!!
+//        if (firebaseUser!=null){
+//            //there is some user log in
+//        } else{
+//            startActivity(Intent(this, LoginActivity::class.java))
+//            finish()
+//        }
+//        super.onStart()
+//    }
 
     private fun onClickComponentListener(){
         val scrimComponent: LinearLayout = findViewById(R.id.ll_list_scrim)
         val daftarScrimComponent: LinearLayout = findViewById(R.id.ll_daftar_scrim)
         val daftarEventComponent: LinearLayout = findViewById(R.id.ll_list_event)
 
+        binding.relativeProfile.setOnClickListener{
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
         scrimComponent.setOnClickListener {
             val scrimIntent = Intent(this, ScrimActivity::class.java)
             startActivity(scrimIntent)
