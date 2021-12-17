@@ -105,12 +105,57 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:id="@+id/tv_header_quest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="sans-serif-black"
                     android:text="Quest" />
+
+                <TextView
+                    android:id="@+id/tv_quest_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_header_quest"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Hello Stranger" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/tv_quest_name"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="15dp"
+                    app:cardCornerRadius="60dp">
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="#99516BEB" />
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tv_ques"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_quest_name"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="sans-serif-light"
+                    android:textSize="12sp"
+                    android:text="Play with other 1/2/3 random player" />
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_quest_name"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="55dp" />
 
             </RelativeLayout>
 
@@ -147,10 +192,10 @@
                     tools:listitem="@layout/featured_event_list" />
 
                 <TextView
-                    android:layout_marginTop="30dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="30dp"
                     android:fontFamily="sans-serif-black"
                     android:text="Services" />
 

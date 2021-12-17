@@ -35,16 +35,8 @@ class EventActivity : AppCompatActivity() {
         rvEvent = findViewById(R.id.rv_event)
 
         getData()
-//        getDataEvent()
     }
 
-//    private fun showRecycleEvent(){
-//        rvEvent.setHasFixedSize(true)
-//        adapter = EventAdapter()
-//
-//        rvEvent.layoutManager = LinearLayoutManager(this)
-//        rvEvent.adapter = adapter
-//    }
 
 
     private fun getData(){
@@ -58,21 +50,25 @@ class EventActivity : AppCompatActivity() {
 
         val event = Event()
         storage = FirebaseStorage.getInstance()
+        Log.d("Data", event.id.toString())
         databaseRef = FirebaseDatabase.getInstance().getReference("event")
+//        databaseRef = FirebaseDatabase.getInstance().getReference("event").child(event.id.toString())
 //        Log.d("Data", FirebaseDatabase.getInstance().getReference("event/" + event.id).child("name").toString())
         dbListener = databaseRef?.addValueEventListener(object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
-                eventList.clear()
                 for (eventSnapshot in snapshot.children){
                     val upload = eventSnapshot.getValue(Event::class.java)
                     upload!!.id = eventSnapshot.key
                     eventList.add(upload)
                 }
-
-                adapterEvent.notifyDataSetChanged()
+//
+//                adapterEvent.notifyDataSetChanged()
 
             }
+
+
+
 
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(this@EventActivity,error.message, Toast.LENGTH_SHORT).show()
@@ -95,40 +91,6 @@ class EventActivity : AppCompatActivity() {
 
     }
 
-//    private fun getDataEvent(){
-//        db.getReference("event").addValueEventListener(object : ValueEventListener{
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                listKey.clear()
-//                listEvent.clear()
-//
-//                //get key(user id) from user
-//                snapshot.children.map {
-//                    it.key?.let { eventId ->
-//                        listKey.add(eventId)
-//                    }
-//                }
-//
-//                listKey.map {
-//                    listEvent.add(
-//                        Event(
-//                            id = snapshot.child(it).child("id").value.toString(),
-//                            name = snapshot.child(it).child("name").value.toString(),
-//                            tgl_event = snapshot.child(it).child("tgl_event").value.toString(),
-//                            image = snapshot.child(it).child("image").value.toString()
-//                        )
-//                    )
-//                }
-//
-//                adapterEvent = EventAdapter(listEvent.sortedBy { it.name })
-//                initRecylerView()
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                Log.e("DB ERROR", error.message)
-//            }
-//
-//        })
-//    }
 
 
 //    private fun initRecylerView() {

@@ -13,10 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorld">
         <activity
+            android:name=".DaftarEventActivity"
+            android:exported="true" />
+        <activity
             android:name=".ProfileActivity"
             android:exported="true" />
         <activity
             android:name=".DetailEventActivity"
+            android:exported="true" />
+        <activity 
+            android:name=".QuestActivity"
             android:exported="true" />
         <activity
             android:name=".SignUpActivity"

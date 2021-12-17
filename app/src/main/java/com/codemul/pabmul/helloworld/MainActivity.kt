@@ -7,12 +7,17 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
+    private var firebaseAuth : FirebaseAuth? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        firebaseAuth = FirebaseAuth.getInstance()
 
         val viewList = findViewById<RecyclerView>(R.id.rv_featured_events)
 
@@ -35,6 +40,17 @@ class MainActivity : AppCompatActivity() {
 
         onClickComponentListener()
 
+    }
+
+    override fun onStart() {
+        var firebaseUser: FirebaseUser = firebaseAuth?.currentUser!!
+        if (firebaseUser!=null){
+            //there is some user log in
+        } else{
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+        super.onStart()
     }
 
     private fun onClickComponentListener(){

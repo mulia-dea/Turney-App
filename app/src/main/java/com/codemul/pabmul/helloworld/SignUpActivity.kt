@@ -54,10 +54,19 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun submitActionCreateAccount() {
         binding.btnSignup.setOnClickListener {
-            var email = binding.etEmailSignup.text.toString()
-            var password = binding.etPasswordSignup.text.toString()
-            var name = binding.etUsernameSignup.text.toString()
-            signUp(email, password, name)
+            val email = binding.etEmailSignup.text.toString()
+            val password = binding.etPasswordSignup.text.toString()
+            val username = binding.etUsernameSignup.text.toString()
+            val repeatPw = binding.etPasswordConfirmSignup.text.toString()
+
+            if (username.isNotEmpty()&&email.isNotEmpty()&&password.isNotEmpty()&&repeatPw.isNotEmpty()){
+                if (!password.equals(repeatPw)){
+                    Toast.makeText(this@SignUpActivity, "Password do not match", Toast.LENGTH_SHORT).show()
+                } else {
+                    signUp(email, password, username)
+                }
+                Toast.makeText(this@SignUpActivity, "Please fill the values", Toast.LENGTH_SHORT).show()
+            }
 //            if (binding.etPasswordSignup.text.toString() == binding.etPasswordConfirmSignup.text.toString()) {
 //                // bagian masukkan data ke firebase di sini
 //
@@ -72,51 +81,31 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun signUp(email: String, password: String, name: String) {
         var selectId: Int = binding.radioGrup.checkedRadioButtonId
-        var radioUmum : Int = binding.radioButtonUmum.id
 
         var df = databaseRef.getReference("Users")
 
         firebaeAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
 
-            var data = User(email, password, currentUser!!.uid, name, selectId)
-
+            val data = User(email, password, currentUser!!.uid, name, selectId)
             df.child(currentUser!!.uid).setValue(data).addOnSuccessListener {
                 binding.etEmailSignup.text?.clear()
                 binding.etPasswordSignup.text?.clear()
                 binding.etUsernameSignup.text?.clear()
 
-                Toast.makeText(
-                    this,
-                    "SUCCESS SAVE DATA",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(this, "SUCCESS SAVE DATA", Toast.LENGTH_SHORT).show()
 
                 val signUpIntent = Intent(this@SignUpActivity, LoginActivity::class.java)
                 startActivity(signUpIntent)
 
+            }.addOnFailureListener {
+                Log.d("Faild", it.toString())
+                Toast.makeText(this, "FAILED SAVE DATA", Toast.LENGTH_SHORT).show()
             }
-                .addOnFailureListener {
-                    Log.d("Faild", it.toString())
-                    Toast.makeText(
-                        this,
-                        "FAILED SAVE DATA",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            Toast.makeText(
-                this,
-                "SUCCESS REGIST",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-            .addOnFailureListener {
-                Toast.makeText(
-                    this,
-                    "FAILED REGIST",
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
+            Toast.makeText(this, "SUCCESS REGIST", Toast.LENGTH_SHORT).show()
+
+        }.addOnFailureListener {
+            Toast.makeText(this, "FAILED REGIST", Toast.LENGTH_SHORT).show()
                 Log.d("Failed", it.toString())
-            }
+        }
     }
 }

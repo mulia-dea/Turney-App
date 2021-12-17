@@ -9,7 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="30dp"
+        android:paddingTop="20dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="20dp"
         tools:context=".DaftarEventActivity">
 
         <LinearLayout
@@ -19,26 +22,33 @@
 
             <ImageView
                 android:id="@+id/img_event"
-                android:layout_width="100dp"
+                android:layout_width="160dp"
                 android:layout_height="100dp"
                 android:layout_margin="10dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/default_image" />
 
             <Button
                 android:layout_gravity="bottom"
                 android:textSize="10sp"
                 android:id="@+id/choose_img"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="35dp"
-                android:layout_margin="10dp"
-                android:text="UPLOAD" />
+                android:layout_margin="15dp"
+                android:textAllCaps="false"
+                android:text="Choose Image" />
 
         </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Tulis nama event dan 1 jenis game, contoh Porse-Valorant"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="20dp"
             android:hint="@string/nama_event"
             android:elevation="@dimen/cardview_default_elevation">
@@ -56,10 +66,26 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginBottom="20dp"
-            android:hint="Tanggal Pelaksanaan">
+            android:hint="@string/tanggal_pelaksanaan"
+            android:elevation="@dimen/cardview_default_elevation">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tgl_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:drawableEnd="@drawable/ic_date_24" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="20dp"
+            android:hint="@string/tanggal_akhir_pelaksanaan"
+            android:elevation="@dimen/cardview_default_elevation">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tgl_akhir_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
@@ -71,7 +97,23 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginBottom="20dp"
-            android:hint="Tanggal Akhir Pendaftaran">
+            android:hint="Tanggal Pendaftaran"
+            android:elevation="@dimen/cardview_default_elevation">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tgl_awal_daftar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:drawableEnd="@drawable/ic_date_24" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="20dp"
+            android:hint="@string/tanggal_akhir_pendaftaran">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tgl_akhir"

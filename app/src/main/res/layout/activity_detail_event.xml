@@ -1,53 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_margin="20dp"
-    tools:context=".DetailEventActivity">
+    tools:context=".DetailEventActivity"
+    android:background="@color/black"
+    android:orientation="vertical">
 
-    <ImageView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:id="@+id/dtl_event_img"
-        android:src="@drawable/valorant"/>
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/dtl_name_event"
-        tools:text="Porsematik"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/dtl_tgl_event"
-        tools:text="12 Desember 2019"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/dtl_tgl_akhir"
-        tools:text="16 Desember 2019"/>
+                <ImageView
+                    android:id="@+id/dtl_event_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/mobilelegends" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/dtl_fee"
-        tools:text="gratis"/>
+            </RelativeLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/dtl_contact"
-        tools:text="08xxxxxxxxxx"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/detail_event">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/dtl_venue"
-        tools:text="online"/>
+                <RelativeLayout
+                    android:id="@+id/relativeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-</LinearLayout>
+                    <TextView
+                        android:id="@+id/dtl_name_event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Porsematik - Mobile Legends"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/tournament_day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/dtl_name_event"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="10dp"
+                        android:text="@string/tournament_day"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/dtl_name_event"
+                        android:layout_toEndOf="@id/tournament_day"
+                        android:layout_marginTop="7dp"
+                        tools:text="3 - 7 Desember 2021"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/daftar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tournament_day"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/pendaftaran"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tgl_tournament"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/dtl_name_event"
+                        android:layout_toEndOf="@id/tournament_day"
+                        android:layout_marginTop="7dp"
+                        tools:text="3 - 7 Desember 2021"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/tgl_daftar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tgl_tournament"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_toRightOf="@id/daftar"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        tools:text=": 18-23 November 2021" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingEnd="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+                    app:layout_constraintVertical_bias="0.0"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/venue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="7dp"
+                            android:text="@string/venue"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/dtl_venue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="77dp"
+                            android:layout_marginTop="7dp"
+                            android:layout_toRightOf="@+id/venue"
+                            android:text=": Online"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/fee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="7dp"
+                            android:text="Fee"
+                            android:layout_below="@id/venue"
+                            android:textColor="@color/black"
+                            android:layout_marginLeft="20dp"/>
+
+                        <TextView
+                            android:id="@+id/dtl_fee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/venue"
+                            android:layout_marginLeft="95dp"
+                            android:layout_marginTop="7dp"
+                            android:layout_toRightOf="@id/fee"
+                            android:text=": Gratis"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/detail_deskripsi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/event_lainnya"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:paddingBottom="5dp"
+                        android:textSize="18sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_featured_events"
+                        android:layout_width="match_parent"
+                        android:layout_height="170dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:scrollbars="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/featured_event_list" />
+
+                    <Button
+                        android:id="@+id/btn_daftar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginBottom="20dp"
+                        android:textAllCaps="false"
+                        android:text="@string/daftar"/>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

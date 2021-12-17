@@ -1,5 +1,6 @@
 package com.codemul.pabmul.helloworld
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.codemul.pabmul.helloworld.data.Event
@@ -11,6 +12,7 @@ class DetailEventActivity : AppCompatActivity() {
         intent.getParcelableExtra<Event>(INTENT_DETAIL)
     }
     private lateinit var binding: ActivityDetailEventBinding
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -18,11 +20,10 @@ class DetailEventActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.dtlNameEvent.text = dataIntent?.name
-        binding.dtlTglAkhir.text = dataIntent?.tgl_akhir
-        binding.dtlContact.text = dataIntent?.contact
-        binding.dtlTglEvent.text = dataIntent?.tgl_event
-        binding.dtlVenue.text = dataIntent?.venue
+        binding.tglTournament.text =  dataIntent?.tgl_event + " - " + dataIntent?.tgl_akhir
+        binding.tglDaftar.text = dataIntent?.tgl_daftar + " - " + dataIntent?.tgl_akhir_daftar
         binding.dtlFee.text = dataIntent?.fee.toString()
+        binding.dtlVenue.text = dataIntent?.venue
 //        binding.dtlEventImg = dataIntent?.image
         Picasso.get().load(dataIntent?.image).into(binding.dtlEventImg)
     }

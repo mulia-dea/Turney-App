@@ -11,7 +11,10 @@ data class Event(
     var name: String? =null,
     var tgl_event: String? =null,
     var tgl_akhir: String? =null,
+    var tgl_daftar: String? = null,
+    var tgl_akhir_daftar: String? = null,
     var fee: Int = 0,
     var contact: String? =null,
+    var contact2: String? =null,
     var venue: String? =null,
 ) : Parcelable

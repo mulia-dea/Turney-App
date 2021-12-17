@@ -82,6 +82,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="Belum Punya Akun?"
-        android:textColor="#2B8ADE" />
+            android:textColor="#2B8ADE" />
 
 </LinearLayout>
