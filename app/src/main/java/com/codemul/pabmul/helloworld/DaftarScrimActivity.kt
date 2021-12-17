@@ -91,15 +91,15 @@ class DaftarScrimActivity : AppCompatActivity() {
         scrim.jenis_game = binding.spinnerJenisGameScrim.selectedItem.toString()
         scrim.jumlah_pemain = binding.etJumlahPemainScrim.text.toString().toInt()
         scrim.nama_penyelenggara = binding.etNamaPenyelenggaraScrim.text.toString()
-        scrim.tgl_pelaksanaan_scrim = tglScrim
-        scrim.informasi_scrim = binding.etInformationScrim.text.toString()
+        scrim.tgl_akhir = tglScrim
+        scrim.information = binding.etInformationScrim.text.toString()
 
         val newPost = databaseRef!!.push() // add new item to database
         newPost.child("id").setValue(scrim.id)
         newPost.child("nama_penyelenggara").setValue(scrim.nama_penyelenggara)
         newPost.child("jenis_game").setValue(scrim.jenis_game)
-        newPost.child("tgl_akhir").setValue(scrim.tgl_pelaksanaan_scrim)
+        newPost.child("tgl_akhir").setValue(scrim.tgl_akhir)
         newPost.child("jumlah_pemain").setValue(scrim.jumlah_pemain)
-        newPost.child("information").setValue(scrim.informasi_scrim)
+        newPost.child("information").setValue(scrim.information)
     }
 }

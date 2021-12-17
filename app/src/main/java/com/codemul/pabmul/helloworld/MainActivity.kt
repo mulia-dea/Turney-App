@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.ArrayList
@@ -41,6 +42,8 @@ class MainActivity : AppCompatActivity() {
         val scrimComponent: LinearLayout = findViewById(R.id.ll_list_scrim)
         val daftarScrimComponent: LinearLayout = findViewById(R.id.ll_daftar_scrim)
         val daftarEventComponent: LinearLayout = findViewById(R.id.ll_list_event)
+        val profileComponent: CardView = findViewById(R.id.cv_profile_card)
+        val questComponent: CardView = findViewById(R.id.cv_user_quest)
 
         scrimComponent.setOnClickListener {
             val scrimIntent = Intent(this, ScrimActivity::class.java)
@@ -55,6 +58,16 @@ class MainActivity : AppCompatActivity() {
         daftarEventComponent.setOnClickListener {
             val eventIntent = Intent(this, EventActivity::class.java)
             startActivity(eventIntent)
+        }
+
+        profileComponent.setOnClickListener {
+            val intentProfile = Intent(this, ProfileActivity::class.java)
+            startActivity(intentProfile)
+        }
+
+        questComponent.setOnClickListener {
+            val intentQuest = Intent(this, QuestActivity::class.java)
+            startActivity(intentQuest)
         }
     }
 }

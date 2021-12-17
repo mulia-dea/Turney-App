@@ -1,34 +1,38 @@
 package com.codemul.pabmul.helloworld
 
 import android.annotation.SuppressLint
+import android.os.Binder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.codemul.pabmul.helloworld.data.Scrim
+import com.codemul.pabmul.helloworld.databinding.ActivityScrimBinding
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import java.util.ArrayList
 
 class ScrimActivity : AppCompatActivity() {
 
-    private lateinit var adapter: CustomAdapter
+    private lateinit var adapter: ScrimAdapter
     private var storage : FirebaseStorage? = null
     private var databaseRef: DatabaseReference? = null
     private var dbListerner: ValueEventListener? = null
     private lateinit var scrimList: MutableList<Scrim>
+    private lateinit var binding: ActivityScrimBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_scrim)
+        binding = ActivityScrimBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
-        val viewList: RecyclerView = findViewById(R.id.rv_scrim_list)
         scrimList = ArrayList()
 
-        val scrimAdapter = ScrimAdapter(scrimList)
-        viewList.adapter = scrimAdapter
-        scrimAdapter.setOnClickButton(object: ScrimAdapter.OnButtonJoinListener{
+        adapter = ScrimAdapter(scrimList)
+        binding.rvScrimList.adapter = adapter
+        adapter.setOnClickButton(object: ScrimAdapter.OnButtonJoinListener{
             override fun buttonClick(contentPosition: Int) {
                 // Kosong boi
             }
@@ -36,6 +40,7 @@ class ScrimActivity : AppCompatActivity() {
         })
 
         getDataFromDataBase()
+        Log.d("scrimList val ", scrimList.toString()) // debug
 
     }
 
@@ -51,8 +56,9 @@ class ScrimActivity : AppCompatActivity() {
                     val upload = eventSnap.getValue(Scrim::class.java)
                     upload!!.id = eventSnap.key
                     scrimList.add(upload)
+                    Log.d("scrimList val ", scrimList.toString()) // debug
                 }
-//                adapter.notifyDataSetChanged()
+                adapter.notifyDataSetChanged()
             }
 
 

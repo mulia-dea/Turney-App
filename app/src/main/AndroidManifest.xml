@@ -39,10 +39,10 @@
             android:exported="true"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".EventActivity"
             android:exported="true" />
         <activity
-            android:name=".EventActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -37,8 +37,6 @@ class EventActivity : AppCompatActivity() {
         getData()
     }
 
-
-
     private fun getData(){
         rvEvent.setHasFixedSize(true)
         rvEvent.layoutManager = LinearLayoutManager(this@EventActivity, LinearLayoutManager.VERTICAL, false)
@@ -46,7 +44,6 @@ class EventActivity : AppCompatActivity() {
         eventList = ArrayList()
         adapterEvent = EventAdapter(this, eventList)
         rvEvent.adapter = adapterEvent
-
 
         storage = FirebaseStorage.getInstance()
         databaseRef = FirebaseDatabase.getInstance().getReference("event")
