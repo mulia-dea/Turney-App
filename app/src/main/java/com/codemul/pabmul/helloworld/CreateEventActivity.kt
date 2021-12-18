@@ -55,6 +55,10 @@ class CreateEventActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        supportActionBar?.title = "Buat Event"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         binding = ActivityCreateEventBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -148,6 +152,11 @@ class CreateEventActivity : AppCompatActivity() {
             //masuk ke main penyelenggara
 //            startActivity(Intent(MainActivity))
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     override fun onActivityResult(

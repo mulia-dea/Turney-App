@@ -27,6 +27,10 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        supportActionBar?.title = "Sign In"
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         loginBinding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(loginBinding.root)
 
@@ -78,6 +82,8 @@ class LoginActivity : AppCompatActivity() {
 
                             startActivity(Intent(this, MainActivity::class.java))
                         }
+                    } else {
+                        Toast.makeText(this, "Please fill the values", Toast.LENGTH_SHORT).show()
                     }
 
                 }

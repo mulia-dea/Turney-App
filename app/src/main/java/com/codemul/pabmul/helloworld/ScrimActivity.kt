@@ -22,6 +22,8 @@ class ScrimActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scrim)
 
+        supportActionBar?.title = "Scrim"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val viewList: RecyclerView = findViewById(R.id.rv_scrim_list)
         scrimList = ArrayList()
@@ -62,5 +64,10 @@ class ScrimActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

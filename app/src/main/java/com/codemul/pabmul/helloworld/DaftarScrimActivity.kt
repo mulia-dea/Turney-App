@@ -26,6 +26,9 @@ class DaftarScrimActivity : AppCompatActivity() {
         binding = ActivityDaftarScrimBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.title = "Daftar Scrim"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         database = FirebaseDatabase.getInstance()
         databaseRef = Firebase.database.reference.child("scrim")
 
@@ -101,5 +104,10 @@ class DaftarScrimActivity : AppCompatActivity() {
         newPost.child("tgl_akhir").setValue(scrim.tgl_pelaksanaan_scrim)
         newPost.child("jumlah_pemain").setValue(scrim.jumlah_pemain)
         newPost.child("information").setValue(scrim.informasi_scrim)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

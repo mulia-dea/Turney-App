@@ -32,6 +32,10 @@ class SignUpActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        supportActionBar?.title = "Sign Up"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -98,5 +102,10 @@ class SignUpActivity : AppCompatActivity() {
             Toast.makeText(this, "FAILED REGIST", Toast.LENGTH_SHORT).show()
                 Log.d("Failed", it.toString())
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

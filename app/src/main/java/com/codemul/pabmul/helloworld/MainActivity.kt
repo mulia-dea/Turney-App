@@ -7,10 +7,12 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.codemul.pabmul.helloworld.data.User
 import com.codemul.pabmul.helloworld.databinding.ActivityCreateEventBinding
 import com.codemul.pabmul.helloworld.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
 import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
@@ -18,10 +20,24 @@ class MainActivity : AppCompatActivity() {
         FirebaseAuth.getInstance()
     }
 
+    private val databaseRef by lazy {
+        FirebaseDatabase.getInstance()
+    }
+
+    private val currentUser by lazy {
+        firebaseAuth.currentUser
+    }
+
+    private var user: User? = null
     private lateinit var binding: ActivityMainBinding
-//    private var firebaseAuth : FirebaseAuth
+
+    //    private var firebaseAuth : FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        supportActionBar?.title = "HOME"
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -39,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = CustomAdapter(this, eventList)
         viewList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         viewList.adapter = adapter
-        adapter.setOnItemClickListener(object: CustomAdapter.OnItemListClickListener{
+        adapter.setOnItemClickListener(object : CustomAdapter.OnItemListClickListener {
             override fun onItemClick(position: Int) {
                 Toast.makeText(this@MainActivity, "No. $position", Toast.LENGTH_LONG).show()
             }
@@ -47,26 +63,46 @@ class MainActivity : AppCompatActivity() {
         })
         onClickComponentListener()
 
+        profile()
     }
 
     //masih bingung
-//    override fun onStart() {
+    override fun onStart() {
 //        val firebaseUser: FirebaseUser = firebaseAuth.currentUser!!
-//        if (firebaseUser!=null){
-//            //there is some user log in
-//        } else{
-//            startActivity(Intent(this, LoginActivity::class.java))
-//            finish()
-//        }
-//        super.onStart()
-//    }
+        if (currentUser!=null){
+            //there is some user log in
+        } else{
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+        super.onStart()
+    }
 
-    private fun onClickComponentListener(){
+    private fun profile() {
+        val df = databaseRef.getReference("Users")
+        df.child(currentUser!!.uid).get().addOnSuccessListener {
+            val username = it.child("name").value.toString()
+            val id = it.child("id").value.toString()
+            binding.tvIdNama.text = username
+            binding.tvIdAkun.text = id
+
+        }
+//        currentUser?.uid.let {
+//            val username = user?.name
+//            val email = user?.email
+//            val id = user?.id
+//
+//            binding.tvIdNama.text = username.toString()
+//            binding.tvIdAkun.text= id.toString()
+//        }
+    }
+
+    private fun onClickComponentListener() {
         val scrimComponent: LinearLayout = findViewById(R.id.ll_list_scrim)
         val daftarScrimComponent: LinearLayout = findViewById(R.id.ll_daftar_scrim)
         val daftarEventComponent: LinearLayout = findViewById(R.id.ll_list_event)
 
-        binding.relativeProfile.setOnClickListener{
+        binding.relativeProfile.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
         scrimComponent.setOnClickListener {
