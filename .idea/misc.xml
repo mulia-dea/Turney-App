@@ -1,42 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DesignSurface">
-    <option name="filePathToZoomLevelMap">
-      <map>
-
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/drawable/detail_event.xml" value="0.1" />
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2712820512820513" />
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_create_event.xml" value="0.264" />
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_daftar_event.xml" value="0.264" />
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_daftar_scrim.xml" value="0.12" />
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_detail_event.xml" value="0.25448028673835127" />
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_event.xml" value="0.15789473684210525" />
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_profile.xml" value="0.1245136186770428" />
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_scrim.xml" value="0.259375" />
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/detail_page_event.xml" value="0.11574074074074074" />
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/featured_event_list.xml" value="0.259375" />
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/list_event.xml" value="0.264" />
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/list_scrim.xml" value="0.264" />
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/quest_content.xml" value="0.1" />
-
-          <entry key="..\:/hello-World/app/src/main/res/layout/activity_create_event.xml" value="0.25263157894736843" />
-          <entry key="..\:/hello-World/app/src/main/res/layout/activity_detail_event.xml" value="0.4" />
-          <entry key="..\:/hello-World/app/src/main/res/layout/activity_event.xml" value="0.1793478260869565" />
-          <entry key="..\:/hello-World/app/src/main/res/layout/activity_main.xml" value="0.16893115942028986" />
-        <entry key="..\:/hello-World/app/src/main/res/layout/activity_main_admin.xml" value="0.264" />
-        <entry key="..\:/hello-World/app/src/main/res/layout/activity_splash_screen.xml" value="0.16893115942028986" />
-
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.296195652173913" />
-      </map>
-    </option>
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/build/classes" />
-  </component>
-  <component name="ProjectType">
-    <option name="id" value="Android" />
-  </component>
+    <component name="DesignSurface">
+        <option name="filePathToZoomLevelMap">
+            <map>
+                <entry
+                    key="..\:/Informatics Engineering/Semester 5/hello-World/app/src/main/res/layout/activity_create_event.xml"
+                    value="0.14583333333333334" />
+                <entry
+                    key="..\:/Informatics Engineering/Semester 5/hello-World/app/src/main/res/layout/activity_daftar_scrim.xml"
+                    value="0.14666666666666667" />
+                <entry
+                    key="..\:/Informatics Engineering/Semester 5/hello-World/app/src/main/res/layout/activity_event.xml"
+                    value="0.14583333333333334" />
+                <entry
+                    key="..\:/Informatics Engineering/Semester 5/hello-World/app/src/main/res/layout/activity_ilustrasi.xml"
+                    value="0.14583333333333334" />
+                <entry
+                    key="..\:/Informatics Engineering/Semester 5/hello-World/app/src/main/res/layout/activity_login.xml"
+                    value="0.22" />
+                <entry
+                    key="..\:/Informatics Engineering/Semester 5/hello-World/app/src/main/res/layout/activity_main.xml"
+                    value="0.2938090241343127" />
+                <entry
+                    key="..\:/Informatics Engineering/Semester 5/hello-World/app/src/main/res/layout/activity_profile.xml"
+                    value="0.14583333333333334" />
+                <entry
+                    key="..\:/Informatics Engineering/Semester 5/hello-World/app/src/main/res/layout/activity_sign_up.xml"
+                    value="0.22" />
+                <entry
+                    key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/drawable/detail_event.xml"
+                    value="0.1" />
+                <entry
+                    key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/drawable/ic_launcher_background.xml"
+                    value="0.2712820512820513" />
+                <entry
+                    key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_create_event.xml"
+                    value="0.264" />
+                <entry
+                    key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_daftar_event.xml"
+                    value="0.264" />
+                <entry
+                    key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_daftar_scrim.xml"
+                    value="0.12" />
+                <entry
+                    key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_detail_event.xml"
+                    value="0.25448028673835127" />
+                <entry
+                    key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_event.xml"
+                    value="0.15789473684210525" />
+                <entry
+                    key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_login.xml"
+                    value="0.1" />
+                <entry
+                    key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_main.xml"
+                    value="0.264" />
+                <entry
+                    key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_profile.xml"
+                    value="0.1245136186770428" />
+                <entry
+                    key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_scrim.xml"
+                    value="0.259375" />
+                <entry
+                    key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_sign_up.xml"
+                    value="0.264" />
+                <entry
+                    key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/detail_page_event.xml"
+                    value="0.11574074074074074" />
+                <entry
+                    key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/featured_event_list.xml"
+                    value="0.259375" />
+                <entry
+                    key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/list_event.xml"
+                    value="0.264" />
+                <entry
+                    key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/list_scrim.xml"
+                    value="0.264" />
+                <entry
+                    key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/quest_content.xml"
+                    value="0.1" />
+                <entry key="..\:/hello-World/app/src/main/res/layout/activity_create_event.xml"
+                    value="0.25263157894736843" />
+                <entry key="..\:/hello-World/app/src/main/res/layout/activity_detail_event.xml"
+                    value="0.4" />
+                <entry key="..\:/hello-World/app/src/main/res/layout/activity_event.xml"
+                    value="0.1793478260869565" />
+                <entry key="..\:/hello-World/app/src/main/res/layout/activity_main.xml"
+                    value="0.16893115942028986" />
+                <entry key="..\:/hello-World/app/src/main/res/layout/activity_main_admin.xml"
+                    value="0.264" />
+                <entry key="..\:/hello-World/app/src/main/res/layout/activity_splash_screen.xml"
+                    value="0.16893115942028986" />
+                <entry key="app/src/main/res/layout/activity_main.xml" value="0.296195652173913" />
+            </map>
+        </option>
+    </component>
+    <component name="ProjectRootManager" default="true" languageLevel="JDK_11" project-jdk-name="Android Studio default JDK"
+        project-jdk-type="JavaSDK" version="2">
+        <output url="file://$PROJECT_DIR$/build/classes" />
+    </component>
+    <component name="ProjectType">
+        <option name="id" value="Android" />
+    </component>
 </project>
