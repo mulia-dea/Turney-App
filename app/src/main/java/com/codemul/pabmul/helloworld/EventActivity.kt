@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codemul.pabmul.helloworld.data.Event
+import com.codemul.pabmul.helloworld.databinding.ActivityEventBinding
 import com.codemul.pabmul.helloworld.db.RealtimeDatabase
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
@@ -19,6 +20,7 @@ class EventActivity : AppCompatActivity() {
     private lateinit var adapterEvent: EventAdapter
     private lateinit var rvEvent : RecyclerView
 
+    private lateinit var binding: ActivityEventBinding
     private val db = RealtimeDatabase.instance()
     private var storage : FirebaseStorage? = null
     private var databaseRef: DatabaseReference? = null
@@ -30,6 +32,10 @@ class EventActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        supportActionBar?.title = "Lsit Event"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         setContentView(R.layout.activity_event)
 
         rvEvent = findViewById(R.id.rv_event)
@@ -45,8 +51,12 @@ class EventActivity : AppCompatActivity() {
         adapterEvent = EventAdapter(this, eventList)
         rvEvent.adapter = adapterEvent
 
+        val event = Event()
         storage = FirebaseStorage.getInstance()
+//        Log.d("Data", event.id.toString())
         databaseRef = FirebaseDatabase.getInstance().getReference("event")
+//        databaseRef = FirebaseDatabase.getInstance().getReference("event").child(event.id.toString())
+//        Log.d("Data", FirebaseDatabase.getInstance().getReference("event/" + event.id).child("name").toString())
         dbListener = databaseRef?.addValueEventListener(object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -56,9 +66,8 @@ class EventActivity : AppCompatActivity() {
                     upload!!.id = eventSnapshot.key
                     eventList.add(upload)
                 }
-
+//
                 adapterEvent.notifyDataSetChanged()
-
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -76,10 +85,14 @@ class EventActivity : AppCompatActivity() {
 
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
     private fun showDetailEvent(event : Event){
 //        var intent = Intent(this, DetailEventActivity::class.java)
         startActivity(Intent(this, DetailEventActivity::class.java).putExtra(DetailEventActivity.INTENT_DETAIL, event))
-
     }
 
 

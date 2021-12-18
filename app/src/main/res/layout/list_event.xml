@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="40dp"
-    android:paddingLeft="40dp"
-    android:paddingRight="40dp"
-    android:paddingBottom="10dp">
+    android:paddingTop="20dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingBottom="15dp"
+    android:background="#3F72AD">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="245dp"
+        android:layout_height="180dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="20dp">
+        app:cardCornerRadius="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -24,38 +25,38 @@
             <ImageView
                 android:id="@+id/img_list_event"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="100dp"
                 android:layout_marginBottom="10dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/valorant"
                 android:contentDescription="image_game"/>
 
             <TextView
-                android:id="@+id/tv_name_game"
+                android:id="@+id/tv_name_event"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/img_list_event"
-                tools:text="Valorant"
+                tools:text="Porsematik"
                 android:textStyle="bold"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="15dp"/>
-
-            <TextView
-                android:id="@+id/tv_tgl_event"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_name_game"
-                tools:text="Tournament Day : 2-3 || Free Registration..."
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="15dp"/>
-
-            <TextView
-                android:id="@+id/link_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_tgl_event"
+                android:textSize="16sp"
                 android:layout_marginStart="15dp"
-                tools:text="Detail" />
+                android:textColor="@color/black"/>
+
+            <Button
+                android:id="@+id/btn_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_name_event"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#F4F4F4"
+                android:text="@string/detail"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

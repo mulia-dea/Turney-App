@@ -1,5 +1,7 @@
 package com.codemul.pabmul.helloworld
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.codemul.pabmul.helloworld.data.Event
@@ -11,23 +13,42 @@ class DetailEventActivity : AppCompatActivity() {
         intent.getParcelableExtra<Event>(INTENT_DETAIL)
     }
     private lateinit var binding: ActivityDetailEventBinding
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
+
+        supportActionBar?.title = dataIntent?.name
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         binding = ActivityDetailEventBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.dtlNameEvent.text = dataIntent?.name
-        binding.dtlTglAkhir.text = dataIntent?.tgl_akhir
-        binding.dtlContact.text = dataIntent?.contact
-        binding.dtlTglEvent.text = dataIntent?.tgl_event
-        binding.dtlVenue.text = dataIntent?.venue
+        binding.tglTournament.text =  dataIntent?.tgl_event + " - " + dataIntent?.tgl_akhir
+        binding.tglDaftar.text = dataIntent?.tgl_daftar + " - " + dataIntent?.tgl_akhir_daftar
         binding.dtlFee.text = dataIntent?.fee.toString()
+        binding.dtlVenue.text = dataIntent?.venue
 //        binding.dtlEventImg = dataIntent?.image
+        binding.dtlContact.text = dataIntent?.contact
+        binding.dtlContact2.text = dataIntent?.contact2
         Picasso.get().load(dataIntent?.image).into(binding.dtlEventImg)
+
+        daftar(dataIntent?.id)
+    }
+
+    private fun daftar(event: String?){
+        binding.btnDaftar.setOnClickListener {
+            startActivity(Intent(this, DaftarEventActivity::class.java).putExtra(id_event, event))
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     companion object {
         var INTENT_DETAIL = "intent_detail"
+        var id_event = "id_Event"
     }
 }

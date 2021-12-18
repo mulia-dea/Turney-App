@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.codemul.pabmul.helloworld.data.Event
+import com.codemul.pabmul.helloworld.databinding.ActivityCreateEventBinding
+import com.codemul.pabmul.helloworld.databinding.ActivityDetailEventBinding
 import com.codemul.pabmul.helloworld.db.RealtimeDatabase
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -27,21 +29,15 @@ import java.util.*
 
 
 class CreateEventActivity : AppCompatActivity() {
-    private lateinit var btnAddEvent : Button
-    private lateinit var edtTglEvent : EditText
-    private lateinit var edtTglAkhir : EditText
-    private lateinit var edtName : EditText
-    private lateinit var edtFee : EditText
-    private lateinit var edtVenue : EditText
-    private lateinit var edtCp : EditText
-    private lateinit var imageBtn : Button
-    private lateinit var img_event : ImageView
+    private lateinit var binding : ActivityCreateEventBinding
 
     var selectImagePath: String? = null
     private var imageUrl : Uri? = null
-    private lateinit var AwalTanggal : String
+    private lateinit var AwalTanggal: String
     private lateinit var AkhirTanggal : String
-    private var storage : FirebaseStorage? = null // image
+    private lateinit var awalDaftar : String
+    private lateinit var akhirDaftar : String
+    private var storage : FirebaseStorage? = null
     private var databaseRef: DatabaseReference? = null
     private var database : FirebaseDatabase? = null
 
@@ -59,15 +55,18 @@ class CreateEventActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_event)
+
+        supportActionBar?.title = "Buat Event"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        binding = ActivityCreateEventBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         database = FirebaseDatabase.getInstance()
         databaseRef = Firebase.database.reference.child("event")
         storage = FirebaseStorage.getInstance()
 
-        findViewId()
-
-        imageBtn.setOnClickListener {
+        binding.chooseImg.setOnClickListener {
             if (ContextCompat.checkSelfPermission(applicationContext,
                     Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this,
@@ -78,7 +77,7 @@ class CreateEventActivity : AppCompatActivity() {
             }
         }
 
-        edtTglEvent.setOnClickListener{
+        binding.tglEvent.setOnClickListener{
             val cal = Calendar.getInstance()
             val date = DatePickerDialog(this,
                 { _, year, monthOfYear, dayOfMonth ->
@@ -87,7 +86,7 @@ class CreateEventActivity : AppCompatActivity() {
                     val bulan = arrayOf("Januari", "Februari", "Maret", "April", "Mei",
                         "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember")
                     AwalTanggal = dayOfMonth.toString() + " " + bulan[monthOfYear] + " " + year
-                    edtTglEvent.setText(AwalTanggal)
+                    binding.tglEvent.setText(AwalTanggal)
                 },cal.get(Calendar.YEAR),
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH))
@@ -95,7 +94,7 @@ class CreateEventActivity : AppCompatActivity() {
             date.show()
         }
 
-        edtTglAkhir.setOnClickListener{
+        binding.tglAkhirEvent.setOnClickListener{
             val cal = Calendar.getInstance()
             val date = DatePickerDialog(this,
                 { _, year, monthOfYear, dayOfMonth ->
@@ -104,7 +103,7 @@ class CreateEventActivity : AppCompatActivity() {
                     val bulan = arrayOf("Januari", "Februari", "Maret", "April", "Mei",
                         "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember")
                     AkhirTanggal = dayOfMonth.toString() + " " + bulan[monthOfYear] + " " + year
-                    edtTglAkhir.setText(AkhirTanggal)
+                    binding.tglAkhirEvent.setText(AkhirTanggal)
                 },cal.get(Calendar.YEAR),
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH))
@@ -112,24 +111,53 @@ class CreateEventActivity : AppCompatActivity() {
             date.show()
         }
 
+        binding.tglAwalDaftar.setOnClickListener{
+            val cal = Calendar.getInstance()
+            val date = DatePickerDialog(this,
+                { _, year, monthOfYear, dayOfMonth ->
+                    val newDate = Calendar.getInstance()
+                    newDate[year, monthOfYear] = dayOfMonth
+                    val bulan = arrayOf("Januari", "Februari", "Maret", "April", "Mei",
+                        "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember")
+                    awalDaftar = dayOfMonth.toString() + " " + bulan[monthOfYear] + " " + year
+                    binding.tglAwalDaftar.setText(awalDaftar)
+                },cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH))
 
-        btnAddEvent.setOnClickListener {
+            date.show()
+        }
+
+        binding.tglAkhir.setOnClickListener{
+            val cal = Calendar.getInstance()
+            val date = DatePickerDialog(this,
+                { _, year, monthOfYear, dayOfMonth ->
+                    val newDate = Calendar.getInstance()
+                    newDate[year, monthOfYear] = dayOfMonth
+                    val bulan = arrayOf("Januari", "Februari", "Maret", "April", "Mei",
+                        "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember")
+                    akhirDaftar = dayOfMonth.toString() + " " + bulan[monthOfYear] + " " + year
+                    binding.tglAkhir.setText(akhirDaftar)
+                },cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH))
+
+            date.show()
+        }
+
+        binding.btnAddEvent.setOnClickListener {
             setDataToFirebase()
+            Toast.makeText(this, "Daftar berhasil", Toast.LENGTH_SHORT).show()
+
+            //masuk ke main penyelenggara
+//            startActivity(Intent(MainActivity))
         }
     }
 
-    private fun findViewId(){
-        edtName = findViewById(R.id.name_event)
-        imageBtn = findViewById(R.id.choose_img)
-        img_event = findViewById(R.id.img_event)
-        edtTglEvent = findViewById(R.id.tgl_event)
-        edtTglAkhir = findViewById(R.id.tgl_akhir)
-        edtFee = findViewById(R.id.fee)
-        edtVenue = findViewById(R.id.venue)
-        edtCp = findViewById(R.id.cp)
-        btnAddEvent = findViewById(R.id.btn_add_event)
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
-
 
     override fun onActivityResult(
         requestCode: Int,
@@ -148,7 +176,7 @@ class CreateEventActivity : AppCompatActivity() {
 
             // Get the Uri of data
             imageUrl = data.data
-            img_event.setImageURI(imageUrl)
+            binding.imgEvent.setImageURI(imageUrl)
         }
     }
 
@@ -156,13 +184,16 @@ class CreateEventActivity : AppCompatActivity() {
     {
         val event = Event()
         event.id = UUID.randomUUID().toString()
-        event.name = edtName.text.toString().trim()
+        event.name = binding.nameEvent.text.toString().trim()
 //        event.image = uploadImage().toString()
-        event.tgl_event = edtTglEvent.text.toString().trim()
-        event.tgl_akhir = edtTglAkhir.text.toString().trim()
-        event.fee = Integer.valueOf(edtFee.text.toString())
-        event.contact = edtCp.text.toString().trim()
-        event.venue = edtVenue.text.toString().trim()
+        event.tgl_event = binding.tglEvent.text.toString().trim()
+        event.tgl_akhir = binding.tglAkhirEvent.text.toString().trim()
+        event.tgl_daftar = binding.tglAwalDaftar.text.toString().trim()
+        event.tgl_akhir_daftar = binding.tglAkhir.text.toString().trim()
+        event.fee = Integer.valueOf(binding.fee.text.toString())
+        event.contact = binding.cp.text.toString().trim()
+        event.contact2 = binding.cp2.text.toString().trim()
+        event.venue = binding.venue.text.toString().trim()
 
         val filePath = storage!!.reference.child("event").child(imageUrl!!.lastPathSegment!!)
         filePath.putFile(imageUrl!!).addOnSuccessListener { taskSnapshot ->
@@ -174,18 +205,21 @@ class CreateEventActivity : AppCompatActivity() {
                 newPost.child("id").setValue(event.id)
                 newPost.child("tgl_event").setValue(event.tgl_event)
                 newPost.child("tgl_akhir").setValue(event.tgl_akhir)
+                newPost.child("tgl_daftar").setValue(event.tgl_daftar)
+                newPost.child("tgl_akhir_daftar").setValue(event.tgl_akhir_daftar)
                 newPost.child("fee").setValue(event.fee)
                 newPost.child("contact").setValue(event.contact)
+                newPost.child("contact2").setValue(event.contact2)
             }
         }
     }
 
-    private fun getFileExtension(uri: Uri): String?{
-        val cr = contentResolver
-        val mime = MimeTypeMap.getSingleton()
-
-        return mime.getExtensionFromMimeType(cr.getType(uri))
-    }
+//    private fun getFileExtension(uri: Uri): String?{
+//        val cr = contentResolver
+//        val mime = MimeTypeMap.getSingleton()
+//
+//        return mime.getExtensionFromMimeType(cr.getType(uri))
+//    }
 
 
     private fun selectImage() {

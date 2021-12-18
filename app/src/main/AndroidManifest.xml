@@ -15,6 +15,15 @@
         <activity
             android:name=".MainAdmin"
             android:exported="true" />
+       <activity
+            android:name=".SplashScreenActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DaftarEventActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="true" />
         <activity
             android:name=".ProfileActivity"
             android:exported="true"
@@ -31,7 +40,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="true"/>
         <activity
             android:name=".CreateEventActivity"
             android:exported="true" />
@@ -56,6 +65,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".EventActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -27,6 +27,8 @@ class ScrimActivity : AppCompatActivity() {
         binding = ActivityScrimBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.title = "Scrim"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         scrimList = ArrayList()
 
@@ -69,5 +71,10 @@ class ScrimActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }
