@@ -13,7 +13,7 @@ import com.google.firebase.database.FirebaseDatabase
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var loginBinding: ActivityLoginBinding
-    private val firebaeAuth by lazy {
+    private val firebaseAuth by lazy {
         FirebaseAuth.getInstance()
     }
 
@@ -22,7 +22,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private val currentUser by lazy {
-        firebaeAuth.currentUser
+        firebaseAuth.currentUser
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,8 +56,8 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setUp() {
         loginBinding.btnLogin.setOnClickListener {
-            var email = loginBinding.etUsernameEmailLogin.text.toString()
-            var password = loginBinding.etPasswordLogin.text.toString()
+            val email = loginBinding.etUsernameEmailLogin.text.toString()
+            val password = loginBinding.etPasswordLogin.text.toString()
 //            var username = loginBinding.etUsernameEmailLogin.text.toString()
 
             Log.d("name", email)
@@ -65,33 +65,34 @@ class LoginActivity : AppCompatActivity() {
             login(email, password)
         }
     }
-        private fun login(email: String, password: String) {
-            firebaeAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
-                val df = databaseRef.getReference("Users")
-                df.child(currentUser!!.uid).get().addOnSuccessListener {
-                    val admin = it.child("admin").value.toString()
-                    if (email.isNotEmpty() && password.isNotEmpty()){
-                        if (admin == "2131296730") {
-                            Log.d("ADMIN", it.child("admin").value.toString())
-                            Toast.makeText(this, "ADMIN", Toast.LENGTH_SHORT).show()
 
-                            startActivity(Intent(this, EventActivity::class.java))
-                        } else {
-                            Toast.makeText(this, "NOT ADMIN", Toast.LENGTH_SHORT)
-                                .show()
+    private fun login(email: String, password: String) {
+        firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
+            val df = databaseRef.getReference("Users")
+            df.child(currentUser!!.uid).get().addOnSuccessListener {
+                val admin = it.child("admin").value.toString()
+                if (email.isNotEmpty() && password.isNotEmpty()) {
+                    if (admin == "2131296730") {
+                        Log.d("ADMIN", it.child("admin").value.toString())
+                        Toast.makeText(this, "ADMIN", Toast.LENGTH_SHORT).show()
 
-                            startActivity(Intent(this, MainActivity::class.java))
-                        }
+                        startActivity(Intent(this, EventActivity::class.java))
                     } else {
-                        Toast.makeText(this, "Please fill the values", Toast.LENGTH_SHORT).show()
-                    }
+                        Toast.makeText(this, "NOT ADMIN", Toast.LENGTH_SHORT)
+                            .show()
 
+                        startActivity(Intent(this, MainActivity::class.java))
+                    }
+                } else {
+                    Toast.makeText(this, "Please fill the values", Toast.LENGTH_SHORT).show()
                 }
-                Toast.makeText(this, "SUCCES LOGIN", Toast.LENGTH_SHORT).show()
+
             }
-                .addOnFailureListener {
-                    Toast.makeText(this, "FAILED LOGIN", Toast.LENGTH_SHORT)
-                        .show()
-                }
+            Toast.makeText(this, "SUCCESS LOGIN", Toast.LENGTH_SHORT).show()
         }
+            .addOnFailureListener {
+                Toast.makeText(this, "FAILED LOGIN", Toast.LENGTH_SHORT)
+                    .show()
+            }
     }
+}

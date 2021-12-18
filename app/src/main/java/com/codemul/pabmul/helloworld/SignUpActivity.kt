@@ -62,14 +62,22 @@ class SignUpActivity : AppCompatActivity() {
             val username = binding.etUsernameSignup.text.toString()
             val repeatPw = binding.etPasswordConfirmSignup.text.toString()
 
-            if (username.isNotEmpty()&&email.isNotEmpty()&&password.isNotEmpty()&&repeatPw.isNotEmpty()){
-                if (!password.equals(repeatPw)){
-                    Toast.makeText(this@SignUpActivity, "Password do not match", Toast.LENGTH_SHORT).show()
+            if (username.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && repeatPw.isNotEmpty()) {
+                if (!password.equals(repeatPw)) {
+                    Toast.makeText(this@SignUpActivity, "Password do not match", Toast.LENGTH_SHORT)
+                        .show()
+                } else if (password.length < 6) {
+                    Toast.makeText(
+                        this@SignUpActivity,
+                        "Password should be at least 6 characters",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
                     signUp(email, password, username)
                 }
             } else {
-                Toast.makeText(this@SignUpActivity, "Please fill the values", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@SignUpActivity, "Please fill the values", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
@@ -100,7 +108,7 @@ class SignUpActivity : AppCompatActivity() {
 
         }.addOnFailureListener {
             Toast.makeText(this, "FAILED REGIST", Toast.LENGTH_SHORT).show()
-                Log.d("Failed", it.toString())
+            Log.d("Failed", it.toString())
         }
     }
 
