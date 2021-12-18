@@ -3,14 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Informatics Engineering/Semester 5/hello-World/app/src/main/res/layout/activity_create_event.xml" value="0.14583333333333334" />
-        <entry key="..\:/Informatics Engineering/Semester 5/hello-World/app/src/main/res/layout/activity_daftar_scrim.xml" value="0.14666666666666667" />
-        <entry key="..\:/Informatics Engineering/Semester 5/hello-World/app/src/main/res/layout/activity_event.xml" value="0.14583333333333334" />
-        <entry key="..\:/Informatics Engineering/Semester 5/hello-World/app/src/main/res/layout/activity_ilustrasi.xml" value="0.14583333333333334" />
-        <entry key="..\:/Informatics Engineering/Semester 5/hello-World/app/src/main/res/layout/activity_login.xml" value="0.22" />
-        <entry key="..\:/Informatics Engineering/Semester 5/hello-World/app/src/main/res/layout/activity_main.xml" value="0.2938090241343127" />
-        <entry key="..\:/Informatics Engineering/Semester 5/hello-World/app/src/main/res/layout/activity_profile.xml" value="0.14583333333333334" />
-        <entry key="..\:/Informatics Engineering/Semester 5/hello-World/app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
+        <entry key="..\:/New folder/hello-World/app/src/main/res/layout/activity_detail_event.xml" value="0.259375" />
+        <entry key="..\:/New folder/hello-World/app/src/main/res/layout/activity_main.xml" value="0.259375" />
+        <entry key="..\:/New folder/hello-World/app/src/main/res/layout/activity_main_admin.xml" value="0.259375" />
+        <entry key="..\:/New folder/hello-World/app/src/main/res/layout/activity_scrim.xml" value="0.259375" />
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/drawable/detail_event.xml" value="0.1" />
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2712820512820513" />
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_create_event.xml" value="0.264" />
