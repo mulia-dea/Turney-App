@@ -23,9 +23,6 @@
             android:exported="true" />
         <activity
             android:name=".ProfileActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ProfileActivity"
             android:exported="true"
             android:parentActivityName=".MainActivity" />
         <activity
@@ -65,9 +62,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".EventActivity"
-            android:exported="true" />
     </application>
 
 </manifest>
