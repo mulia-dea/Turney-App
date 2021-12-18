@@ -17,13 +17,15 @@
             android:exported="true" />
         <activity
             android:name=".ProfileActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".DetailEventActivity"
             android:exported="true" />
         <activity
             android:name=".QuestActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SignUpActivity"
             android:exported="true" />
@@ -43,7 +45,8 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".EventActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">

@@ -47,6 +47,7 @@ class ScrimActivity : AppCompatActivity() {
     private fun getDataFromDataBase(){
         storage = FirebaseStorage.getInstance()
         databaseRef = FirebaseDatabase.getInstance().getReference("scrim")
+        Log.d("data ref", databaseRef.toString())
         dbListerner = databaseRef?.addValueEventListener(object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
