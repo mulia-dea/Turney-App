@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorld">
         <activity
+            android:name=".MainAdmin"
+            android:exported="true" />
+       <activity
             android:name=".SplashScreenActivity"
             android:exported="true" />
         <activity
@@ -22,11 +25,16 @@
             android:name=".ProfileActivity"
             android:exported="true" />
         <activity
+            android:name=".ProfileActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".DetailEventActivity"
             android:exported="true" />
         <activity
             android:name=".QuestActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SignUpActivity"
             android:exported="true" />
@@ -42,6 +50,10 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ScrimActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".EventActivity"
             android:exported="true"
             android:parentActivityName=".MainActivity" />
         <activity

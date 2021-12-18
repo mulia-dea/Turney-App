@@ -51,7 +51,6 @@ class EventActivity : AppCompatActivity() {
         adapterEvent = EventAdapter(this, eventList)
         rvEvent.adapter = adapterEvent
 
-
         val event = Event()
         storage = FirebaseStorage.getInstance()
 //        Log.d("Data", event.id.toString())

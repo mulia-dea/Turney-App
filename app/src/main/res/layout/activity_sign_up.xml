@@ -30,7 +30,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/default_pic" />
+                android:src="@drawable/sign_up" />
 
         </androidx.cardview.widget.CardView>
 
