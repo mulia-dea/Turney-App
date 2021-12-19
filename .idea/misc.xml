@@ -35,7 +35,7 @@
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
         <entry key="app/src/main/res/layout/featured_event_list.xml" value="0.15678824721377912" />
         <entry key="app/src/main/res/layout/list_event.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/list_scrim.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/list_scrim.xml" value="0.25" />
         <entry key="app/src/main/res/layout/quest_content.xml" value="0.33" />
       </map>
     </option>
