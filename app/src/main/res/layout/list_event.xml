@@ -8,7 +8,7 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:paddingBottom="15dp"
-    android:background="#3F72AD">
+    android:background="#516BEB">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

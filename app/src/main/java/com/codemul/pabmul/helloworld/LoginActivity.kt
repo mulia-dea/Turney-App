@@ -36,6 +36,7 @@ class LoginActivity : AppCompatActivity() {
 
         setViewListener()
         setUp()
+
     }
 
     fun setViewListener() {
@@ -76,7 +77,7 @@ class LoginActivity : AppCompatActivity() {
                         Log.d("ADMIN", it.child("admin").value.toString())
                         Toast.makeText(this, "ADMIN", Toast.LENGTH_SHORT).show()
 
-                        startActivity(Intent(this, EventActivity::class.java))
+                        startActivity(Intent(this, MainAdmin::class.java))
                     } else {
                         Toast.makeText(this, "NOT ADMIN", Toast.LENGTH_SHORT)
                             .show()

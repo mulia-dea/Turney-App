@@ -68,16 +68,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     //masih bingung
-    override fun onStart() {
-//        val firebaseUser: FirebaseUser = firebaseAuth.currentUser!!
-        if (currentUser!=null){
-            //there is some user log in
-        } else{
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
-        super.onStart()
-    }
 
     private fun profile() {
         val df = databaseRef.getReference("Users")

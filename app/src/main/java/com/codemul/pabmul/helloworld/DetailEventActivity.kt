@@ -28,7 +28,6 @@ class DetailEventActivity : AppCompatActivity() {
         binding.tglDaftar.text = dataIntent?.tgl_daftar + " - " + dataIntent?.tgl_akhir_daftar
         binding.dtlFee.text = dataIntent?.fee.toString()
         binding.dtlVenue.text = dataIntent?.venue
-//        binding.dtlEventImg = dataIntent?.image
         binding.dtlContact.text = dataIntent?.contact
         binding.dtlContact2.text = dataIntent?.contact2
         Picasso.get().load(dataIntent?.image).into(binding.dtlEventImg)
