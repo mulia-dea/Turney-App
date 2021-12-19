@@ -35,21 +35,32 @@ class ScrimActivity : AppCompatActivity() {
         adapter = ScrimAdapter(scrimList)
         binding.rvScrimList.adapter = adapter
         adapter.setOnClickButton(object: ScrimAdapter.OnButtonJoinListener{
-            override fun buttonClick(contentPosition: Int) {
-                // Kosong boi
+
+            override fun onButtonJoinClick(content: Scrim) {
+                content.isJoin = 1
+                content.jumlah_pemain_sekarang = content.jumlah_pemain_sekarang + 1
+                sentDataToFirebase(content)
+                getDataFromDataBase()
+            }
+
+            override fun onButtonUnjoinClick(content: Scrim) {
+                content.isJoin = 0
+                content.jumlah_pemain_sekarang = content.jumlah_pemain_sekarang - 1
+                sentDataToFirebase(content)
+                getDataFromDataBase()
             }
 
         })
 
         getDataFromDataBase()
-        Log.d("scrimList val ", scrimList.toString()) // debug
+//        Log.d("scrimList val ", scrimList.toString()) // debug
 
     }
 
     private fun getDataFromDataBase(){
         storage = FirebaseStorage.getInstance()
         databaseRef = FirebaseDatabase.getInstance().getReference("scrim")
-        Log.d("data ref", databaseRef.toString())
+//        Log.d("data ref", databaseRef.toString())
         dbListerner = databaseRef?.addValueEventListener(object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -64,8 +75,6 @@ class ScrimActivity : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
             }
 
-
-
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(this@ScrimActivity, error.message, Toast.LENGTH_SHORT).show()
             }
@@ -76,5 +85,10 @@ class ScrimActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    fun sentDataToFirebase(content:Scrim){
+        val databaseRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("scrim")
+        databaseRef.child(content.id!!).setValue(content)
     }
 }

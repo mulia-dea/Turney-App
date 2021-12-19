@@ -9,14 +9,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.codemul.pabmul.helloworld.data.Scrim
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class ScrimAdapter(private val content: MutableList<Scrim>) :
     RecyclerView.Adapter<ScrimAdapter.ScrimViewHolder>() {
 
     private lateinit var buttonListener: OnButtonJoinListener
 
+
     interface OnButtonJoinListener {
-        fun buttonClick(contentPosition: Int)
+        fun onButtonJoinClick(content: Scrim)
+        fun onButtonUnjoinClick(content: Scrim)
     }
 
     fun setOnClickButton(listener: OnButtonJoinListener) {
@@ -49,31 +53,63 @@ class ScrimAdapter(private val content: MutableList<Scrim>) :
         var gameType: TextView
         var joinButton: Button
 
+
         init {
             poster = itemView.findViewById(R.id.img_scrim)
             playerCount = itemView.findViewById(R.id.tv_player_count)
             gameType = itemView.findViewById(R.id.tv_name_game)
             joinButton = itemView.findViewById(R.id.button_join)
 
-//            joinButton.setOnClickListener {
-//                buttonListener.buttonClick(bindingAdapterPosition)
-//                content[bindingAdapterPosition].addPlayer()
-//                playerCount.setText(content[bindingAdapterPosition].playerJoined.toString() + "/" + content[bindingAdapterPosition].totalPlayer.toString() )
-//                Log.d("playerJoined: ", content[bindingAdapterPosition].playerJoined.toString())
-//            }
+//            var jumlahPemainSekarang = content[bindingAdapterPosition].jumlah_pemain_sekarang
+//            var jumlahPemain = content[bindingAdapterPosition].jumlah_pemain
+//            Log.d("index", bindingAdapterPosition.toString())
+
+            content.forEach {
+                if (it.jumlah_pemain_sekarang == it.jumlah_pemain) {
+                    joinButton.isEnabled = false
+                    //ganti background warna button
+                } else {
+                    joinButton.isEnabled = true
+                    if (it.isJoin == 0) {
+                        Log.d("Masuk if", "msk if boi")
+                        buttonListener.let {
+                            joinButton.setOnClickListener {
+                                buttonListener.onButtonJoinClick(content[bindingAdapterPosition])
+                                joinButton.setText("Unjoin")
+                            }
+                        }
+                        Log.d("join button", it.isJoin.toString())
+                    } else{
+                        Log.d("Masuk else", "msk else boi")
+                        buttonListener.let {
+                            joinButton.setOnClickListener {
+                                buttonListener.onButtonUnjoinClick((content[bindingAdapterPosition]))
+                                joinButton.setText("Join")
+                            }
+                        }
+                    }
+                }
+            }
         }
 
 
         internal fun bind(position: Int) {
-            when(content[bindingAdapterPosition].jenis_game){
+            when (content[position].jenis_game) {
                 "Valorant" -> poster.setImageResource(R.drawable.valorant)
                 "PUBG" -> poster.setImageResource(R.drawable.pubg_pic)
                 "DOTA 2" -> poster.setImageResource(R.drawable.dota)
                 "Mobile Legends" -> poster.setImageResource(R.drawable.mobilelegends)
                 else -> 0
             }
-            playerCount.setText(content[position].jumlah_pemain_sekarang.toString() + "/" + content[position].jumlah_pemain.toString())
+            playerCount.text =
+                "${content[position].jumlah_pemain_sekarang}/${content[position].jumlah_pemain}"
             gameType.setText(content[position].jenis_game)
         }
     }
+
+//    fun setData(item: List<Scrim>){
+//        this.content.clear()
+//        this.content.addAll(item)
+//        notifyDataSetChanged()
+//    }
 }
