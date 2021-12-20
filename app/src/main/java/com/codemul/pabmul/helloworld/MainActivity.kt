@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         supportActionBar?.title = "HOME"
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -78,14 +77,6 @@ class MainActivity : AppCompatActivity() {
             binding.tvIdAkun.text = "ID: ${id}"
 
         }
-//        currentUser?.uid.let {
-//            val username = user?.name
-//            val email = user?.email
-//            val id = user?.id
-//
-//            binding.tvIdNama.text = username.toString()
-//            binding.tvIdAkun.text= id.toString()
-//        }
     }
 
     private fun onClickComponentListener() {
