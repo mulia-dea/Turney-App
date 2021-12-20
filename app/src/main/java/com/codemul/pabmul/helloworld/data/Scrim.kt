@@ -13,4 +13,5 @@ data class Scrim(
     var jumlah_pemain: Int = 0,
     var jumlah_pemain_sekarang: Int = 0,
     var information: String? = null,
+    var isJoin: Int = 0
 ): Parcelable

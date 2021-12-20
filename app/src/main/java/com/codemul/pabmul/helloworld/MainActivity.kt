@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
             val username = it.child("name").value.toString()
             val id = it.child("id").value.toString()
             binding.tvIdNama.text = username
-            binding.tvIdAkun.text = id
+            binding.tvIdAkun.text = "ID: ${id}"
 
         }
 //        currentUser?.uid.let {
