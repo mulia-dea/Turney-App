@@ -37,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
 
         setViewListener()
         setUp()
+
     }
 
     fun setViewListener() {
