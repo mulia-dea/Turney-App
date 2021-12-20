@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.codemul.pabmul.helloworld.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import java.lang.IllegalArgumentException
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var loginBinding: ActivityLoginBinding
@@ -68,32 +69,39 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login(email: String, password: String) {
-        firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
-            val df = databaseRef.getReference("Users")
-            df.child(currentUser!!.uid).get().addOnSuccessListener {
-                val admin = it.child("admin").value.toString()
-                if (email.isNotEmpty() && password.isNotEmpty()) {
-                    if (admin == "2131296730") {
-                        Log.d("ADMIN", it.child("admin").value.toString())
-                        Toast.makeText(this, "ADMIN", Toast.LENGTH_SHORT).show()
+        try {
+            firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
+                val df = databaseRef.getReference("Users")
+                df.child(currentUser!!.uid).get().addOnSuccessListener {
+                    val admin = it.child("admin").value.toString()
+                    if (email.isNotEmpty() && password.isNotEmpty()) {
+                        if (admin == "2131296730") {
+                            Log.d("ADMIN", it.child("admin").value.toString())
+                            Toast.makeText(this, "ADMIN", Toast.LENGTH_SHORT).show()
 
-                        startActivity(Intent(this, MainAdmin::class.java))
+                            startActivity(Intent(this, EventActivity::class.java))
+                        } else {
+                            Toast.makeText(this, "NOT ADMIN", Toast.LENGTH_SHORT)
+                                .show()
+
+                            startActivity(Intent(this, MainActivity::class.java))
+                        }
                     } else {
-                        Toast.makeText(this, "NOT ADMIN", Toast.LENGTH_SHORT)
-                            .show()
-
-                        startActivity(Intent(this, MainActivity::class.java))
+                        Toast.makeText(this, "Please fill the values", Toast.LENGTH_SHORT).show()
                     }
-                } else {
-                    Toast.makeText(this, "Please fill the values", Toast.LENGTH_SHORT).show()
+
+                }
+                Toast.makeText(this, "SUCCESS LOGIN", Toast.LENGTH_SHORT).show()
+            }
+                .addOnFailureListener {
+                    Toast.makeText(this, "FAILED LOGIN", Toast.LENGTH_SHORT)
+                        .show()
                 }
 
-            }
-            Toast.makeText(this, "SUCCESS LOGIN", Toast.LENGTH_SHORT).show()
+        } catch (e: IllegalArgumentException) {
+            Toast.makeText(this, "Field is Empty", Toast.LENGTH_SHORT)
+                .show()
         }
-            .addOnFailureListener {
-                Toast.makeText(this, "FAILED LOGIN", Toast.LENGTH_SHORT)
-                    .show()
-            }
+
     }
 }
