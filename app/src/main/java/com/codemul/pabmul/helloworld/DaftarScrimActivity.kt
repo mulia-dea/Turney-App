@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import com.codemul.pabmul.helloworld.data.Scrim
 import com.codemul.pabmul.helloworld.databinding.ActivityDaftarScrimBinding
-import com.codemul.pabmul.helloworld.db.RealtimeDatabase
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase

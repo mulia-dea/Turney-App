@@ -31,7 +31,9 @@ class DaftarEventActivity : AppCompatActivity() {
         intent.getStringExtra(DetailEventActivity.id_event)
     }
 
-
+    private val dataFee by lazy {
+        intent.getIntExtra(DetailEventActivity.id_fee, 0)
+    }
 //    var daftarDialog: AlertDialog? = null
 
     private lateinit var binding: ActivityDaftarEventBinding
@@ -54,7 +56,6 @@ class DaftarEventActivity : AppCompatActivity() {
     }
 
     private fun setDataToFirebase() {
-
 //        val df = databaseRef.getReference("DaftarEvent").child(currentUser!!.uid)
         val df = databaseRef.getReference("Users").child(currentUser!!.uid).child("eventTerdaftar")
         val daftarEvent = DaftarEvent()
@@ -72,8 +73,12 @@ class DaftarEventActivity : AppCompatActivity() {
             binding.nameAnggota.text?.clear()
             binding.noPerwakilan.text?.clear()
 
-            showPopUp()
-//            Toast.makeText(this, "Daftar Event Berhasil", Toast.LENGTH_SHORT).show()
+            if(dataFee == 0) {
+                Toast.makeText(this, "Daftar Event Berhasil", Toast.LENGTH_SHORT).show()
+                //intent ketempat lain (history)
+            } else {
+                showPopUp()
+            }
 
         }.addOnFailureListener {
             Toast.makeText(this, "Daftar Event Gagal", Toast.LENGTH_SHORT).show()
@@ -97,7 +102,4 @@ class DaftarEventActivity : AppCompatActivity() {
         return true
     }
 
-    companion object {
-        const val ALERT_DIALOG = 10
-    }
 }

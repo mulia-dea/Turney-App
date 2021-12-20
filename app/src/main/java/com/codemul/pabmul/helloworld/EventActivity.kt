@@ -31,7 +31,7 @@ class EventActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        supportActionBar?.title = "Lsit Event"
+        supportActionBar?.title = "List Event"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         setContentView(R.layout.activity_event)
