@@ -10,11 +10,22 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.codemul.pabmul.helloworld.data.Event
 import com.codemul.pabmul.helloworld.data.Quest
 import com.codemul.pabmul.helloworld.data.Scrim
 
 class QuestAdapter(private val context: Context, private val content: MutableList<Quest>) :
     RecyclerView.Adapter<QuestAdapter.QuestViewHolder>() {
+
+    private var onItemClickCallback: QuestAdapter.OnItemClickCallback? = null
+
+    fun setOnItemClickCallback(onItemClickCallback: QuestAdapter.OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(quest: Quest)
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -56,6 +67,7 @@ class QuestAdapter(private val context: Context, private val content: MutableLis
             questName.setText(content[position].namaQuest)
             questDesc.setText(content[position].questDesc)
             questReward.setText(content[position].reward)
+            pickButton.setOnClickListener { onItemClickCallback?.onItemClicked(content[position])}
         }
     }
 }

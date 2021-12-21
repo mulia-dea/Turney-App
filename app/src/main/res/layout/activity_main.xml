@@ -141,7 +141,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:id="@+id/tv_ques"
+                    android:id="@+id/tv_quest_desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_quest_name"
