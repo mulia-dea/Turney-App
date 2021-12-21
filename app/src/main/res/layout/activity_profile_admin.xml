@@ -35,8 +35,6 @@
             app:layout_constraintHorizontal_bias="0.951"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/tv_name_admin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -70,7 +68,6 @@
             app:layout_constraintHorizontal_bias="0.057"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_id_admin"/>
-
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_personal"

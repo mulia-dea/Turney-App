@@ -3,11 +3,13 @@ package com.codemul.pabmul.helloworld
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.codemul.pabmul.helloworld.data.Quest
 import com.codemul.pabmul.helloworld.data.User
 import com.codemul.pabmul.helloworld.databinding.ActivityCreateEventBinding
 import com.codemul.pabmul.helloworld.databinding.ActivityMainBinding
@@ -27,6 +29,10 @@ class MainActivity : AppCompatActivity() {
 
     private val currentUser by lazy {
         firebaseAuth.currentUser
+    }
+
+    private val dataIntent by lazy {
+        intent.getParcelableExtra<Quest>(INTENT_DETAIL)
     }
 
     private var user: User? = null
@@ -64,6 +70,7 @@ class MainActivity : AppCompatActivity() {
         onClickComponentListener()
 
         profile()
+        setQuest()
     }
 
     //masih bingung
@@ -117,5 +124,23 @@ class MainActivity : AppCompatActivity() {
         binding.linearHistoryScrim.setOnClickListener {
             startActivity(Intent(this, HistoryScrimTerdaftar::class.java))
         }
+    }
+
+    private fun setQuest() {
+//        Log.d("intent data", dataIntent.toString())
+
+        if (dataIntent == null){
+            binding.tvQuestName.setText("#Quest Name")
+            binding.tvQuestDesc.setText("#Quest Description")
+        }
+        else{
+            binding.tvQuestName.setText(dataIntent?.namaQuest)
+            binding.tvQuestDesc.setText(dataIntent?.questDesc)
+        }
+    }
+
+    companion object {
+        var INTENT_DETAIL = "intent_detail"
+//        var id_event = "id_Event"
     }
 }
