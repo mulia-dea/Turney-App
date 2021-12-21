@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.codemul.pabmul.helloworld.data.Scrim
+import com.codemul.pabmul.helloworld.databinding.ActivityHistoryScrimTerdaftarBinding
 import com.codemul.pabmul.helloworld.databinding.ActivityScrimBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
+import java.util.ArrayList
 
 class HistoryScrimTerdaftar : AppCompatActivity() {
 
@@ -18,7 +21,7 @@ class HistoryScrimTerdaftar : AppCompatActivity() {
     private var databaseRef: DatabaseReference? = null
     private var dbListerner: ValueEventListener? = null
     private lateinit var scrimList: MutableList<Scrim>
-    private lateinit var binding: ActivityScrimBinding
+    private lateinit var binding: ActivityHistoryScrimTerdaftarBinding
 
     private val firebaseAuth by lazy {
         FirebaseAuth.getInstance()
@@ -34,7 +37,18 @@ class HistoryScrimTerdaftar : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_history_scrim_terdaftar)
+        binding = ActivityHistoryScrimTerdaftarBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        supportActionBar?.title = "History Scrim"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        binding.rvScrimHistory.setHasFixedSize(true)
+        binding.rvScrimHistory.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
+        scrimList = ArrayList()
+        adapter = ScrimTerdaftarAdapter(scrimList)
+        binding.rvScrimHistory.adapter = adapter
 
         getDataHistoryFromDataBase()
     }
@@ -63,5 +77,10 @@ class HistoryScrimTerdaftar : AppCompatActivity() {
             }
 
         })
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

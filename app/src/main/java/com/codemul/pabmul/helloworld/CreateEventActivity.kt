@@ -147,7 +147,7 @@ class CreateEventActivity : AppCompatActivity() {
             Toast.makeText(this, "Daftar berhasil", Toast.LENGTH_SHORT).show()
 
             //masuk ke main penyelenggara
-//            startActivity(Intent(MainActivity))
+            startActivity(Intent(this, MainAdmin::class.java))
         }
     }
 

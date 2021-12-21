@@ -9,7 +9,7 @@ import com.codemul.pabmul.helloworld.data.Scrim
 import com.codemul.pabmul.helloworld.databinding.ListScrimBinding
 import com.codemul.pabmul.helloworld.databinding.ListScrimTerdaftarBinding
 
-class ScrimTerdaftarAdapter () :
+class ScrimTerdaftarAdapter (private val content: MutableList<Scrim>) :
     RecyclerView.Adapter<ScrimTerdaftarAdapter.ScrimTerdaftarViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
@@ -19,11 +19,11 @@ class ScrimTerdaftarAdapter () :
     )
 
     override fun onBindViewHolder(holder: ScrimTerdaftarAdapter.ScrimTerdaftarViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.bind(content[position])
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return content.size
     }
 
     inner class ScrimTerdaftarViewHolder(val view: ListScrimTerdaftarBinding) : RecyclerView.ViewHolder(view.root){

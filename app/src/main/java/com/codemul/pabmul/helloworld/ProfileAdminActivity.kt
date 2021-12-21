@@ -42,6 +42,8 @@ class ProfileAdminActivity : AppCompatActivity() {
             this@ProfileAdminActivity.finish()
 
         }
+
+        profile()
     }
 
     override fun onSupportNavigateUp(): Boolean {

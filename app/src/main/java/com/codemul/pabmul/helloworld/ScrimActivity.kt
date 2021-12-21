@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codemul.pabmul.helloworld.data.Scrim
 import com.codemul.pabmul.helloworld.data.User
@@ -45,6 +46,9 @@ class ScrimActivity : AppCompatActivity() {
 
         supportActionBar?.title = "Scrim"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        binding.rvScrimList.setHasFixedSize(true)
+        binding.rvScrimList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         scrimList = ArrayList()
 
