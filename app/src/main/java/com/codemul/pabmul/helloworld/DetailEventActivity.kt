@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.core.view.isGone
 import com.codemul.pabmul.helloworld.data.Event
 import com.codemul.pabmul.helloworld.databinding.ActivityDetailEventBinding
@@ -42,7 +43,8 @@ class DetailEventActivity : AppCompatActivity() {
 
         var contact2 = dataIntent?.contact2
         if(contact2  == null){
-            binding.dtlContact2.isGone
+            binding.dtlContact2.visibility = View.GONE
+            binding.contact2.visibility = View.GONE
         } else {
             binding.dtlContact2.text = dataIntent?.contact2
         }

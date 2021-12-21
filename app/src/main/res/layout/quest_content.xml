@@ -19,8 +19,10 @@
 
             <ImageView
                 android:id="@+id/iv_quest_image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:src="@drawable/quest_1"/>
 
         </androidx.cardview.widget.CardView>
 

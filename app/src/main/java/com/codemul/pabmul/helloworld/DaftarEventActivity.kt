@@ -75,6 +75,9 @@ class DaftarEventActivity : AppCompatActivity() {
 
             if(dataFee == 0) {
                 Toast.makeText(this, "Daftar Event Berhasil", Toast.LENGTH_SHORT).show()
+
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
                 //intent ketempat lain (history)
             } else {
                 showPopUp()

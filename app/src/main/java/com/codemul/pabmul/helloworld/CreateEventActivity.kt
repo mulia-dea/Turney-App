@@ -208,6 +208,7 @@ class CreateEventActivity : AppCompatActivity() {
                     newPost.child("contact2").setValue(event.contact2)
 
                     startActivity(Intent(this, MainAdmin::class.java))
+                    finish()
                 }
                 else {
                     Toast.makeText(this, "Please fill the values", Toast.LENGTH_SHORT).show()
