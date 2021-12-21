@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorld">
         <activity
-            android:name=".HistoryBuatScrim"
+            android:name=".HistoryScrimTerdaftar"
             android:exported="true" />
         <activity
             android:name=".ProfileAdminActivity"

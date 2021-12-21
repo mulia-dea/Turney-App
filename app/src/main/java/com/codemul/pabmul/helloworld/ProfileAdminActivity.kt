@@ -58,6 +58,8 @@ class ProfileAdminActivity : AppCompatActivity() {
 
             binding.tvUsername.text = username
             binding.tvIdAdmin.text = id
+            binding.edtUsernameAdmin.text = username
+            binding.edtEmailAdmin.text = email
         }
     }
 }

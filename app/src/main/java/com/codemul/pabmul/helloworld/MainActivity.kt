@@ -113,5 +113,9 @@ class MainActivity : AppCompatActivity() {
             val intentQuest = Intent(this, QuestActivity::class.java)
             startActivity(intentQuest)
         }
+
+        binding.linearHistoryScrim.setOnClickListener {
+            startActivity(Intent(this, HistoryScrimTerdaftar::class.java))
+        }
     }
 }

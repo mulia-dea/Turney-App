@@ -93,12 +93,14 @@
                     android:layout_height="wrap_content"
                     android:text="@string/username" />
 
-                <EditText
+                <TextView
                     android:id="@+id/edt_username_admin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:layout_height="30dp"
                     android:layout_below="@id/tv_username"
                     android:layout_marginTop="4dp"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
                     tools:text="Mr.Xroy" />
 
@@ -109,11 +111,13 @@
                     android:layout_below="@id/edt_username_admin"
                     android:text="@string/email" />
 
-                <EditText
+                <TextView
                     android:id="@+id/edt_email_admin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
                     android:layout_below="@id/tv_email"
+                    android:textColor="@color/black"
+                    android:gravity="center"
                     android:textSize="14sp"
                     tools:text="tuanroy77@gmail.com" />
 
@@ -134,13 +138,13 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="8dp"
                     android:textSize="12sp"
-                    tools:text="11/12/02" />
+                    tools:text="11/12/2002" />
 
                 <TextView
                     android:id="@+id/tv_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/edt_email"
+                    android:layout_below="@id/edt_email_admin"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="16dp"
                     android:text="@string/phone_number"

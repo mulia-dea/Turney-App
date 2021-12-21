@@ -8,13 +8,15 @@
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_create_event.xml" value="0.264" />
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_daftar_event.xml" value="0.264" />
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_daftar_scrim.xml" value="0.264" />
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_detail_event.xml" value="0.1" />
+        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_detail_event.xml" value="0.264" />
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_event.xml" value="0.15789473684210525" />
+        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_history_buat_scrim.xml" value="0.12613981762917933" />
+        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_history_scrim_terdaftar.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_main_admin.xml" value="0.259375" />
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_profile.xml" value="0.4" />
-        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_profile_admin.xml" value="0.264" />
+        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_profile.xml" value="0.2" />
+        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_profile_admin.xml" value="0.4" />
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_quest.xml" value="0.259375" />
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_scrim.xml" value="0.259375" />
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
@@ -24,6 +26,7 @@
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/featured_event_list.xml" value="0.259375" />
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/list_event.xml" value="0.264" />
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/list_scrim.xml" value="0.264" />
+        <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/list_scrim_terdaftar.xml" value="0.259375" />
         <entry key="..\:/Users/Lenovo/Documents/KULIAH/SEM 5/PAB/HelloWorld/app/src/main/res/layout/quest_content.xml" value="0.152" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.296195652173913" />
       </map>

@@ -10,6 +10,7 @@ import android.webkit.MimeTypeMap
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContextCompat
 import com.codemul.pabmul.helloworld.data.Event
 import com.codemul.pabmul.helloworld.databinding.ActivityCreateEventBinding
@@ -193,29 +194,22 @@ class CreateEventActivity : AppCompatActivity() {
         val filePath = storage!!.reference.child("event").child(imageUrl!!.lastPathSegment!!)
         filePath.putFile(imageUrl!!).addOnSuccessListener { taskSnapshot ->
             val downloadUrl = taskSnapshot.storage.downloadUrl.addOnCompleteListener { task ->
-                if (event.name!!.isNotEmpty() && event.tgl_event!!.isNotEmpty() && event.tgl_akhir!!.isNotEmpty() && event.tgl_daftar!!.isNotEmpty() && event.tgl_akhir_daftar!!.isNotEmpty() && event.image!!.isNotEmpty() && event.venue!!.isNotEmpty() && event.contact!!.isNotEmpty()){
-                    val t = task.result.toString()
-                    val newPost = databaseRef!!.push()
-                    newPost.child("name").setValue(event.name)
-                    newPost.child("image").setValue(task.getResult().toString())
-                    newPost.child("id").setValue(event.id)
-                    newPost.child("tgl_event").setValue(event.tgl_event)
-                    newPost.child("tgl_akhir").setValue(event.tgl_akhir)
-                    newPost.child("tgl_daftar").setValue(event.tgl_daftar)
-                    newPost.child("tgl_akhir_daftar").setValue(event.tgl_akhir_daftar)
-                    newPost.child("fee").setValue(event.fee)
-                    newPost.child("contact").setValue(event.contact)
-                    newPost.child("contact2").setValue(event.contact2)
-
-                    startActivity(Intent(this, MainAdmin::class.java))
-                    finish()
-                }
-                else {
-                    Toast.makeText(this, "Please fill the values", Toast.LENGTH_SHORT).show()
-                }
+                val t = task.result.toString()
+                val newPost = databaseRef!!.push()
+                newPost.child("name").setValue(event.name)
+                newPost.child("image").setValue(task.getResult().toString())
+                newPost.child("id").setValue(event.id)
+                newPost.child("tgl_event").setValue(event.tgl_event)
+                newPost.child("tgl_akhir").setValue(event.tgl_akhir)
+                newPost.child("tgl_daftar").setValue(event.tgl_daftar)
+                newPost.child("tgl_akhir_daftar").setValue(event.tgl_akhir_daftar)
+                newPost.child("fee").setValue(event.fee)
+                newPost.child("contact").setValue(event.contact)
+                newPost.child("contact2").setValue(event.contact2)
             }
         }
     }
+
 
 //    private fun getFileExtension(uri: Uri): String?{
 //        val cr = contentResolver

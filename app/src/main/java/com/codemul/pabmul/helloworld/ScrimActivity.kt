@@ -118,7 +118,6 @@ class ScrimActivity : AppCompatActivity() {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
                 scrimList.clear()
-
                 for (eventSnap in snapshot.children) {
                     val upload = eventSnap.getValue(Scrim::class.java)
                     upload!!.id = eventSnap.key
