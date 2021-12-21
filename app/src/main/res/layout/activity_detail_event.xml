@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailEventActivity"
-    android:background="@color/black"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/black">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="280dp"
                 android:orientation="vertical">
 
                 <ImageView
@@ -89,7 +89,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tournament_day"
                         android:layout_marginStart="20dp"
-                        android:layout_marginTop="14dp"
+                        android:layout_marginTop="18dp"
                         android:layout_marginEnd="10dp"
                         android:text="@string/pendaftaran"
                         android:textColor="@color/black"
@@ -112,12 +112,13 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tgl_tournament"
                         android:layout_marginStart="25dp"
-                        android:layout_marginTop="14dp"
+                        android:layout_marginLeft="41dp"
+                        android:layout_marginTop="15dp"
                         android:layout_marginEnd="10dp"
                         android:layout_toRightOf="@id/daftar"
                         android:textColor="@color/black"
                         android:textSize="15sp"
-                        tools:text=": 18-23 November 2021" />
+                        tools:text="18-23 November 2021" />
 
                 </RelativeLayout>
 
@@ -206,7 +207,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginTop="7dp"
-                            android:text="Contact"
+                            tools:text="Contact"
                             android:layout_below="@id/contact"
                             android:textColor="@color/black"
                             android:layout_marginLeft="20dp"/>
@@ -219,33 +220,11 @@
                             android:layout_marginLeft="95dp"
                             android:layout_marginTop="7dp"
                             android:layout_toRightOf="@id/fee"
-                            android:text=": 08xxxxxxxxxx"
+                            tools:text=": 08xxxxxxxxxx"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 
                     </RelativeLayout>
-
-                    <TextView
-                        android:id="@+id/detail_deskripsi"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/event_lainnya"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:paddingBottom="5dp"
-                        android:textSize="18sp" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_featured_events"
-                        android:layout_width="match_parent"
-                        android:layout_height="170dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="10dp"
-                        android:scrollbars="horizontal"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tools:listitem="@layout/featured_event_list" />
 
                     <Button
                         android:id="@+id/btn_daftar"
@@ -267,3 +246,26 @@
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<!--<TextView-->
+<!--android:id="@+id/detail_deskripsi"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_marginStart="20dp"-->
+<!--android:layout_marginTop="10dp"-->
+<!--android:text="@string/event_lainnya"-->
+<!--android:textColor="@color/black"-->
+<!--android:textStyle="bold"-->
+<!--android:paddingBottom="5dp"-->
+<!--android:textSize="18sp" />-->
+
+<!--<androidx.recyclerview.widget.RecyclerView-->
+<!--android:id="@+id/rv_featured_events"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="170dp"-->
+<!--android:layout_marginTop="5dp"-->
+<!--android:layout_marginLeft="10dp"-->
+<!--android:scrollbars="horizontal"-->
+<!--app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--tools:listitem="@layout/featured_event_list" />-->

@@ -1,6 +1,7 @@
 package com.codemul.pabmul.helloworld
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,8 +9,9 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.codemul.pabmul.helloworld.data.Scrim
 import com.codemul.pabmul.helloworld.databinding.ActivityDaftarScrimBinding
-import com.codemul.pabmul.helloworld.db.RealtimeDatabase
+import com.codemul.pabmul.helloworld.databinding.ActivityLoginBinding
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -22,6 +24,19 @@ class DaftarScrimActivity : AppCompatActivity() {
 
     private var databaseRef: DatabaseReference? = null
     private var database: FirebaseDatabase? = null
+
+    private lateinit var loginBinding: ActivityLoginBinding
+    private val firebaseAuth by lazy {
+        FirebaseAuth.getInstance()
+    }
+
+//    private val databaseRef by lazy {
+//        FirebaseDatabase.getInstance()
+//    }
+
+    private val currentUser by lazy {
+        firebaseAuth.currentUser
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -111,6 +126,9 @@ class DaftarScrimActivity : AppCompatActivity() {
 
             database!!.getReference("scrim").child(scrim.id!!).setValue(scrim).addOnSuccessListener {
                 Toast.makeText(this@DaftarScrimActivity, "Data Saved", Toast.LENGTH_SHORT).show()
+
+                startActivity(Intent(this, ScrimActivity::class.java))
+
             }.addOnFailureListener{
                 Toast.makeText(this@DaftarScrimActivity, "Data Failed to Save", Toast.LENGTH_SHORT).show()
             }

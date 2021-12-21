@@ -31,13 +31,17 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        profile()
+
         binding.tvLogout.setOnClickListener{
             firebaseAuth.signOut()
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
+            startActivity(Intent(this, LoginActivity::class.java)).apply {
+                Intent.FLAG_ACTIVITY_CLEAR_TOP
+                Intent.FLAG_ACTIVITY_CLEAR_TASK
+                Intent.FLAG_ACTIVITY_NEW_TASK
+            }
+            this@ProfileActivity.finish()
         }
-
-        profile()
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -54,6 +58,8 @@ class ProfileActivity : AppCompatActivity() {
 
             binding.tvName.text = username
             binding.tvId.text = id
+            binding.edtUsername.text = username
+            binding.edtEmail.text = email
         }
     }
 }

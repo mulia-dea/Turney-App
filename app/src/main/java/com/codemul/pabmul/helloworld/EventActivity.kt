@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codemul.pabmul.helloworld.data.Event
 import com.codemul.pabmul.helloworld.databinding.ActivityEventBinding
-import com.codemul.pabmul.helloworld.db.RealtimeDatabase
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -21,7 +20,6 @@ class EventActivity : AppCompatActivity() {
     private lateinit var rvEvent : RecyclerView
 
     private lateinit var binding: ActivityEventBinding
-    private val db = RealtimeDatabase.instance()
     private var storage : FirebaseStorage? = null
     private var databaseRef: DatabaseReference? = null
     private var database : FirebaseDatabase? = null
@@ -55,8 +53,6 @@ class EventActivity : AppCompatActivity() {
         storage = FirebaseStorage.getInstance()
 //        Log.d("Data", event.id.toString())
         databaseRef = FirebaseDatabase.getInstance().getReference("event")
-//        databaseRef = FirebaseDatabase.getInstance().getReference("event").child(event.id.toString())
-//        Log.d("Data", FirebaseDatabase.getInstance().getReference("event/" + event.id).child("name").toString())
         dbListener = databaseRef?.addValueEventListener(object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {

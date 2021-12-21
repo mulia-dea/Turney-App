@@ -7,17 +7,14 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.webkit.MimeTypeMap
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContextCompat
 import com.codemul.pabmul.helloworld.data.Event
 import com.codemul.pabmul.helloworld.databinding.ActivityCreateEventBinding
 import com.codemul.pabmul.helloworld.databinding.ActivityDetailEventBinding
-import com.codemul.pabmul.helloworld.db.RealtimeDatabase
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -29,18 +26,17 @@ import java.util.*
 
 
 class CreateEventActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityCreateEventBinding
+    private lateinit var binding: ActivityCreateEventBinding
 
     var selectImagePath: String? = null
-    private var imageUrl : Uri? = null
+    private var imageUrl: Uri? = null
     private lateinit var AwalTanggal: String
-    private lateinit var AkhirTanggal : String
-    private lateinit var awalDaftar : String
-    private lateinit var akhirDaftar : String
-    private var storage : FirebaseStorage? = null
+    private lateinit var AkhirTanggal: String
+    private lateinit var awalDaftar: String
+    private lateinit var akhirDaftar: String
+    private var storage: FirebaseStorage? = null
     private var databaseRef: DatabaseReference? = null
-    private var database : FirebaseDatabase? = null
-
+    private var database: FirebaseDatabase? = null
 
 
 //    lateinit var event : Event
@@ -68,7 +64,8 @@ class CreateEventActivity : AppCompatActivity() {
 
         binding.chooseImg.setOnClickListener {
             if (ContextCompat.checkSelfPermission(applicationContext,
-                    Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+            ) {
                 ActivityCompat.requestPermissions(this,
                     arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
                     REQUEST_PERMISSIONS)
@@ -77,7 +74,7 @@ class CreateEventActivity : AppCompatActivity() {
             }
         }
 
-        binding.tglEvent.setOnClickListener{
+        binding.tglEvent.setOnClickListener {
             val cal = Calendar.getInstance()
             val date = DatePickerDialog(this,
                 { _, year, monthOfYear, dayOfMonth ->
@@ -87,14 +84,14 @@ class CreateEventActivity : AppCompatActivity() {
                         "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember")
                     AwalTanggal = dayOfMonth.toString() + " " + bulan[monthOfYear] + " " + year
                     binding.tglEvent.setText(AwalTanggal)
-                },cal.get(Calendar.YEAR),
+                }, cal.get(Calendar.YEAR),
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH))
 
             date.show()
         }
 
-        binding.tglAkhirEvent.setOnClickListener{
+        binding.tglAkhirEvent.setOnClickListener {
             val cal = Calendar.getInstance()
             val date = DatePickerDialog(this,
                 { _, year, monthOfYear, dayOfMonth ->
@@ -104,14 +101,14 @@ class CreateEventActivity : AppCompatActivity() {
                         "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember")
                     AkhirTanggal = dayOfMonth.toString() + " " + bulan[monthOfYear] + " " + year
                     binding.tglAkhirEvent.setText(AkhirTanggal)
-                },cal.get(Calendar.YEAR),
+                }, cal.get(Calendar.YEAR),
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH))
 
             date.show()
         }
 
-        binding.tglAwalDaftar.setOnClickListener{
+        binding.tglAwalDaftar.setOnClickListener {
             val cal = Calendar.getInstance()
             val date = DatePickerDialog(this,
                 { _, year, monthOfYear, dayOfMonth ->
@@ -121,14 +118,14 @@ class CreateEventActivity : AppCompatActivity() {
                         "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember")
                     awalDaftar = dayOfMonth.toString() + " " + bulan[monthOfYear] + " " + year
                     binding.tglAwalDaftar.setText(awalDaftar)
-                },cal.get(Calendar.YEAR),
+                }, cal.get(Calendar.YEAR),
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH))
 
             date.show()
         }
 
-        binding.tglAkhir.setOnClickListener{
+        binding.tglAkhir.setOnClickListener {
             val cal = Calendar.getInstance()
             val date = DatePickerDialog(this,
                 { _, year, monthOfYear, dayOfMonth ->
@@ -138,7 +135,7 @@ class CreateEventActivity : AppCompatActivity() {
                         "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember")
                     akhirDaftar = dayOfMonth.toString() + " " + bulan[monthOfYear] + " " + year
                     binding.tglAkhir.setText(akhirDaftar)
-                },cal.get(Calendar.YEAR),
+                }, cal.get(Calendar.YEAR),
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH))
 
@@ -150,7 +147,7 @@ class CreateEventActivity : AppCompatActivity() {
             Toast.makeText(this, "Daftar berhasil", Toast.LENGTH_SHORT).show()
 
             //masuk ke main penyelenggara
-//            startActivity(Intent(MainActivity))
+            startActivity(Intent(this, MainAdmin::class.java))
         }
     }
 
@@ -180,8 +177,7 @@ class CreateEventActivity : AppCompatActivity() {
         }
     }
 
-    private fun setDataToFirebase()
-    {
+    private fun setDataToFirebase() {
         val event = Event()
         event.id = UUID.randomUUID().toString()
         event.name = binding.nameEvent.text.toString().trim()
@@ -214,6 +210,7 @@ class CreateEventActivity : AppCompatActivity() {
         }
     }
 
+
 //    private fun getFileExtension(uri: Uri): String?{
 //        val cr = contentResolver
 //        val mime = MimeTypeMap.getSingleton()
@@ -235,7 +232,11 @@ class CreateEventActivity : AppCompatActivity() {
             PICK_IMAGE_REQUEST)
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray,
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_PERMISSIONS && grantResults.size > 0) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {

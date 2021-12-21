@@ -43,7 +43,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         supportActionBar?.title = "HOME"
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -75,16 +74,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     //masih bingung
-    override fun onStart() {
-//        val firebaseUser: FirebaseUser = firebaseAuth.currentUser!!
-        if (currentUser!=null){
-            //there is some user log in
-        } else{
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
-        super.onStart()
-    }
 
     private fun profile() {
         val df = databaseRef.getReference("Users")
@@ -95,14 +84,6 @@ class MainActivity : AppCompatActivity() {
             binding.tvIdAkun.text = "ID: ${id}"
 
         }
-//        currentUser?.uid.let {
-//            val username = user?.name
-//            val email = user?.email
-//            val id = user?.id
-//
-//            binding.tvIdNama.text = username.toString()
-//            binding.tvIdAkun.text= id.toString()
-//        }
     }
 
     private fun onClickComponentListener() {
@@ -138,6 +119,10 @@ class MainActivity : AppCompatActivity() {
         questComponent.setOnClickListener {
             val intentQuest = Intent(this, QuestActivity::class.java)
             startActivity(intentQuest)
+        }
+
+        binding.linearHistoryScrim.setOnClickListener {
+            startActivity(Intent(this, HistoryScrimTerdaftar::class.java))
         }
     }
 

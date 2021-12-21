@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codemul.pabmul.helloworld.data.Quest
 import com.codemul.pabmul.helloworld.data.Scrim
+import com.codemul.pabmul.helloworld.data.User
 import com.codemul.pabmul.helloworld.databinding.ActivityScrimBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -38,6 +40,8 @@ class ScrimActivity : AppCompatActivity() {
         firebaseAuth.currentUser
     }
 
+    var user : User? = null
+  
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScrimBinding.inflate(layoutInflater)
@@ -45,6 +49,9 @@ class ScrimActivity : AppCompatActivity() {
 
         supportActionBar?.title = "Scrim"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        binding.rvScrimList.setHasFixedSize(true)
+        binding.rvScrimList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         scrimList = ArrayList()
 
@@ -59,11 +66,7 @@ class ScrimActivity : AppCompatActivity() {
                 val data =
                     dataBase.getReference("Users").child(currentUser!!.uid).child("scrimTerdaftar")
                         .child(content.id!!).setValue(content).addOnSuccessListener {
-                            Toast.makeText(
-                                this@ScrimActivity,
-                                "Berhasil ikut scrim",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Toast.makeText(this@ScrimActivity, "Berhasil ikut scrim", Toast.LENGTH_SHORT).show()
                         }
             }
 
@@ -74,23 +77,44 @@ class ScrimActivity : AppCompatActivity() {
                 val data =
                     dataBase.getReference("Users").child(currentUser!!.uid).child("scrimTerdaftar")
                         .child(content.id!!).setValue(content).addOnSuccessListener {
-                            Toast.makeText(
-                                this@ScrimActivity,
-                                "Berhasil batal ikut scrim",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Toast.makeText(this@ScrimActivity, "Berhasil batal ikut scrim", Toast.LENGTH_SHORT).show()
                         }
-
             }
-
 
         })
 
         getDataFromDataBase()
 //        Log.d("scrimList val ", scrimList.toString()) // debug
-        validateQuest()
 
     }
+
+    //AKSES HISTORY SCRIM TERDAFTAR
+
+//    private fun getDataHistoryFromDataBase() {
+//        storage = FirebaseStorage.getInstance()
+//        databaseRef = FirebaseDatabase.getInstance().getReference("Users").child(currentUser!!.uid).child("scrimTerdaftar")
+//        Log.d("dataaaa", databaseRef.toString())
+////        Log.d("data ref", databaseRef.toString())
+//        dbListerner = databaseRef?.addValueEventListener(object : ValueEventListener {
+//            @SuppressLint("NotifyDataSetChanged")
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                scrimList.clear()
+//                for (eventSnap in snapshot.children) {
+//                    val upload = eventSnap.getValue(Scrim::class.java)
+//                    upload!!.id = eventSnap.key
+//                    scrimList.add(upload)
+//                    Log.d("scrimList val ", scrimList.toString())
+//                     // debug
+//                }
+//                adapter.notifyDataSetChanged()
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                Toast.makeText(this@ScrimActivity, error.message, Toast.LENGTH_SHORT).show()
+//            }
+//
+//        })
+//    }
 
     private fun getDataFromDataBase() {
         storage = FirebaseStorage.getInstance()
@@ -100,7 +124,6 @@ class ScrimActivity : AppCompatActivity() {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
                 scrimList.clear()
-
                 for (eventSnap in snapshot.children) {
                     val upload = eventSnap.getValue(Scrim::class.java)
                     upload!!.id = eventSnap.key
