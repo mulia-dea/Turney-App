@@ -32,6 +32,7 @@ class MainAdmin : AppCompatActivity() {
         showBuatEvent()
         toDaftarScrim()
         listScrim()
+        toScrimHistory()
     }
 
     private fun showBuatEvent(){
@@ -70,4 +71,9 @@ class MainAdmin : AppCompatActivity() {
         }
     }
 
+    private fun toScrimHistory() {
+        binding.ivHistoryScrim.setOnClickListener {
+            startActivity(Intent(this, HistoryScrimTerdaftar::class.java))
+        }
+    }
 }

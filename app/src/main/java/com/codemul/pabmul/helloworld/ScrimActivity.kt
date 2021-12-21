@@ -76,7 +76,7 @@ class ScrimActivity : AppCompatActivity() {
                 // data dihapus dari database
                 val data =
                     dataBase.getReference("Users").child(currentUser!!.uid).child("scrimTerdaftar")
-                        .child(content.id!!).setValue(content).addOnSuccessListener {
+                        .child(content.id!!).removeValue().addOnSuccessListener {
                             Toast.makeText(this@ScrimActivity, "Berhasil batal ikut scrim", Toast.LENGTH_SHORT).show()
                         }
             }
