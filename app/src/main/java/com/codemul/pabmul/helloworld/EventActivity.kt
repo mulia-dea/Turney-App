@@ -69,79 +69,8 @@ class EventActivity : AppCompatActivity() {
 
         val event = Event()
         storage = FirebaseStorage.getInstance()
-//        Log.d("Data", event.id.toString())
-//        databaseRef = FirebaseDatabase.getInstance().getReference("event")
-//        databaseRef!!.addChildEventListener(object : ChildEventListener {
-//            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-//                val data = snapshot.getValue(Event::class.java)
-//                idEvent = previousChildName.toString()
-//
-//                if (data!!.id_penyelenggara == currentUser!!.uid) {
-//                    eventList.add(data)
-//
-//                    Log.d("Data List", eventList.toString())
-//                }
-//
-//                adapterEvent.notifyDataSetChanged()
-//
-//                adapterEvent.setOnItemClickCallback(object : EventAdapter.OnItemClickCallback {
-//                    override fun onItemClicked(event: Event) {
-//
-//                        startActivity(Intent(this@EventActivity,
-//                            detail::class.java).putExtra("idEvent", previousChildName))
-//                    }
-//
-//                })
-//            }
-//
-//            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-//            }
-//
-//            override fun onChildRemoved(snapshot: DataSnapshot) {
-//            }
-//
-//            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//            }
-//
-//        })
 
-
-
-            //nampilin user peserta tiap event ke dalam detail (untuk admin)
-//        databaseRef!!.addChildEventListener(object: ChildEventListener{
-//            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-//                snapshot.children.forEach {
-//                    val dataPeerta = it.child(idEvent).getValue(DaftarEvent::class.java)
-//
-//                    //bikin variabel untuk menampung data peserta
-//                    eventList.add(dataPeerta)
-//
-//                }
-//                //set data to dapter
-//                adapterEvent.notifyDataSetChanged()
-//            }
-//
-//            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-//                TODO("Not yet implemented")
-//            }
-//
-//            override fun onChildRemoved(snapshot: DataSnapshot) {
-//                TODO("Not yet implemented")
-//            }
-//
-//            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-//                TODO("Not yet implemented")
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                TODO("Not yet implemented")
-//            }
-//
-//        })
-
+        databaseRef = FirebaseDatabase.getInstance().getReference("event")
         dbListener = databaseRef?.addValueEventListener(object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -165,6 +94,10 @@ class EventActivity : AppCompatActivity() {
             override fun onItemClicked(event: Event) {
                 showDetailEvent(event)
             }
+//
+//            override fun onItemHistory() {
+//                TODO("Not yet implemented")
+//            }
 
         })
 
@@ -188,4 +121,5 @@ class EventActivity : AppCompatActivity() {
 //            adapter = adapterEvent
 //        }
 //    }
+
 }

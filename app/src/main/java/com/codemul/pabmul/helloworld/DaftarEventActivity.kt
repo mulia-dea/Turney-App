@@ -56,8 +56,8 @@ class DaftarEventActivity : AppCompatActivity() {
     }
 
     private fun setDataToFirebase() {
-//        val df = databaseRef.getReference("DaftarEvent").child(currentUser!!.uid)
-        val df = databaseRef.getReference("Users").child(currentUser!!.uid).child("eventTerdaftar")
+        val df = databaseRef.getReference("DaftarEvent").child(currentUser!!.uid)
+//        val df = databaseRef.getReference("Users").child(currentUser!!.uid).child("eventTerdaftar")
         val daftarEvent = DaftarEvent()
 
         daftarEvent.namaTim = binding.nameTeam.text.toString().trim()

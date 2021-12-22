@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.codemul.pabmul.helloworld.data.DaftarEvent
 import com.codemul.pabmul.helloworld.data.Event
 
-class DetailHistoryEventAdapter(private val context: Context, private val listDetailEvent: List<DaftarEvent>): RecyclerView.Adapter<DetailHistoryEventAdapter.HistoryEventViewHolder>() {
+class DetailHistoryEventAdapter(private val context: Context, private val listDetailEvent: MutableList<DaftarEvent>): RecyclerView.Adapter<DetailHistoryEventAdapter.HistoryEventViewHolder>() {
     inner class HistoryEventViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
         var tvName : TextView = itemView.findViewById(R.id.dtl_nama_tim)
         var tvAnggota : TextView = itemView.findViewById(R.id.dtl_nama_anggota)

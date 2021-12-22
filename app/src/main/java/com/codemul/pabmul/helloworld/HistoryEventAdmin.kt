@@ -1,5 +1,6 @@
 package com.codemul.pabmul.helloworld
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,7 +19,7 @@ class HistoryEventAdmin : AppCompatActivity() {
     private var storage: FirebaseStorage? = null
     private var databaseRef: DatabaseReference? = null
 
-    lateinit var idEvent: String
+//    lateinit var idEvent: String
     private val firebaseAuth by lazy {
         FirebaseAuth.getInstance()
     }
@@ -47,9 +48,12 @@ class HistoryEventAdmin : AppCompatActivity() {
 //        Log.d("Data", event.id.toString())
         databaseRef = FirebaseDatabase.getInstance().getReference("event")
         databaseRef!!.addChildEventListener(object : ChildEventListener {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                Log.d("key", snapshot.key.toString())
                 val data = snapshot.getValue(Event::class.java)
-                idEvent = previousChildName.toString()
+//                idEvent = previousChildName.toString()
+                data!!.id = snapshot.key
 
                 if (data!!.id_penyelenggara == currentUser!!.uid) {
                     eventList.add(data)
@@ -61,13 +65,6 @@ class HistoryEventAdmin : AppCompatActivity() {
 
                 Log.d("previouschildname", previousChildName.toString())
 
-                adapterEvent.setOnItemClickCallback(object : EventAdapter.OnItemClickCallback {
-                    override fun onItemClicked(event: Event) {
-
-                        startActivity(Intent(this@HistoryEventAdmin,
-                            DetailHistoryEventAdmin::class.java).putExtra(DetailHistoryEventAdmin.id_event, previousChildName))
-                    }
-                })
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
@@ -81,6 +78,19 @@ class HistoryEventAdmin : AppCompatActivity() {
 
             override fun onCancelled(error: DatabaseError) {
             }
+
+        })
+
+        adapterEvent.setOnItemClickCallback(object : EventAdapter.OnItemClickCallback {
+            override fun onItemClicked(event: Event) {
+                startActivity(Intent(this@HistoryEventAdmin,
+                    DetailHistoryEventAdmin::class.java).putExtra(DetailHistoryEventAdmin.id_event, event))
+            }
+//
+//            override fun onItemHistory() {
+//
+//            }
+
 
         })
 

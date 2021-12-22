@@ -2,18 +2,14 @@ package com.codemul.pabmul.helloworld
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.codemul.pabmul.helloworld.data.Event
+import androidx.appcompat.app.AppCompatActivity
 import com.codemul.pabmul.helloworld.data.Quest
 import com.codemul.pabmul.helloworld.databinding.ActivityQuestBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlin.math.log
 
 class QuestActivity : AppCompatActivity() {
 
@@ -38,6 +34,9 @@ class QuestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityQuestBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        supportActionBar?.title = "Quest"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         getDataFromDataBase()
     }
@@ -82,9 +81,9 @@ class QuestActivity : AppCompatActivity() {
 
                 dataBase.getReference("Users").child(currentUser!!.uid).child("activeQuest")
                     .child(quest.id!!).setValue(quest).addOnSuccessListener {
+                        showDetailQuest(quest)
                         Toast.makeText(this@QuestActivity, "dimasukkan sebagai main quest", Toast.LENGTH_SHORT).show()
                     }
-                showDetailQuest(quest)
             }
 
         })
@@ -100,4 +99,8 @@ class QuestActivity : AppCompatActivity() {
         )
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
 }

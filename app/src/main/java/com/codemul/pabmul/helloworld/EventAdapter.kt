@@ -21,6 +21,7 @@ class EventAdapter(private val context: Context, private val listEvent: List<Eve
         fun onItemClicked(event: Event)
     }
 
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
@@ -47,8 +48,7 @@ class EventAdapter(private val context: Context, private val listEvent: List<Eve
             imageUri = event.image
             Picasso.get().load(imageUri).into(image)
             btn.setOnClickListener{ onItemClickCallback?.onItemClicked(event)}
-
-
+//            btn.setOnClickListener { onItemClickCallback?.onItemHistory() }
         }
 
     }

@@ -48,8 +48,7 @@
             android:exported="true" />
         <activity
             android:name=".QuestActivity"
-            android:exported="true"
-            android:parentActivityName=".MainActivity" />
+            android:exported="true" />
         <activity
             android:name=".SignUpActivity"
             android:exported="true" />
@@ -61,16 +60,13 @@
             android:exported="true" />
         <activity
             android:name=".DaftarScrimActivity"
-            android:exported="true"
-            android:parentActivityName=".MainActivity" />
+            android:exported="true" />
         <activity
             android:name=".ScrimActivity"
-            android:exported="true"
-            android:parentActivityName=".MainActivity" />
+            android:exported="true" />
         <activity
             android:name=".EventActivity"
-            android:exported="true"
-            android:parentActivityName=".MainActivity" />
+            android:exported="true" />
         <activity
             android:name=".LoginActivity"
             android:exported="true" />

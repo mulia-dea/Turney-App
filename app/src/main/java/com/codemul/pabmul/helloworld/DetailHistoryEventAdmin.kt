@@ -1,8 +1,9 @@
 package com.codemul.pabmul.helloworld
 
-import androidx.appcompat.app.AppCompatActivity
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codemul.pabmul.helloworld.data.DaftarEvent
 import com.codemul.pabmul.helloworld.data.Event
@@ -16,7 +17,7 @@ class DetailHistoryEventAdmin : AppCompatActivity() {
     private var databaseRef: DatabaseReference? = null
 
     private val idEvent by lazy {
-        intent.getStringExtra(id_event)
+        intent.getParcelableExtra<Event>(id_event)
     }
 
     private val firebaseAuth by lazy {
@@ -33,7 +34,7 @@ class DetailHistoryEventAdmin : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailHistoryEventAdminBinding
     private lateinit var adapterDetailEvent : DetailHistoryEventAdapter
-    private lateinit var eventDetailList: MutableList<DaftarEvent>
+    private var mutableDetail = mutableListOf<DaftarEvent>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,28 +48,42 @@ class DetailHistoryEventAdmin : AppCompatActivity() {
         binding.rvDetailEventAdmin.setHasFixedSize(true)
 
         binding.rvDetailEventAdmin.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        eventDetailList = ArrayList()
-        adapterDetailEvent = DetailHistoryEventAdapter(this, eventDetailList)
+//        eventDetailList = ArrayList()
+        adapterDetailEvent = DetailHistoryEventAdapter(this, mutableDetail)
         binding.rvDetailEventAdmin.adapter = adapterDetailEvent
 
         databaseRef = FirebaseDatabase.getInstance().getReference("DaftarEvent")
+
         databaseRef!!.addChildEventListener(object: ChildEventListener {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 Log.d("snapshot", snapshot.toString())
-                snapshot.children.forEach {
-                    Log.d("snapshot childrem", snapshot.children.toString())
-                    val dataPeserta = it.child(idEvent.toString()).getValue(DaftarEvent::class.java)
 
-                    //bikin variabel untuk menampung data peserta
-                    if (dataPeserta != null) {
-                        eventDetailList.add(dataPeserta)
+                //value keluar tapi cuman awal, id event taruh mana?
+                for(evenSnapshot in snapshot.children){
+                    val data = evenSnapshot.getValue(DaftarEvent::class.java)
+
+                    if(data?.idEvent == idEvent?.id) {
+                        var simpan = mutableDetail.add(data!!)
+                        Log.d("event detail", simpan.toString())
                     }
-
-                    Log.d("data peserta", dataPeserta.toString())
-
                 }
-                //set data to dapter
                 adapterDetailEvent.notifyDataSetChanged()
+//                snapshot.children.forEach {
+//                    Log.d("snappppp", it.value.toString()) //it.value = {namaTim=coba lagi, anggota=aaaa, idEvent=-MqxMESC3aCoDjF58x0S, noPerwakilan=123456789098}
+//                    Log.d("snappppp", it.key.toString())    //MqxMESC3aCoDjF58x0S
+////                    Log.d("idEvent", idEvent.toString()) //-MrT8ZSQUgJGHCcgp2zl
+//
+//                    if(idEvent!!.id == it.key) {
+//                        val data = it.getValue(DaftarEvent::class.java)
+//                        idEvent!!.id = it.key
+//                        Log.d("dataa", data.toString())
+//                        eventDetailList.add(data)
+//                    }
+//                    adapterDetailEvent.notifyDataSetChanged()
+//                }
+
+
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
