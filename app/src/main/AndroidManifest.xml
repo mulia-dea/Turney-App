@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorld">
         <activity
+            android:name=".HistoryEventAdmin"
+            android:exported="true" />
+        <activity
+            android:name=".DetailHistoryEventAdmin"
+            android:exported="true" />
+        <activity
             android:name=".HistoryScrimTerdaftar"
             android:exported="true" />
         <activity

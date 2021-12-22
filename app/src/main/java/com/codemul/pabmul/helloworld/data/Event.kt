@@ -7,6 +7,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Event(
     var id: String? = null,
+    var id_penyelenggara: String? = null,
     var image: String? = null,
     var name: String? =null,
     var tgl_event: String? =null,

@@ -32,6 +32,7 @@ class MainAdmin : AppCompatActivity() {
         showBuatEvent()
         toDaftarScrim()
         listScrim()
+        toHistoryEvent()
     }
 
     private fun showBuatEvent(){
@@ -61,6 +62,12 @@ class MainAdmin : AppCompatActivity() {
     private fun toDaftarScrim() {
         binding.ivDaftarScrimAdmin.setOnClickListener {
             startActivity(Intent(this, DaftarScrimActivity::class.java))
+        }
+    }
+
+    private fun toHistoryEvent() {
+        binding.llEventAdmin.setOnClickListener {
+            startActivity(Intent(this, HistoryEventAdmin::class.java))
         }
     }
 

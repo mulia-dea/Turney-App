@@ -26,6 +26,7 @@ class DetailEventActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+
         binding.dtlNameEvent.text = dataIntent?.name
         binding.tglTournament.text =  dataIntent?.tgl_event + " - " + dataIntent?.tgl_akhir
         binding.tglDaftar.text = dataIntent?.tgl_daftar + " - " + dataIntent?.tgl_akhir_daftar
