@@ -8,11 +8,13 @@ import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.codemul.pabmul.helloworld.data.Quest
 import com.codemul.pabmul.helloworld.data.Scrim
 import com.codemul.pabmul.helloworld.data.User
 import com.codemul.pabmul.helloworld.databinding.ActivityScrimBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import java.util.ArrayList
 
@@ -23,6 +25,7 @@ class ScrimActivity : AppCompatActivity() {
     private var databaseRef: DatabaseReference? = null
     private var dbListerner: ValueEventListener? = null
     private lateinit var scrimList: MutableList<Scrim>
+    private lateinit var quests: MutableList<Quest>
     private lateinit var binding: ActivityScrimBinding
 
     private val firebaseAuth by lazy {
@@ -38,7 +41,7 @@ class ScrimActivity : AppCompatActivity() {
     }
 
     var user : User? = null
-
+  
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScrimBinding.inflate(layoutInflater)
@@ -73,11 +76,10 @@ class ScrimActivity : AppCompatActivity() {
                 // data dihapus dari database
                 val data =
                     dataBase.getReference("Users").child(currentUser!!.uid).child("scrimTerdaftar")
-                        .child(content.id!!).setValue(content).addOnSuccessListener {
+                        .child(content.id!!).removeValue().addOnSuccessListener {
                             Toast.makeText(this@ScrimActivity, "Berhasil batal ikut scrim", Toast.LENGTH_SHORT).show()
                         }
             }
-
 
         })
 
@@ -146,5 +148,28 @@ class ScrimActivity : AppCompatActivity() {
     fun sentDataToFirebase(content: Scrim) {
         val databaseRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("scrim")
         databaseRef.child(content.id!!).setValue(content)
+    }
+
+    private fun validateQuest() {
+//        val ref: DatabaseReference =
+//            FirebaseDatabase.getInstance().getReference("Users").child(currentUser!!.uid)
+//                .child("activeQuest")
+//        ref.addValueEventListener((object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                for (snap in snapshot.children) {
+//                    val questData = snap.getValue(Quest::class.java)
+//                    questData!!.id = snap.key
+//                    quests.add(questData)
+//                    Log.d("Data Quest", questData.toString())
+//                }
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                Toast.makeText(this@ScrimActivity, error.message, Toast.LENGTH_SHORT).show()
+//            }
+//
+//        }))
+//
+//        Log.d("User quest", quests.toString())
     }
 }

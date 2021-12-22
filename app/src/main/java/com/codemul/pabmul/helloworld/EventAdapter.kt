@@ -41,6 +41,7 @@ class EventAdapter(private val context: Context, private val listEvent: List<Eve
         var image : ImageView = itemView.findViewById(R.id.img_list_event)
         var btn : Button = itemView.findViewById(R.id.btn_detail)
         var imageUri : String?= null
+
         fun bind(event: Event) {
             tvName.text = event.name
             imageUri = event.image

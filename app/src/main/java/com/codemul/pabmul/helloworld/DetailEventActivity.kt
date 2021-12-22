@@ -11,10 +11,11 @@ import com.codemul.pabmul.helloworld.databinding.ActivityDetailEventBinding
 import com.squareup.picasso.Picasso
 
 class DetailEventActivity : AppCompatActivity() {
-    private val dataIntent by lazy{
+    private val dataIntent by lazy {
         intent.getParcelableExtra<Event>(INTENT_DETAIL)
     }
     private lateinit var binding: ActivityDetailEventBinding
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +29,7 @@ class DetailEventActivity : AppCompatActivity() {
 
 
         binding.dtlNameEvent.text = dataIntent?.name
-        binding.tglTournament.text =  dataIntent?.tgl_event + " - " + dataIntent?.tgl_akhir
+        binding.tglTournament.text = dataIntent?.tgl_event + " - " + dataIntent?.tgl_akhir
         binding.tglDaftar.text = dataIntent?.tgl_daftar + " - " + dataIntent?.tgl_akhir_daftar
 
         val fee = dataIntent?.fee

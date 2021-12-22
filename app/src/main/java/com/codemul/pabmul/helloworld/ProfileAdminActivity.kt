@@ -22,6 +22,7 @@ class ProfileAdminActivity : AppCompatActivity() {
         firebaseAuth.currentUser
     }
 
+
     private lateinit var binding: ActivityProfileAdminBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +41,6 @@ class ProfileAdminActivity : AppCompatActivity() {
                 Intent.FLAG_ACTIVITY_NEW_TASK
             }
             this@ProfileAdminActivity.finish()
-
         }
 
         profile()

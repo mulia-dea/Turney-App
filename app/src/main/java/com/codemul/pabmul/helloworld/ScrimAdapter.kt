@@ -11,8 +11,22 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.codemul.pabmul.helloworld.data.Scrim
 import com.codemul.pabmul.helloworld.databinding.ListScrimBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+
+//private val firebaseAuth by lazy {
+//    FirebaseAuth.getInstance()
+//}
+//
+//private val dataBase by lazy {
+//    FirebaseDatabase.getInstance()
+//}
+//
+//private val currentUser by lazy {
+//    firebaseAuth.currentUser
+//}
+
 
 class ScrimAdapter(private val content: MutableList<Scrim>) :
     RecyclerView.Adapter<ScrimAdapter.ScrimViewHolder>() {
@@ -43,14 +57,25 @@ class ScrimAdapter(private val content: MutableList<Scrim>) :
     inner class ScrimViewHolder(val view: ListScrimBinding) :
         RecyclerView.ViewHolder(view.root) {
 
+//        init {
+//            val data = dataBase.getReference("Users").child(currentUser!!.uid).child("scrimTerdaftar")
+//        }
         @SuppressLint("SetTextI18n")
         fun bind(item: Scrim) {
+
             when (item.jenis_game) {
                 "Valorant" -> view.imgScrim.setImageResource(R.drawable.valorant)
                 "PUBG" -> view.imgScrim.setImageResource(R.drawable.pubg_pic)
                 "DOTA 2" -> view.imgScrim.setImageResource(R.drawable.dota)
                 "Mobile Legends" -> view.imgScrim.setImageResource(R.drawable.mobilelegends)
                 else -> 0
+            }
+
+            if (item.isJoin == 0){
+                view.buttonJoin.setText("Join")
+            }
+            else{
+                view.buttonJoin.setText("Unjoin")
             }
 
             view.tvPlayerCount.text = "${item.jumlah_pemain_sekarang}/${item.jumlah_pemain}"
@@ -80,6 +105,7 @@ class ScrimAdapter(private val content: MutableList<Scrim>) :
                 }
             }
         }
+
     }
 
 
