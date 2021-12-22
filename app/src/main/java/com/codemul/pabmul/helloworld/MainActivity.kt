@@ -124,6 +124,10 @@ class MainActivity : AppCompatActivity() {
         binding.linearHistoryScrim.setOnClickListener {
             startActivity(Intent(this, HistoryScrimTerdaftar::class.java))
         }
+
+        binding.llHistoryEventUser.setOnClickListener {
+            startActivity(Intent(this, UserHistoryActivity::class.java))
+        }
     }
 
     private fun setQuest() {

@@ -19,7 +19,7 @@ class HistoryEventAdmin : AppCompatActivity() {
     private var storage: FirebaseStorage? = null
     private var databaseRef: DatabaseReference? = null
 
-//    lateinit var idEvent: String
+    //    lateinit var idEvent: String
     private val firebaseAuth by lazy {
         FirebaseAuth.getInstance()
     }
@@ -38,7 +38,8 @@ class HistoryEventAdmin : AppCompatActivity() {
 
     private fun getData() {
         binding.rvHistoryEvent.setHasFixedSize(true)
-        binding.rvHistoryEvent.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.rvHistoryEvent.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         eventList = ArrayList()
         adapterEvent = EventAdapter(this, eventList)
@@ -55,7 +56,7 @@ class HistoryEventAdmin : AppCompatActivity() {
 //                idEvent = previousChildName.toString()
                 data!!.id = snapshot.key
 
-                if (data!!.id_penyelenggara == currentUser!!.uid) {
+                if (data.id_penyelenggara == currentUser!!.uid) {
                     eventList.add(data)
 
                     Log.d("Data List", eventList.toString())
@@ -83,8 +84,12 @@ class HistoryEventAdmin : AppCompatActivity() {
 
         adapterEvent.setOnItemClickCallback(object : EventAdapter.OnItemClickCallback {
             override fun onItemClicked(event: Event) {
-                startActivity(Intent(this@HistoryEventAdmin,
-                    DetailHistoryEventAdmin::class.java).putExtra(DetailHistoryEventAdmin.id_event, event))
+                startActivity(
+                    Intent(
+                        this@HistoryEventAdmin,
+                        DetailHistoryEventAdmin::class.java
+                    ).putExtra(DetailHistoryEventAdmin.id_event, event)
+                )
             }
 //
 //            override fun onItemHistory() {

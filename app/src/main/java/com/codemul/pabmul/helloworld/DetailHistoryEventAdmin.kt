@@ -24,10 +24,6 @@ class DetailHistoryEventAdmin : AppCompatActivity() {
         FirebaseAuth.getInstance()
     }
 
-//    private val databaseRef by lazy {
-//        FirebaseDatabase.getInstance()
-//    }
-
     private val currentUser by lazy {
         firebaseAuth.currentUser
     }

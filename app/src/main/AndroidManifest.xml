@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloWorld">
         <activity
+            android:name=".UserHistoryActivity"
+            android:exported="true" />
+        <activity
             android:name=".HistoryEventAdmin"
             android:exported="true" />
         <activity

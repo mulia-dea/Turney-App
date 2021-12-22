@@ -67,7 +67,7 @@ class MainAdmin : AppCompatActivity() {
     }
 
     private fun toHistoryEvent() {
-        binding.llEventAdmin.setOnClickListener {
+        binding.cvHistoryEventAdmin.setOnClickListener {
             startActivity(Intent(this, HistoryEventAdmin::class.java))
         }
     }
