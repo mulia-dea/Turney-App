@@ -1,20 +1,16 @@
 package com.codemul.pabmul.helloworld
 
 import android.annotation.SuppressLint
-import android.os.Binder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.codemul.pabmul.helloworld.data.Quest
 import com.codemul.pabmul.helloworld.data.Scrim
-import com.codemul.pabmul.helloworld.data.User
 import com.codemul.pabmul.helloworld.databinding.ActivityScrimBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import java.util.ArrayList
 
@@ -25,7 +21,7 @@ class ScrimActivity : AppCompatActivity() {
     private var databaseRef: DatabaseReference? = null
     private var dbListerner: ValueEventListener? = null
     private lateinit var scrimList: MutableList<Scrim>
-    private lateinit var quests: MutableList<Quest>
+    private var quests: MutableList<Quest> = ArrayList()
     private lateinit var binding: ActivityScrimBinding
 
     private val firebaseAuth by lazy {
@@ -40,19 +36,11 @@ class ScrimActivity : AppCompatActivity() {
         firebaseAuth.currentUser
     }
 
-    var user: User? = null
-    var nama: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScrimBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        if (nama == null){
-            nama = "ilham"
-        }
-
-        Log.d("nama ku", nama.toString())
 
         supportActionBar?.title = "Scrim"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -62,9 +50,7 @@ class ScrimActivity : AppCompatActivity() {
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         scrimList = ArrayList()
-        quests = ArrayList()
 
-//        Log.i("Isi array scrim", scrimList.toString())
         adapter = ScrimAdapter(scrimList)
         binding.rvScrimList.adapter = adapter
         adapter.setOnClickButton(object : ScrimAdapter.OnButtonJoinListener {
@@ -75,13 +61,12 @@ class ScrimActivity : AppCompatActivity() {
                 // add data to user object
                 dataBase.getReference("Users").child(currentUser!!.uid).child("scrimTerdaftar")
                     .child(content.id!!).setValue(content).addOnSuccessListener {
+                        retrieveDataQuest(content.jenis_game.toString())
                         Toast.makeText(
                             this@ScrimActivity,
                             "Berhasil ikut scrim",
                             Toast.LENGTH_SHORT
                         ).show()
-                        validateQuest()
-                        Log.i("Isi array", quests.toString())
                     }
             }
 
@@ -102,42 +87,12 @@ class ScrimActivity : AppCompatActivity() {
         })
 
         getDataFromDataBase()
-//        Log.i("scrimList val ", scrimList.toString()) // debug
 
     }
-
-    //AKSES HISTORY SCRIM TERDAFTAR
-
-//    private fun getDataHistoryFromDataBase() {
-//        storage = FirebaseStorage.getInstance()
-//        databaseRef = FirebaseDatabase.getInstance().getReference("Users").child(currentUser!!.uid).child("scrimTerdaftar")
-//        Log.d("dataaaa", databaseRef.toString())
-////        Log.d("data ref", databaseRef.toString())
-//        dbListerner = databaseRef?.addValueEventListener(object : ValueEventListener {
-//            @SuppressLint("NotifyDataSetChanged")
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                scrimList.clear()
-//                for (eventSnap in snapshot.children) {
-//                    val upload = eventSnap.getValue(Scrim::class.java)
-//                    upload!!.id = eventSnap.key
-//                    scrimList.add(upload)
-//                    Log.d("scrimList val ", scrimList.toString())
-//                     // debug
-//                }
-//                adapter.notifyDataSetChanged()
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                Toast.makeText(this@ScrimActivity, error.message, Toast.LENGTH_SHORT).show()
-//            }
-//
-//        })
-//    }
 
     private fun getDataFromDataBase() {
         storage = FirebaseStorage.getInstance()
         databaseRef = FirebaseDatabase.getInstance().getReference("scrim")
-//        Log.d("data ref", databaseRef.toString())
         dbListerner = databaseRef?.addValueEventListener(object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -146,7 +101,6 @@ class ScrimActivity : AppCompatActivity() {
                     val upload = eventSnap.getValue(Scrim::class.java)
                     upload!!.id = eventSnap.key
                     scrimList.add(upload)
-//                    Log.d("scrimList val ", scrimList.toString()) // debug
                 }
                 adapter.notifyDataSetChanged()
             }
@@ -168,51 +122,56 @@ class ScrimActivity : AppCompatActivity() {
         databaseRef.child(content.id!!).setValue(content)
     }
 
-    private fun validateQuest() {
+    private fun retrieveDataQuest(jenisGame: String) {
         val ref: DatabaseReference =
             FirebaseDatabase.getInstance().getReference("Users").child(currentUser!!.uid)
                 .child("activeQuest")
-        ref.addValueEventListener((object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                quests.clear()
-                for (snap in snapshot.children) {
-                    val questData = snap.getValue(Quest::class.java)
-                    questData!!.id = snap.key
-                    quests.add(questData)
+        ref.addChildEventListener((object : ChildEventListener {
+            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                val data = snapshot.getValue(Quest::class.java)
+                data!!.id = snapshot.key
 
-//                    Log.i("Isi snap", questData.toString())
-//                    Log.i("Isi arrraylist", quests.toString())
+                Log.i("snap value", snapshot.getValue(Quest::class.java).toString())
 
-                    when (questData.namaQuest) {
-                        "Chicken Dinner" -> {
-                            quests.add(questData)
+                if (data.progressCount < data.progressTarget && data.namaQuest == "Hello Stranger!"){
+                    data.progressCount += 1
+
+                    dataBase.getReference("Users").child(currentUser!!.uid)
+                        .child("activeQuest")
+                        .child(data.id!!).setValue(data).addOnSuccessListener {
+                            Log.i("Status", "berhasil ditambah")
                         }
-
-                        "Hello Stranger!" -> {
-                            quests.add(questData)
-                            Log.i(questData.toString(), "Tag quests")
-                            if (questData.progressCount < questData.progressTarget) {
-                                questData.progressCount += 1
-                                Log.i("nambah", questData.progressCount.toString())
-                                dataBase.getReference("Users").child(currentUser!!.uid)
-                                    .child("activeQuest")
-                                    .child(questData.id!!).setValue(questData)
-                                    .addOnSuccessListener {
-                                        Toast.makeText(
-                                            this@ScrimActivity,
-                                            "dimasukkan sebagai main quest",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    }
-                            }
-                        }
-                    }
                 }
+
+                if(data.progressCount < data.progressTarget && jenisGame == "PUBG"){
+                    data.progressCount += 1
+
+                    dataBase.getReference("Users").child(currentUser!!.uid)
+                        .child("activeQuest")
+                        .child(data.id!!).setValue(data).addOnSuccessListener {
+                            Log.i("Status", "berhasil ditambah")
+                        }
+                }
+
+            }
+
+            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                val data = snapshot.getValue(Quest::class.java)
+                data!!.id = snapshot.key
+            }
+
+            override fun onChildRemoved(snapshot: DataSnapshot) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                TODO("Not yet implemented")
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@ScrimActivity, error.message, Toast.LENGTH_SHORT).show()
+                TODO("Not yet implemented")
             }
+
 
         }))
 
