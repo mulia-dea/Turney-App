@@ -82,7 +82,11 @@ class QuestActivity : AppCompatActivity() {
                 dataBase.getReference("Users").child(currentUser!!.uid).child("activeQuest")
                     .child(quest.id!!).setValue(quest).addOnSuccessListener {
                         showDetailQuest(quest)
-                        Toast.makeText(this@QuestActivity, "dimasukkan sebagai main quest", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@QuestActivity,
+                            "dimasukkan sebagai main quest",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
             }
 

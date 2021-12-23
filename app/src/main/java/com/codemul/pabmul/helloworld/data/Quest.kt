@@ -9,6 +9,6 @@ data class Quest(
     var namaQuest: String? = null,
     var questDesc: String? = null,
     var progressCount: Int = 0,
-    var porgressTarget: Int = 0,
+    var progressTarget: Int = 0,
     var reward: String? = null
 ): Parcelable
