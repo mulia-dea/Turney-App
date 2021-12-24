@@ -153,6 +153,7 @@
                     android:text="Play with other 1/2/3 random player" />
 
                 <ProgressBar
+                    android:id="@+id/pb_quest_main"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="220dp"
                     android:layout_height="wrap_content"

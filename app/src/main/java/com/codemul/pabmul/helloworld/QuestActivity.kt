@@ -99,7 +99,7 @@ class QuestActivity : AppCompatActivity() {
             Intent(
                 this,
                 MainActivity::class.java
-            ).putExtra(DetailEventActivity.INTENT_DETAIL, quest)
+            ).putExtra(MainActivity.INTENT_DETAIL, quest)
         )
     }
 

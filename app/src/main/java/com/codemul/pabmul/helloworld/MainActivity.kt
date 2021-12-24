@@ -1,5 +1,6 @@
 package com.codemul.pabmul.helloworld
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,8 +16,9 @@ import com.codemul.pabmul.helloworld.databinding.ActivityCreateEventBinding
 import com.codemul.pabmul.helloworld.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import java.util.ArrayList
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
     private val firebaseAuth by lazy {
@@ -35,7 +37,8 @@ class MainActivity : AppCompatActivity() {
         intent.getParcelableExtra<Quest>(INTENT_DETAIL)
     }
 
-    private var user: User? = null
+    private var ref: DatabaseReference? = null
+    private var listener: ValueEventListener? = null
     private lateinit var binding: ActivityMainBinding
 
     //    private var firebaseAuth : FirebaseAuth
@@ -131,15 +134,33 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setQuest() {
-//        Log.d("intent data", dataIntent.toString())
-
-        if (dataIntent == null){
+        if (dataIntent == null) {
             binding.tvQuestName.setText("#Quest Name")
             binding.tvQuestDesc.setText("#Quest Description")
-        }
-        else{
-            binding.tvQuestName.setText(dataIntent?.namaQuest)
-            binding.tvQuestDesc.setText(dataIntent?.questDesc)
+        } else {
+            ref = FirebaseDatabase.getInstance().getReference("Users").child(currentUser!!.uid)
+                .child("activeQuest").child(dataIntent?.id.toString())
+
+            ref?.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val snapData = snapshot.getValue(Quest::class.java)
+                    Log.i("snap value", snapData.toString())
+
+                    binding.tvQuestName.setText(snapData!!.namaQuest)
+                    binding.tvQuestDesc.setText(snapData.questDesc)
+
+                    binding.pbQuestMain.max = snapData.progressTarget
+
+                    ObjectAnimator.ofInt(binding.pbQuestMain, "progress", snapData.progressCount)
+                        .setDuration(1000).start()
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(this@MainActivity, error.message, Toast.LENGTH_SHORT).show()
+                }
+
+            })
+
         }
     }
 
