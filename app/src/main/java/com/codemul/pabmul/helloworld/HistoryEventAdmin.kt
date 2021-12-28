@@ -55,6 +55,7 @@ class HistoryEventAdmin : AppCompatActivity() {
                 val data = snapshot.getValue(Event::class.java)
 //                idEvent = previousChildName.toString()
                 data!!.id = snapshot.key
+                Log.i("Data event log", data.toString())
 
                 if (data.id_penyelenggara == currentUser!!.uid) {
                     eventList.add(data)

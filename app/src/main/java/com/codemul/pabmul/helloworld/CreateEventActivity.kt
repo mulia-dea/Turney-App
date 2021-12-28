@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat
 import com.codemul.pabmul.helloworld.data.Event
 import com.codemul.pabmul.helloworld.databinding.ActivityCreateEventBinding
 import com.codemul.pabmul.helloworld.databinding.ActivityDetailEventBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -46,6 +47,17 @@ class CreateEventActivity : AppCompatActivity() {
 //    private var uploadTask: StorageTask<*>? = null
 //    private var databaseRef: DatabaseReference? = null
 
+    private val firebaseAuth by lazy {
+        FirebaseAuth.getInstance()
+    }
+
+//    private val databaseRef by lazy {
+//        FirebaseDatabase.getInstance()
+//    }
+
+    private val currentUser by lazy {
+        firebaseAuth.currentUser
+    }
 //    private val db = RealtimeDatabase.instance()
 
 
@@ -181,6 +193,7 @@ class CreateEventActivity : AppCompatActivity() {
         val event = Event()
         event.id = UUID.randomUUID().toString()
         event.name = binding.nameEvent.text.toString().trim()
+        event.id_penyelenggara = currentUser!!.uid
 //        event.image = uploadImage().toString()
         event.tgl_event = binding.tglEvent.text.toString().trim()
         event.tgl_akhir = binding.tglAkhirEvent.text.toString().trim()
@@ -196,6 +209,7 @@ class CreateEventActivity : AppCompatActivity() {
             val downloadUrl = taskSnapshot.storage.downloadUrl.addOnCompleteListener { task ->
                 val t = task.result.toString()
                 val newPost = databaseRef!!.push()
+                newPost.child("venue").setValue(event.venue)
                 newPost.child("name").setValue(event.name)
                 newPost.child("image").setValue(task.getResult().toString())
                 newPost.child("id").setValue(event.id)
@@ -206,6 +220,7 @@ class CreateEventActivity : AppCompatActivity() {
                 newPost.child("fee").setValue(event.fee)
                 newPost.child("contact").setValue(event.contact)
                 newPost.child("contact2").setValue(event.contact2)
+                newPost.child("id_penyelenggara").setValue(event.id_penyelenggara)
             }
         }
     }
