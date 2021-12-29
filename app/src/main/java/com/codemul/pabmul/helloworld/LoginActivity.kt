@@ -75,7 +75,7 @@ class LoginActivity : AppCompatActivity() {
                 df.child(currentUser!!.uid).get().addOnSuccessListener {
                     val admin = it.child("admin").value.toString()
                     if (email.isNotEmpty() && password.isNotEmpty()) {
-                        if (admin == "2131296730") {
+                        if (admin == "1") {
 //                            Log.d("ADMIN", it.child("admin").value.toString())
                             Toast.makeText(this, "ADMIN", Toast.LENGTH_SHORT).show()
 

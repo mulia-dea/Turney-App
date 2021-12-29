@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.RadioButton
 import android.widget.TextView
 import android.widget.Toast
 import com.codemul.pabmul.helloworld.data.User
@@ -83,7 +84,16 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun signUp(email: String, password: String, name: String) {
-        val selectId: Int = binding.radioGrup.checkedRadioButtonId
+        var selectId: Int = 10
+
+        if (binding.radioButtonPenyelenggara.isChecked){
+            selectId = 1
+        }
+
+        else{
+            selectId = 0
+        }
+
 
         val df = databaseRef.getReference("Users")
 
